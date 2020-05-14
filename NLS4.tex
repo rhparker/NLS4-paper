@@ -1,0 +1,219 @@
+\documentclass[12pt]{article}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
+\let\bibsection\relax
+\usepackage{amsrefs}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{amssymb}                
+\usepackage{amsmath}                
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{graphicx,epsfig}
+\usepackage{hyperref}
+
+\RequirePackage{xcolor}[2.11]
+\colorlet{siaminlinkcolor}{green!50!black}
+\colorlet{siamexlinkcolor}{red!50!black}
+\colorlet{siamreviewcolor}{black!50}
+\hypersetup{
+  hidelinks = true,
+  colorlinks = false,
+  allcolors = siaminlinkcolor,
+  urlcolor = siamexlinkcolor,
+}
+
+\usepackage[capitalize,nameinlink]{cleveref}
+% Per SIAM Style Manual, "section" should be lowercase
+\crefname{section}{section}{sections}
+\crefname{subsection}{subsection}{subsections}
+\Crefname{section}{Section}{Sections}
+\Crefname{subsection}{Subsection}{Subsections}
+
+% Per SIAM Style Manual, "Figure" should be spelled out in references
+\Crefname{figure}{Figure}{Figures}
+
+% Per SIAM Style Manual, don't say equation in front on an equation.
+\crefformat{equation}{\textup{#2(#1)#3}}
+\crefrangeformat{equation}{\textup{#3(#1)#4--#5(#2)#6}}
+\crefmultiformat{equation}{\textup{#2(#1)#3}}{ and \textup{#2(#1)#3}}
+{, \textup{#2(#1)#3}}{, and \textup{#2(#1)#3}}
+\crefrangemultiformat{equation}{\textup{#3(#1)#4--#5(#2)#6}}%
+{ and \textup{#3(#1)#4--#5(#2)#6}}{, \textup{#3(#1)#4--#5(#2)#6}}{, and \textup{#3(#1)#4--#5(#2)#6}}
+
+% But spell it out at the beginning of a sentence.
+\Crefformat{equation}{#2Equation~\textup{(#1)}#3}
+\Crefrangeformat{equation}{Equations~\textup{#3(#1)#4--#5(#2)#6}}
+\Crefmultiformat{equation}{Equations~\textup{#2(#1)#3}}{ and \textup{#2(#1)#3}}
+{, \textup{#2(#1)#3}}{, and \textup{#2(#1)#3}}
+\Crefrangemultiformat{equation}{Equations~\textup{#3(#1)#4--#5(#2)#6}}%
+{ and \textup{#3(#1)#4--#5(#2)#6}}{, \textup{#3(#1)#4--#5(#2)#6}}{, and \textup{#3(#1)#4--#5(#2)#6}}
+
+% Make number non-italic in any environment.
+\crefdefaultlabelformat{#2\textup{#1}#3}
+
+\def\noi{\noindent}
+\def\T{{\mathbb T}}
+\def\R{{\mathbb R}}
+\def\N{{\mathbb N}}
+\def\C{{\mathbb C}}
+\def\Z{{\mathbb Z}}
+\def\P{{\mathbb P}}
+\def\E{{\mathbb E}}
+\def\Q{\mathbb{Q}}
+\def\ind{{\mathbb I}}
+
+\def\calH{{\mathcal H}}
+\def\calE{{\mathcal E}}
+\def\calQ{{\mathcal Q}}
+\def\calL{{\mathcal L}}
+
+
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\ran}{ran}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+
+\graphicspath{ {images/} }
+
+\begin{document}
+
+% \begin{frontmatter}
+% \title{NLS4}
+
+% \author[1]{Ross Parker}
+%     \ead{ross\_parker@brown.edu}
+% \author[1]{Bj\"{o}rn Sandstede}
+%     \ead{bjorn\_sandstede@brown.edu}
+
+% \address[1]{Division of Applied Mathematics, Brown University, Providence, RI 02912, USA}
+
+% \begin{abstract}
+% \end{abstract}
+
+% \begin{keyword}
+% \end{keyword}
+% \end{frontmatter}
+
+\section{Setup}
+
+Consider the following 4th order generalization of the NLS equation
+\begin{equation}\label{NLS4}
+i \psi_t + \frac{\beta_4}{24}\psi_{xxxx} - \frac{\beta}{2}\psi_{xx} + \gamma |\psi|^2 \psi = 0,
+\end{equation}
+which is \cite[(4)]{Tam2020}. The case $\beta_2 = -2, \beta_4 = 0$ corresponds to the ordinary NLS equation, and when $\beta_2 = 0$ we have a pure 4th order equation. A recent study \cite{Tam2019} demonstrated numerically the existence and spectral stability of pure quartic solitary wave solutions to \cref{NLS4} for $\beta_2 = 0, \beta_4 < 0$.
+
+Writing \cref{NLS4} as a system of real-valued equations in $u = (v, w)$,
+\begin{align}\label{NLSsystem}
+\frac{\partial}{\partial_t}
+\begin{pmatrix}v \\ w \end{pmatrix}
+= J \begin{pmatrix}
+-\frac{\beta_4}{24} v_{xxxx} + \frac{\beta_2}{2} v_{xx} - \gamma (v^2 + w^2)v \\
+-\frac{\beta_4}{24} w_{xxxx} + \frac{\beta_2}{2} w_{xx} - \gamma (v^2 + w^2)w 
+\end{pmatrix}
+\end{align}
+where 
+\[
+J = \begin{pmatrix}0 & 1 \\ -1 & 0 \end{pmatrix}
+\]
+is the standard skew-symplectic matrix. Equation \cref{NLSsystem} can be written in Hamiltonian form as 
+\begin{equation}\label{NLSHam}
+\frac{\partial u}{\partial_t} = J \calE'(u(t))
+\end{equation}
+where the energy $\calE$ is given by
+\begin{equation}\label{defH}
+\calE(v, w) = \frac{1}{2} \int_{\infty}^\infty \frac{\beta_4}{24}\left( v_{xx}^2 + w_{xx}^2 \right) + \frac{\beta_2}{2}\left( v_{x}^2 + w_{x}^2 \right) + \gamma \left(v^2 + w^2 \right)^2 dx
+\end{equation}
+The energy $\mathcal{E}$ is invariant under the standard rotation group $R(\theta)$, given by
+\begin{equation}\label{Rtheta}
+T(\theta) = \begin{pmatrix}
+\cos(\theta) & -\sin(\theta) \\
+\sin(\theta)& \cos(\theta)
+\end{pmatrix},
+\end{equation}
+The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
+\begin{equation}\label{defQ}
+\mathcal{Q}(v, w) = -\frac{1}{2} \int_{\infty}^\infty \left( v^2 + w^2\right) dx.
+\end{equation}
+Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, the standing wave equation is
+\begin{equation}\label{standingwaveeq}
+\calE'(u) + w u = 0
+\end{equation}
+
+Suppose that for all $\omega \in (\omega_1, \omega_2)$ there exists a bound state solution $u(x; \omega)$ to \cref{standingwaveeq}, and that the mapping $\omega \mapsto u(x; \omega)$ is $C^1$ \cite[Assumption 2]{Grillakis1987}. Define the scalar
+\begin{equation}
+d(\omega) = \calE(u(\omega)) - \omega\calQ(u(\omega)).
+\end{equation}
+By \cite[(2.21)]{Grillakis1987},
+\begin{align*}
+d''(\omega) = \langle \calQ'(u(x; \omega)), \partial_\omega u(x; \omega) \rangle
+= \int_{-\infty}^\infty u(x) \partial_\omega u(x) dx
+\end{align*}
+By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $u(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity is easy to compute numerically.
+
+Let $\phi$ be a real-valued standing wave solution to \cref{standingwaveeq}. The linearization of the PDE \cref{NLSsystem} about $\phi$ is the linear operator $\calL(\phi)$
+\begin{align}\label{defLphi}
+\calL(\phi) = 
+\begin{pmatrix}
+0 & \calL^-(\phi) \\
+-\calL^+(\phi) & 0
+\end{pmatrix},
+\end{align}
+where
+\begin{align*}
+\calL^-(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - \gamma \phi^2 \\
+\calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2
+\end{align*}
+It is straightforward to verify that 
+\begin{align*}
+\calL^-(\phi) \phi &= 0 \\
+\calL^+(\phi) \partial_x \phi &= 0 \\
+\calL^+(\phi)(-\partial_\omega \phi) &= \phi
+\end{align*}
+Furthermore, since $\calL^-$ is self-adjoint and $\phi' \perp \ker \calL^-$, there exists $z$ such that $\calL^- z = u'$. For ordinary NLS ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. For the general case, $z$ exists and is easy to compute numerically, but I am not sure there is a nice formula for it.
+
+Putting all of this together, $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
+\begin{align*}
+\calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, 
+\calL(\phi)\begin{pmatrix} \partial_\omega \phi \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\ \phi \end{pmatrix} \\
+\calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, 
+\calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} 
+\end{align*}
+
+Now let $\phi$ be an exponentially localized bound state solution. For the essential spectrum, which is independent of $\phi$ and only depends on the background state, the linear operator $\calL(\phi)$ is exponentially asymptotic to $\calL(0)$, given by
+\begin{align}\label{defL0}
+\calL(0) = 
+\begin{pmatrix}
+0 & \calL_0 \\
+-\calL_0 & 0
+\end{pmatrix},
+\calL_0 = -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega
+\end{align}.
+Thus the eigenvalue problem $\calL(0) v = \lambda v$ is equivalent to $(\calL_0 + \lambda^2)p = 0$. By \cite[Theorem 3.1.13]{Kapitula2013}, the essential spectrum is given by the curves
+\begin{align*}
+\left[ -\frac{\beta_4}{24} (ik)^4 + \frac{\beta_2}{2}(ik)^2 + \omega \right]^2 + \lambda^2 &= 0 && k \in \R.
+\end{align*}
+As long as $\beta_2, \beta_4 < 0$ (and $\omega > 0$), the essential spectrum is purely imaginary, and the curves are
+\begin{align*}
+\lambda = \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right),
+\end{align*}
+from which it follows that the essential spectrum is the subset of the imaginary axis given by
+\begin{equation}
+\sigma_{ess} = \{ k i : |k| \geq \omega \}.
+\end{equation}
+In particular, for $\omega > 0$, the essential spectrum is bounded away from the origin. In addition, we note that the essential spectrum is the same as for the ordinary NLS equation, and it does not depend on the parameters $\beta_2,\beta_4$.
+
+\section{Pulses and multi-pulses}
+
+
+% \bibliographystyle{amsalpha}
+\bibliography{NLS4.bib}
+
+\end{document}
