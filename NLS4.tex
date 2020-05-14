@@ -152,10 +152,10 @@ Suppose that for all $\omega \in (\omega_1, \omega_2)$ there exists a bound stat
 d(\omega) = \calE(u(\omega)) - \omega\calQ(u(\omega)).
 \end{equation}
 By \cite[(2.21)]{Grillakis1987},
-\begin{align*}
+\begin{align}\label{ddoubleprime}
 d''(\omega) = \langle \calQ'(u(x; \omega)), \partial_\omega u(x; \omega) \rangle
 = \int_{-\infty}^\infty u(x) \partial_\omega u(x) dx
-\end{align*}
+\end{align}
 By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $u(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity is easy to compute numerically.
 
 Let $\phi$ be a real-valued standing wave solution to \cref{standingwaveeq}. The linearization of the PDE \cref{NLSsystem} about $\phi$ is the linear operator $\calL(\phi)$
@@ -210,7 +210,161 @@ from which it follows that the essential spectrum is the subset of the imaginary
 \end{equation}
 In particular, for $\omega > 0$, the essential spectrum is bounded away from the origin. In addition, we note that the essential spectrum is the same as for the ordinary NLS equation, and it does not depend on the parameters $\beta_2,\beta_4$.
 
-\section{Pulses and multi-pulses}
+\section{Existence of multi-pulses}
+
+Real-valued, standing wave solutions to \cref{standingwaveeq} satisfy the 4th order ODE
+\begin{equation}\label{NLS4real}
+-\frac{\beta_4}{24} u_{xxxx} + \frac{\beta_2}{2} u_{xx} - \gamma u^3 + \omega u = 0
+\end{equation}
+For ordinary NLS ($\beta_4 = 0$), an exact solitary wave solution is known. For certain values of $\beta_2, \beta_4 < 0$ (i.e. those for which the solitary wave does not have an oscillating tail), an exact solitary wave solution is also known \cite[(5)]{Tam2020} (from Karlsson and Hook, 1994). For $\beta_4 = -1$, \cite[Figure 4(a)]{Tam2020} depicts regions in the $(\beta_2, \omega)$ plane where solitary wave solitions have been shown to exist (numerically, at least). For our purposes, we are interested only in solitary waves with oscillating tails. For now, we assume all such solutions exist, although it may be possible to show that.
+
+Assume that $\beta_4 \neq 0$, so that \cref{NLS4real} does not reduce to the ordinary NLS equation. We rewrite equation \cref{NLS4real} by letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$ to get the first order system
+\begin{equation}\label{Fsystem}
+U' = F(U) = \begin{pmatrix}
+u_2 \\ u_3 \\ \frac{24}{\beta_4} u_4 \\ \omega u_1 - \gamma u_1^3.
+\end{pmatrix}
+\end{equation}
+Equation \cref{Fsystem} has a conserved quantity
+\begin{equation}\label{FsystemH}
+H(u_1, u_2, u_3, u_4) = -u_4 u_2 - \frac{1}{2} u_3^2 + \frac{\beta_2}{4}u_2^2 - \frac{\gamma}{4} u_1^4 + \frac{1}{2}\omega u_1,
+\end{equation}
+which we obtain by multiplying \cref{NLS4real} by $u_x$ and integrating once, where the first term on the RHS is also integrated by parts. $F(0) = 0$, and the characteristic polynomial of $DF(0)$ is
+\[
+p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
+\]
+which has a quartet of complex eigenvalues $\pm a \pm b i$ when $3 \beta_2^2 + 2 \omega \beta_4 < 0$. For the case of $\beta_4 < 0$ (which is the one we are interested in), this is equivalent to $\omega > \omega_c$ \cite[(11)]{Tam2020}, where
+\begin{equation}\label{omegac}
+\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
+\end{equation}
+Note that for the pure quartic equation, $\omega_c = 0$. Thus whenever $\omega > \omega_c$, 0 is a hyperbolic equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds. A primary pulse solution is a homoclinic orbit connecting this equilibrium point to itself, and corresponds to an exponentially localized solitary wave solution of \cref{NLS4real}
+
+For fixed $\omega > \omega_c$, we assume the primary pulse solution $U(x) = (\phi_x, \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ exists. The first component $\phi(x)$ is the corresponding solitary wave, which is the first component of $U(x)$. We assume in addition that $\phi(x)$ is orbitally stable, i.e. $d''(\omega) > 0$. Since \cref{NLSsystem} is Hamiltonian, the immediately implies that all spectrum for the linearization about the primary pulse is purely imaginary.
+
+We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. The only difference is that the multi-pulse can be constructed using ``up'' and ``down'' copies of the primary pulse, so that neighboring pulses are either in phase or out of phase. This should be a straightforward adaptation.
+
+\begin{theorem}\label{theorem:multiexist}
+Assume appropriate hypotheses. Fix $\omega > \omega_c$, and let $\pm a \pm bi$ be the eigenvalues of $DF(0)$. Let $U(x)$ be an exponentially localized solution to \cref{Fsystem}. Then for any 
+\begin{itemize}
+\item $n \geq 2$
+\item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$ with at least one of the $k_j \in \{0, 1 \}$
+\item Sequence of phase parameters $\{ g_1, \dots, g_{n} \} \in \{0, 1\}^n$
+\end{itemize}
+there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \geq m_0$, there exists a unique $n-$modal solution $U_n(x)$ to \cref{Fsystem} which is of the form
+  \begin{equation}\label{qn}
+  U_n(x) = \sum_{j = 1}^{n} g_j U^j(x) + r(x),
+  \end{equation}
+  where each $U^j(x)$ is a translate of the primary pulse $U(x)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
+  \begin{equation*}
+  X_j \approx \frac{\pi}{b}(2 m + k_j) + \tilde{X},
+  \end{equation*}
+  and $\tilde{X}$ is a constant. The remainder term $r(x)$ satisfies
+  \begin{equation}\label{rbound}
+  \|r\|_\infty \leq C e^{-a X_{\mathrm{min}}},
+  \end{equation}
+  where $X_{\mathrm{min}} = \min\{X_1, \dots, X_{n-1}\}$. This bound holds for all derivatives with respect to $x$.
+\end{theorem}
+
+We might be better off parameterizing the multi-pulse using the phase differences between adjacent pulses rather than the absolute phases, since that is really what matters.
+
+\section{Spectrum of multi-pulses}
+
+For each $n-$pulse $\phi_n$, we can compute the spectrum of the linearized operator $\calL(\phi_n)$. Roughly speaking, since there are two eigenfunctions in the kernel of the primary pulse $\calL(\phi)$, each additional pulse in $\phi_n$ will result in four additional eigenvalues near 0 which come from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure. We call these interaction eigenvalues. To do this, we write the eigenvalue problem $\calL(\phi)u \lambda u$ as the first order system
+\begin{equation}
+\begin{pmatrix}v \\ w\end{pmatrix}' =
+\begin{pmatrix}K_+(\phi) & 0 \\ 0 & K_-(\phi) \end{pmatrix}
+\begin{pmatrix}v \\ w\end{pmatrix}
++ \lambda \begin{pmatrix}0 & B \\ -B & 0\end{pmatrix}
+\begin{pmatrix}v \\ w\end{pmatrix},
+\end{equation}
+where
+\begin{align*}
+K^-(\phi) = \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & \frac{24}{\beta_4} \\
+\omega - \gamma \phi^2 & 0 & \frac{\beta_2}{2} & 0
+\end{pmatrix},
+K^+(\phi) = \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & \frac{24}{\beta_4} \\
+\omega - 3 \gamma \phi^2 & 0 & \frac{\beta_2}{2} & 0
+\end{pmatrix},
+B = \begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix}
+\end{align*}
+The associated variational equation and adjoint variational equation are
+\begin{align}
+\begin{pmatrix}v \\ w\end{pmatrix}' &=
+\begin{pmatrix}K_+(\phi) & 0 \\ 0 & K_-(\phi) \end{pmatrix}
+\begin{pmatrix}v \\ w\end{pmatrix} \label{vareq} \\
+\begin{pmatrix}\tilde{v} \\ \tilde{w}\end{pmatrix}' &=
+-\begin{pmatrix}K_+(\phi)^T & 0 \\ 0 & K_-(\phi)^T \end{pmatrix}
+\begin{pmatrix}\tilde{v} \\ \tilde{w}\end{pmatrix} \label{adjvareq}
+\end{align}
+The variational equation \cref{vareq} has two linearly independent, exponentially decaying solutions $V_+(x) = U'(x)$ and $V_-(x) = U(x)$, where $U(x) = (\phi_x, \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ is the primary pulse. Corresponding to these are two linearly independent, exponentially decaying solutions $\Psi_+(x)$ and $\Psi_-(x)$ to the adjoint variational equation \cref{vareq}. 
+
+At this point, we can (and eventually will!) state a theorem which will give us formulas for the interaction eigenvalues. This is analogous to \cite[Theorem 2]{Sandstede1998}, and the proof is a straightforward adaptation of that theorem, with the only change being a different ansatz in place of \cite[(3.5)]{Sandstede1998}. For the present, we will just give the formulas for the interaction eigenvalues for the 2-pulse.
+
+Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $g_1, g_2$. Define the two Melnikov integrals
+\begin{align*}
+M_- &= \int_{-\infty}^\infty q(x) \partial_\omega q(x) dx \\
+M_+ &= \int_{-\infty}^\infty \partial_x (x) z(x) dx,
+\end{align*}
+where we note that $M_- = d''(\omega)$, the stability criterion from \cite{Grillakis1987}. We are assuming that $M_- > 0$. Let 
+\begin{align*}
+a_- &= \langle \Psi_-(-X_1), V_-(X_1) \rangle \\
+a_+ &= \langle \Psi_+(-X_1), V_+(X_1) \rangle 
+\end{align*}
+Then the four interaction eigenvalues for a 2-pulse are given by
+\begin{align*}
+\lambda_1 &= \pm \\
+\lambda_2 &= \pm
+\end{align*}
+
+\section{Numerical Results}
+
+To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic soliton (\cref{fig:PQS} for $\beta_4 = -1$, we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points and periodic boundary conditions.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{images/PQS1.eps} &
+\includegraphics[width=8cm]{images/PQS1log.eps}
+\end{tabular}
+\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{NLS4real} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. }
+\label{fig:PQS}
+\end{figure} 
+
+To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method. The first eight double pulse solutions are shown in \cref{fig:doublepulses}. Arbitrary multi-pulses can similarly be constructed.
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{images/DPplus.eps} &
+\includegraphics[width=8cm]{images/DPminus.eps}
+\end{tabular}
+\caption{First eight double pulse solutions $\phi_2(x)$ constructed from two pure quartic solitary wave solution $\phi(x)$ to \cref{NLS4real} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. In-phase double pulses (left panel), opposite phase double pulses (right panel). }
+\label{fig:doublepulses}
+\end{figure} 
+
+To determine the spectrum of the linearization about the double pulse solutions, we construct the linear operator $\calL(\phi_2)$ using Fourier spectral differentiation matrices and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig}. In all cases, there is a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulses are all unstable (\cref{fig:doublespec}).
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{images/inteigsDP1plus.eps} &
+\includegraphics[width=8cm]{images/inteigsDP1plus.eps}
+\end{tabular}
+\caption{Eigenvalues for first in-phase double pulse (left panel)  and first out-of-phase double pulse (right panel). Interaction eigenvalues shown in red, and kernel eigenvalues in black. Eigenvalues in blue correspond to the discrete essential spectrum; as expected, these eigenvalues are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. }
+\label{fig:doublespec}
+\end{figure} 
+
+
 
 
 % \bibliographystyle{amsalpha}
