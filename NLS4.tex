@@ -125,11 +125,11 @@ J = \begin{pmatrix}0 & 1 \\ -1 & 0 \end{pmatrix}
 \]
 is the standard skew-symplectic matrix. Equation \cref{NLSsystem} can be written in Hamiltonian form as 
 \begin{equation}\label{NLSHam}
-\frac{\partial u}{\partial_t} = J \calE'(u(t))
+\frac{\partial u}{\partial t} = J \calE'(u(t))
 \end{equation}
 where the energy $\calE$ is given by
 \begin{equation}\label{defH}
-\calE(v, w) = \frac{1}{2} \int_{\infty}^\infty \frac{\beta_4}{24}\left( v_{xx}^2 + w_{xx}^2 \right) + \frac{\beta_2}{2}\left( v_{x}^2 + w_{x}^2 \right) + \gamma \left(v^2 + w^2 \right)^2 dx
+\calE(v, w) = \frac{1}{2} \int_{\infty}^\infty \left( \frac{\beta_4}{24}\left( v_{xx}^2 + w_{xx}^2 \right) + \frac{\beta_2}{2}\left( v_{x}^2 + w_{x}^2 \right) + \gamma \left(v^2 + w^2 \right)^2 \right) dx
 \end{equation}
 The energy $\mathcal{E}$ is invariant under the standard rotation group $R(\theta)$, given by
 \begin{equation}\label{Rtheta}
@@ -202,13 +202,17 @@ Thus the eigenvalue problem $\calL(0) v = \lambda v$ is equivalent to $(\calL_0 
 \end{align*}
 As long as $\beta_2, \beta_4 < 0$ (and $\omega > 0$), the essential spectrum is purely imaginary, and the curves are
 \begin{align*}
-\lambda = \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right),
+\lambda = \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right).
 \end{align*}
-from which it follows that the essential spectrum is the subset of the imaginary axis given by
+For $\beta_4, \beta_2 < 0$, the essential spectrum is the subset of the imaginary axis given by
 \begin{equation}
-\sigma_{ess} = \{ k i : |k| \geq \omega \}.
+\sigma_{ess} = \{ k i : |k| \geq \omega \},
 \end{equation}
-In particular, for $\omega > 0$, the essential spectrum is bounded away from the origin. In addition, we note that the essential spectrum is the same as for the ordinary NLS equation, and it does not depend on the parameters $\beta_2,\beta_4$.
+which is bounded away from the origin and does not depend on $\beta_2,\beta_4$. For $\beta_4 < 0, \beta_2 > 0$, the essential spectrum is the subset of the imaginary axis 
+\begin{equation}
+\sigma_{ess} = \{ k i : |k| \geq (\omega - \omega_c) \},
+\end{equation}
+which does depend on $\beta_2,\beta_4$, but is bounded away from the origin for $\omega > \omega_c$.
 
 \section{Existence of multi-pulses}
 
@@ -328,7 +332,7 @@ Then the four interaction eigenvalues for a 2-pulse are given by
 
 \section{Numerical Results}
 
-To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic soliton (\cref{fig:PQS} for $\beta_4 = -1$, we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points and periodic boundary conditions.
+To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic soliton (\cref{fig:PQS} for $\beta_4 = -1$, we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions.
 
 \begin{figure}[H]
 \centering
@@ -339,6 +343,8 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{NLS4real} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. }
 \label{fig:PQS}
 \end{figure} 
+
+For the single pulses, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases we tried, $d''(\omega) > 0$, thus the primary pulse solution is orbitally stable. (This is a much stronger result than what was done in \cite{Tam2020}, where they computed the spectrum numerically and found that it is purely imaginary). 
 
 To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method. The first eight double pulse solutions are shown in \cref{fig:doublepulses}. Arbitrary multi-pulses can similarly be constructed.
 
