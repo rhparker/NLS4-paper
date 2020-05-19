@@ -83,7 +83,11 @@
 
 \graphicspath{ {images/} }
 
+\title{Multi-pulse solitary waves in fourth-order NLS equation}
+
 \begin{document}
+
+\maketitle
 
 % \begin{frontmatter}
 % \title{NLS4}
@@ -131,8 +135,8 @@ where the energy $\calE$ is given by
 \begin{equation}\label{defH}
 \calE(v, w) = \frac{1}{2} \int_{\infty}^\infty \left( \frac{\beta_4}{24}\left( v_{xx}^2 + w_{xx}^2 \right) + \frac{\beta_2}{2}\left( v_{x}^2 + w_{x}^2 \right) + \gamma \left(v^2 + w^2 \right)^2 \right) dx
 \end{equation}
-The energy $\mathcal{E}$ is invariant under the standard rotation group $R(\theta)$, given by
-\begin{equation}\label{Rtheta}
+The energy $\mathcal{E}$ is invariant under the standard rotation group $T(\theta)$, given by
+\begin{equation}\label{Ttheta}
 T(\theta) = \begin{pmatrix}
 \cos(\theta) & -\sin(\theta) \\
 \sin(\theta)& \cos(\theta)
@@ -204,11 +208,11 @@ As long as $\beta_2, \beta_4 < 0$ (and $\omega > 0$), the essential spectrum is 
 \begin{align*}
 \lambda = \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right).
 \end{align*}
-For $\beta_4, \beta_2 < 0$, the essential spectrum is the subset of the imaginary axis given by
-\begin{equation}
+For $\beta_4, \beta_2 \leq 0$, the essential spectrum is the subset of the imaginary axis given by
+\begin{equation}\label{PQSessspec}
 \sigma_{ess} = \{ k i : |k| \geq \omega \},
 \end{equation}
-which is bounded away from the origin and does not depend on $\beta_2,\beta_4$. For $\beta_4 < 0, \beta_2 > 0$, the essential spectrum is the subset of the imaginary axis 
+which is bounded away from the origin and does not depend on $\beta_2,\beta_4$. In particular, this is the case for pure quartic solitary waves. For $\beta_4 < 0, \beta_2 > 0$, the essential spectrum is the subset of the imaginary axis 
 \begin{equation}
 \sigma_{ess} = \{ k i : |k| \geq (\omega - \omega_c) \},
 \end{equation}
@@ -220,7 +224,7 @@ Real-valued, standing wave solutions to \cref{standingwaveeq} satisfy the 4th or
 \begin{equation}\label{NLS4real}
 -\frac{\beta_4}{24} u_{xxxx} + \frac{\beta_2}{2} u_{xx} - \gamma u^3 + \omega u = 0
 \end{equation}
-For ordinary NLS ($\beta_4 = 0$), an exact solitary wave solution is known. For certain values of $\beta_2, \beta_4 < 0$ (i.e. those for which the solitary wave does not have an oscillating tail), an exact solitary wave solution is also known \cite[(5)]{Tam2020} (from Karlsson and Hook, 1994). For $\beta_4 = -1$, \cite[Figure 4(a)]{Tam2020} depicts regions in the $(\beta_2, \omega)$ plane where solitary wave solitions have been shown to exist (numerically, at least). For our purposes, we are interested only in solitary waves with oscillating tails. For now, we assume all such solutions exist, although it may be possible to show that.
+For ordinary NLS ($\beta_4 = 0$), an exact solitary wave solution is known. For certain values of $\beta_2, \beta_4 < 0$ (i.e. those for which the solitary wave does not have an oscillating tail), an exact solitary wave solution is also known \cite[(5)]{Tam2020} (from Karlsson and Hook, 1994). For $\beta_4 = -1$, \cite[Figure 4(a)]{Tam2020} depicts regions in the $(\beta_2, \omega)$ plane where solitary wave solutions have been shown to exist (numerically, at least). For our purposes, we are interested only in solitary waves with oscillating tails. For now, we assume all such solutions exist, although it may be possible to show that.
 
 Assume that $\beta_4 \neq 0$, so that \cref{NLS4real} does not reduce to the ordinary NLS equation. We rewrite equation \cref{NLS4real} by letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$ to get the first order system
 \begin{equation}\label{Fsystem}
@@ -250,14 +254,18 @@ We have the following result concerning the existence of multi-pulse solutions, 
 Assume appropriate hypotheses. Fix $\omega > \omega_c$, and let $\pm a \pm bi$ be the eigenvalues of $DF(0)$. Let $U(x)$ be an exponentially localized solution to \cref{Fsystem}. Then for any 
 \begin{itemize}
 \item $n \geq 2$
-\item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$ with at least one of the $k_j \in \{0, 1 \}$
-\item Sequence of phase parameters $\{ g_1, \dots, g_{n} \} \in \{0, 1\}^n$
+\item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$ with at least one of the $k_j \in \{0, 1 \}$.
+\item Sequence of phase parameters $\{ \theta_1, \dots, \theta_{n-1} \} \in \{0, \pi \}^{n-1}$, which represent the phase difference between adjacent copies of the primary pulse. 
 \end{itemize}
 there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \geq m_0$, there exists a unique $n-$modal solution $U_n(x)$ to \cref{Fsystem} which is of the form
   \begin{equation}\label{qn}
-  U_n(x) = \sum_{j = 1}^{n} g_j U^j(x) + r(x),
+  U_n(x) = \sum_{j = 1}^{n} e^{i \phi_n } U^j(x) + r(x),
   \end{equation}
-  where each $U^j(x)$ is a translate of the primary pulse $U(x)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
+  where each $U^j(x)$ is a translate of the primary pulse $U(x)$, and the phase of each translate $U^j(x)$ is
+  \begin{equation}\label{phin}
+  \phi_1 = 0, \quad \phi_n = \sum_{j=1}^{n-1} \theta_j, 
+  \end{equation}
+  Uniqueness is up to translation and multiplication by $T(\theta)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
   \begin{equation*}
   X_j \approx \frac{\pi}{b}(2 m + k_j) + \tilde{X},
   \end{equation*}
@@ -268,7 +276,9 @@ there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \
   where $X_{\mathrm{min}} = \min\{X_1, \dots, X_{n-1}\}$. This bound holds for all derivatives with respect to $x$.
 \end{theorem}
 
-We might be better off parameterizing the multi-pulse using the phase differences between adjacent pulses rather than the absolute phases, since that is really what matters.
+\section{Spectrum of primary pulse}
+
+For pure quartic solitary waves, the essential spectrum is given by \cref{PQSessspec}, which depends only on $\omega$ and is bounded away from the origin for $\omega > 0$. The boundary of the essential spectrum is at $\pm \omega i$. There are two eigenvalues at 0 resulting from translation invariance and phase invariance. There is an additional pair of eigenvalues at $\pm 0.9972 \omega i$ \cite{Tam2019} (independent of $\beta_4$) which corresponds to an internal mode of the pure quartic solitary wave. For $\beta_2 \neq 0$ (non-pure quartic solitary waves), there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is in \cite[Figure 9]{Tam2020}, which is the case $\beta_4 = -1, \beta_2 = 0.7$).
 
 \section{Spectrum of multi-pulses}
 
@@ -314,25 +324,30 @@ The variational equation \cref{vareq} has two linearly independent, exponentiall
 
 At this point, we can (and eventually will!) state a theorem which will give us formulas for the interaction eigenvalues. This is analogous to \cite[Theorem 2]{Sandstede1998}, and the proof is a straightforward adaptation of that theorem, with the only change being a different ansatz in place of \cite[(3.5)]{Sandstede1998}. For the present, we will just give the formulas for the interaction eigenvalues for the 2-pulse.
 
-Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $g_1, g_2$. Define the two Melnikov integrals
+Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X$ and phase difference $\theta$. Define the two Melnikov integrals
 \begin{align*}
 M_- &= \int_{-\infty}^\infty q(x) \partial_\omega q(x) dx \\
 M_+ &= \int_{-\infty}^\infty \partial_x (x) z(x) dx,
 \end{align*}
 where we note that $M_- = d''(\omega)$, the stability criterion from \cite{Grillakis1987}. We are assuming that $M_- > 0$. Let 
 \begin{align*}
-a_- &= \langle \Psi_-(-X_1), V_-(X_1) \rangle \\
-a_+ &= \langle \Psi_+(-X_1), V_+(X_1) \rangle 
+a_- &= \langle \Psi_-(-X), V_-(X) \rangle \\
+a_+ &= \langle \Psi_+(-X), V_+(X) \rangle 
 \end{align*}
-Then the four interaction eigenvalues for a 2-pulse are given by
-\begin{align*}
-\lambda_1 &= \pm \\
-\lambda_2 &= \pm
-\end{align*}
+Then, to leading order, the four interaction eigenvalues for a 2-pulse are given by
+\begin{equation}\label{inteigpred}
+\begin{aligned}
+\lambda_- &= \pm \sqrt{ \frac{2 a_-}{M_-} \cos(\theta) }\\
+\lambda_+ &= \pm \sqrt{ \frac{-2 a_+}{M_+} \cos(\theta) }
+\end{aligned}
+\end{equation}
+We should be able to prove that $a_i$ and $a_+$ have the same sign (numerics confirms this), so under the assumption that $M_-$ and $M_+$ are both positive, this will always give us a pair of imaginary eigenvalues and a pair of real eigenvalues, so the double pulse is unstable for both in-phase and out-of-phase configurations.
+
+In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, we expect that the 2-pulse will have two pairs of internal mode eigenvalues. This will not affect stability, since we have shown there is a positive, real eigenvalue.
 
 \section{Numerical Results}
 
-To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic soliton (\cref{fig:PQS} for $\beta_4 = -1$, we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions.
+To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic solitary wave (\cref{fig:PQS} for $\beta_4 = -1$, we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions. The spectrum of the primary pulse solution is shown in \cref{fig:PQSspec}.
 
 \begin{figure}[H]
 \centering
@@ -344,7 +359,17 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \label{fig:PQS}
 \end{figure} 
 
-For the single pulses, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases we tried, $d''(\omega) > 0$, thus the primary pulse solution is orbitally stable. (This is a much stronger result than what was done in \cite{Tam2020}, where they computed the spectrum numerically and found that it is purely imaginary). 
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{images/PQSspec.eps} &
+\includegraphics[width=8cm]{images/PQSinternalmode.eps}
+\end{tabular}
+\caption{Spectrum of pure quartic solitary wave (left panel), $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. Kernel eigenvalues in black, internal mode eigenvalues in red. Eigenvalues in blue correspond to the discrete essential spectrum. Eigenfunction corresponding to internal mode eigenvalues (right panel).}
+\label{fig:PQSspec}
+\end{figure} 
+
+For the single pulse solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases we tried, $d''(\omega) > 0$ (for example for $\beta_4 = -1, \beta_2 = 0, \omega = 1$, $d''(\omega) = 0.7291$), thus the primary pulse solution is orbitally stable. (This is a much stronger result than what was done in \cite{Tam2019,Tam2020}, where they computed the spectrum numerically and found that it is purely imaginary). 
 
 To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method. The first eight double pulse solutions are shown in \cref{fig:doublepulses}. Arbitrary multi-pulses can similarly be constructed.
 
@@ -358,7 +383,7 @@ To construct double pulses, we glue together two copies of the primary pulse at 
 \label{fig:doublepulses}
 \end{figure} 
 
-To determine the spectrum of the linearization about the double pulse solutions, we construct the linear operator $\calL(\phi_2)$ using Fourier spectral differentiation matrices and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig}. In all cases, there is a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulses are all unstable (\cref{fig:doublespec}).
+To determine the spectrum of the linearization about the double pulse solutions, we construct the linear operator $\calL(\phi_2)$ using Fourier spectral differentiation matrices and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig}. In all cases, there is a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulses are all unstable (\cref{fig:doublespec}). There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}). Since in all cases there is an eigenvalue with positive real part, the duplication of internal mode eigenvalues does not affect stability. 
 
 \begin{figure}[H]
 \centering
@@ -366,12 +391,29 @@ To determine the spectrum of the linearization about the double pulse solutions,
 \includegraphics[width=8cm]{images/inteigsDP1plus.eps} &
 \includegraphics[width=8cm]{images/inteigsDP1plus.eps}
 \end{tabular}
-\caption{Eigenvalues for first in-phase double pulse (left panel)  and first out-of-phase double pulse (right panel). Interaction eigenvalues shown in red, and kernel eigenvalues in black. Eigenvalues in blue correspond to the discrete essential spectrum; as expected, these eigenvalues are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. }
+\caption{Eigenvalues for first in-phase double pulse (left panel) and first out-of-phase double pulse (right panel). Interaction eigenvalues shown in red, and kernel eigenvalues in black. Eigenvalues in blue correspond to the discrete essential spectrum; as expected, these eigenvalues are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. Internal mode eigenvalues are not shown. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
 \label{fig:doublespec}
 \end{figure} 
 
+\begin{figure}[H]
+\centering
+\begin{tabular}{c}
+\includegraphics[width=8cm]{images/DP3internalmode.eps}
+\end{tabular}
+\caption{Close-up of spectrum showing pair of internal mode eigenvalues (red) and eigenvalues corresponding to the essential spectrum (blue) for third in-phase double pulse. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
+\label{fig:doubleinternalmode}
+\end{figure} 
 
+Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigenvalues $\lambda_\pm$ between the value computed by Matlab's eigenvalue solver \texttt{eig} and that given by the leading order term in the formula \cref{inteigpred} versus the pulse separation distance $X$. The error decreases as $X$ increases, as predicted. The error plots are not as ``neat'' as I might like, but that is likely a result of the error in computing the terms in \cref{inteigpred}, which requires evaluating the primary pulse along an exponentially decaying tail.
 
+\begin{figure}[H]
+\centering
+\begin{tabular}{c}
+\includegraphics[width=8cm]{images/inteigpred.eps}
+\end{tabular}
+\caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for in-phase double pulses 2-5. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
+\label{fig:inteigpred}
+\end{figure}
 
 % \bibliographystyle{amsalpha}
 \bibliography{NLS4.bib}
