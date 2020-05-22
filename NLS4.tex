@@ -69,6 +69,7 @@
 \def\calE{{\mathcal E}}
 \def\calQ{{\mathcal Q}}
 \def\calL{{\mathcal L}}
+\def\calI{{\mathcal I}}
 
 
 \DeclareMathOperator{\spn}{span}
@@ -112,65 +113,108 @@
 
 The following fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS)
 \begin{equation}\label{NLS4}
-i \psi_t + \frac{\beta_4}{24}\psi_{xxxx} - \frac{\beta}{2}\psi_{xx} + \gamma |\psi|^2 \psi = 0,
+i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma |u|^2 u = 0,
 \end{equation}
 was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second- and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$ in \cite{Tam2020}). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQSs) occur when $\beta_2 = $ and $\beta_4 < 0$, i.e. satisfy the equation
 \begin{equation}\label{PQSeq}
-i \psi_t + \frac{\beta_4}{24}\psi_{xxxx} + \gamma |\psi|^2 \psi = 0,
+i u_t + \frac{\beta_4}{24}u_{xxxx} + \gamma |u|^2 u = 0.
 \end{equation}
-By using the rescaling $\psi(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\phi(\omega^{1/4}x)$, 
+Unlike ordinary NLS solitons, PQSs have oscillatory, exponentially decaying tails. There has been much recent interest in PQSs due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions to \cref{PQSeq} was shown in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation cref{NLS4} in terms of the parameters $\beta_2$ and $\omega$ is given in \cite{Tam2020}.
 
-There has been much recent interest in PQSs due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions to \cref{NLS4} was shown in \cite{Tam2019}, and criteria for existence of 
-
-Writing \cref{NLS4} as a system of real-valued equations in $u = (v, w)$,
-\begin{align}\label{NLSsystem}
-\frac{\partial}{\partial_t}
-\begin{pmatrix}v \\ w \end{pmatrix}
-= J \begin{pmatrix}
--\frac{\beta_4}{24} v_{xxxx} + \frac{\beta_2}{2} v_{xx} - \gamma (v^2 + w^2)v \\
--\frac{\beta_4}{24} w_{xxxx} + \frac{\beta_2}{2} w_{xx} - \gamma (v^2 + w^2)w 
-\end{pmatrix}
-\end{align}
+Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$, satisfy the ODE 
+\begin{equation}\label{standingwavereal}
+\frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma u^3 - \omega u = 0
+\end{equation}
+For PQSs, equation \cref{standingwavereal} can be written in parameter-free form by using the rescaling $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}(\omega^{1/4}x)$ to obtain the equation
+\begin{equation}\label{PQSparfree}
+\frac{\beta_4}{24}\tilde{u}_{xxxx} + u^3 - \tilde{u} = 0
+\end{equation}
+A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
+\begin{equation}\label{NLS4onepar}
+\tilde{u}_{xxxx} + 2 \sigma \tilde{u}_{xx} +  \tilde{u} - |\tilde{u}|^2 \tilde{u} = 0,
+\end{equation}
 where 
 \[
-J = \begin{pmatrix}0 & 1 \\ -1 & 0 \end{pmatrix}
+\sigma = \sqrt{\frac{3}{2 \omega |\beta_4| }}\beta_2
 \]
-is the standard skew-symplectic matrix. Equation \cref{NLSsystem} can be written in Hamiltonian form as 
+is a non-dimensional parameter characterizing the relative strengths of the quadratic and quartic dispersion terms.
+
+For ordinary NLS, an analytic solution is known. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has also been obtained for $\omega = \frac{24 \beta_2^2}{25 |\beta_4|}$ \cite{KarllsonHook}. 
+
+\section{Mathematical setup}
+
+Equation \cref{NLS4} can be written in Hamiltonian form as 
 \begin{equation}\label{NLSHam}
-\frac{\partial u}{\partial t} = J \calE'(u(t))
+\frac{\partial u}{\partial t} = J \calE'(u(t)),
 \end{equation}
-where the energy $\calE$ is given by
+where $J = -i$ and the energy $\calE$ is given by
 \begin{equation}\label{defH}
-\calE(v, w) = \frac{1}{2} \int_{\infty}^\infty \left( \frac{\beta_4}{24}\left( v_{xx}^2 + w_{xx}^2 \right) + \frac{\beta_2}{2}\left( v_{x}^2 + w_{x}^2 \right) + \gamma \left(v^2 + w^2 \right)^2 \right) dx
+\calE(u) = \frac{1}{2} \int_{-\infty}^\infty \left( \frac{\beta_4}{24}|u_{xx}|^2 + \frac{\beta_2}{2}|u_{x}|^2 + \frac{\gamma}{2} |u|^4 \right) dx
 \end{equation}
-The energy $\mathcal{E}$ is invariant under the standard rotation group $T(\theta)$, given by
-\begin{equation}\label{Ttheta}
-T(\theta) = \begin{pmatrix}
-\cos(\theta) & -\sin(\theta) \\
-\sin(\theta)& \cos(\theta)
-\end{pmatrix},
-\end{equation}
-The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
+The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta)$, given by $T(\theta)u = e^{i\theta}u$. The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
 \begin{equation}\label{defQ}
-\mathcal{Q}(v, w) = -\frac{1}{2} \int_{\infty}^\infty \left( v^2 + w^2\right) dx.
-\end{equation}
-Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, the standing wave equation is
-\begin{equation}\label{standingwaveeq}
-\calE'(u) + w u = 0
+\mathcal{Q}(u) = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx.
 \end{equation}
 
-Suppose that for all $\omega \in (\omega_1, \omega_2)$ there exists a bound state solution $u(x; \omega)$ to \cref{standingwaveeq}, and that the mapping $\omega \mapsto u(x; \omega)$ is $C^1$ \cite[Assumption 2]{Grillakis1987}. Define the scalar
+We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1987}.
+
+\begin{hypothesis}\label{hyp:wp}
+For each initial condition $u_0$ there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
+\end{hypothesis}
+
+Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, standing waves satisfy the equation
+\begin{equation}\label{standingwaveeq}
+\calE'(u) + w u = 0,
+\end{equation}
+which can be written as
+\begin{equation}\label{standingwaveeq2}
+\frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma |u|^2 u - \omega u = 0
+\end{equation}
+
+The following theorem gives criteria for the existence of real-valued solitary wave solutions to \cref{standingwaveeq2} in terms of the parameters $\beta_2$, $\beta_4$ and $\omega$. We only consider $\beta_4 < 0$, since that is the physically relevant regime.
+
+\begin{theorem}\label{theorem:solitonexist}
+Let $\beta_4 < 0$, and define
+\begin{equation}\label{omegac}
+\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
+\end{equation}
+Then for either
+\begin{enumerate}[(i)]
+\item $\omega > \omega_c$ \\
+\item $0 < \omega < \omega_c$ and $\beta_2 < 0$
+\end{enumerate}
+there exists a real-valued, symmetric, exponentially localized solution $u(x; \omega) \in H^2(\R) \cap C^5(\R)$ of the standing wave equation \cref{standingwaveeq2}. 
+\begin{proof}
+The existence result follows from \cite{Groves1998}, which uses the mountain pass lemma and the concentration-compactness principle. Exponential localization follows from the stable manifold theorem.
+\end{proof}
+\end{theorem}
+
+\begin{remark}
+For $\omega > \omega_c$, it follows from \cite{Groves1998} that there exists a countably infinite family of distinct solitary-wave solutions. These are the multi-pulse solutions we will construct below. We also note that for $\beta_2 = 0$, $\omega_c = 0$, thus pure quartic solitary waves exist for all $\omega > 0$.
+\end{remark}
+
+We make the following standard smoothness assumption (see, for example, \cite[Assumption 2]{Grillakis1987}) concerning the solutions $u(x; \omega)$ to \cref{standingwavereal}.
+
+\begin{hypothesis}\label{hyp:smoothmap}
+The map $\omega \mapsto u(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $u(x; \omega)$ exists by \cref{theorem:solitonexist} for all $\omega \in \calI$ for a given $\beta_4 < 0$ and $\beta_2$.
+\end{hypothesis}
+
+Define the scalar
 \begin{equation}
 d(\omega) = \calE(u(\omega)) - \omega\calQ(u(\omega)).
 \end{equation}
 By \cite[(2.21)]{Grillakis1987},
 \begin{align}\label{ddoubleprime}
 d''(\omega) = \langle \calQ'(u(x; \omega)), \partial_\omega u(x; \omega) \rangle
-= \int_{-\infty}^\infty u(x) \partial_\omega u(x) dx
+= \int_{-\infty}^\infty (x; \omega) \partial_\omega (x; \omega) dx
 \end{align}
-By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $u(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity is easy to compute numerically.
+By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $u(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity is easy to compute numerically, and we take this stability criterion as a hypothesis.
 
-Let $\phi$ be a real-valued standing wave solution to \cref{standingwaveeq}. The linearization of the PDE \cref{NLSsystem} about $\phi$ is the linear operator $\calL(\phi)$
+\begin{hypothesis}\label{hyp:dccpos}
+For each $\omega$ such that a primary pulse solution $u(x; \omega)$ exists by \cref{theorem:solitonexist}, $d''(\omega) > 0$.
+\end{hypothesis}
+
+Fix $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = u(x; \omega)$ exists. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator $\calL(\phi)$
 \begin{align}\label{defLphi}
 \calL(\phi) = 
 \begin{pmatrix}
@@ -189,9 +233,9 @@ It is straightforward to verify that
 \calL^+(\phi) \partial_x \phi &= 0 \\
 \calL^+(\phi)(-\partial_\omega \phi) &= \phi
 \end{align*}
-Furthermore, since $\calL^-$ is self-adjoint and $\phi' \perp \ker \calL^-$, there exists $z$ such that $\calL^- z = u'$. For ordinary NLS ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. For the general case, $z$ exists and is easy to compute numerically, but I am not sure there is a nice formula for it.
+Furthermore, since $\calL^-$ is self-adjoint and $\phi' \perp \ker \calL^-$, there exists $z$ such that $\calL^- z = u'$. For the second-order NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. 
 
-Putting all of this together, $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
+Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
 \begin{align*}
 \calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, 
 \calL(\phi)\begin{pmatrix} \partial_\omega \phi \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\ \phi \end{pmatrix} \\
@@ -199,42 +243,38 @@ Putting all of this together, $\calL(\phi)$ has a kernel with (at least) algebra
 \calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} 
 \end{align*}
 
-Now let $\phi$ be an exponentially localized bound state solution. For the essential spectrum, which is independent of $\phi$ and only depends on the background state, the linear operator $\calL(\phi)$ is exponentially asymptotic to $\calL(0)$, given by
+To find the essential spectrum, which is independent of $\phi$ and only depends on the background state, the linear operator $\calL(\phi)$ is exponentially asymptotic to $\calL(0)$, given by
 \begin{align}\label{defL0}
 \calL(0) = 
 \begin{pmatrix}
 0 & \calL_0 \\
 -\calL_0 & 0
-\end{pmatrix},
+\end{pmatrix}, \quad
 \calL_0 = -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega
 \end{align}.
 Thus the eigenvalue problem $\calL(0) v = \lambda v$ is equivalent to $(\calL_0 + \lambda^2)p = 0$. By \cite[Theorem 3.1.13]{Kapitula2013}, the essential spectrum is given by the curves
 \begin{align*}
-\left[ -\frac{\beta_4}{24} (ik)^4 + \frac{\beta_2}{2}(ik)^2 + \omega \right]^2 + \lambda^2 &= 0 && k \in \R.
+\left[ -\frac{\beta_4}{24} (ik)^4 + \frac{\beta_2}{2}(ik)^2 + \omega \right]^2 + \lambda^2 &= 0 && k \in \R,
 \end{align*}
-As long as $\beta_2, \beta_4 < 0$ (and $\omega > 0$), the essential spectrum is purely imaginary, and the curves are
+from which it follows that
 \begin{align*}
-\lambda = \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right).
+\sigma_{ess} = \left\{ \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right) : k \in \R \right\}
 \end{align*}
-For $\beta_4, \beta_2 \leq 0$, the essential spectrum is the subset of the imaginary axis given by
+If $\beta_4 < 0$ and $\beta_2 \leq 0$, the essential spectrum is purely imaginary and given by 
 \begin{equation}\label{PQSessspec}
-\sigma_{ess} = \{ k i : |k| \geq \omega \},
+\sigma_{ess} = \{ k i : k \in \R, |k| \geq \omega \},
 \end{equation}
-which is bounded away from the origin and does not depend on $\beta_2,\beta_4$. In particular, this is the case for pure quartic solitary waves. For $\beta_4 < 0, \beta_2 > 0$, the essential spectrum is the subset of the imaginary axis 
-\begin{equation}
-\sigma_{ess} = \{ k i : |k| \geq (\omega - \omega_c) \},
+which is bounded away from the origin and independent of $\beta_4$ and $\beta_2$. If $\beta_4 < 0$, $\beta_2 > 0$, and $\omega > \omega_c$, the essential spectrum is also purely imaginary and given by 
+\begin{equation}\label{essspec2}
+\sigma_{ess} = \{ k i : k \in \R, |k| \geq (\omega - \omega_c) \},
 \end{equation}
-which does depend on $\beta_2,\beta_4$, but is bounded away from the origin for $\omega > \omega_c$, where $\omega_c$ is defined below in \cref{omegac}.
+which does depend on $\beta_4$ and $\beta_2$, but is bounded away from the origin.
 
-\section{Existence of multi-pulses}
+By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For pure quartic solitary waves, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$) \cite{Tam2019}, which corresponds to an internal mode of the solitary wave. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). These internal mode eigenvalues must be purely imaginary and will have no bearing on our analysis.
 
-Real-valued, standing wave solutions to \cref{standingwaveeq} satisfy the 4th order ODE
-\begin{equation}\label{NLS4real}
--\frac{\beta_4}{24} u_{xxxx} + \frac{\beta_2}{2} u_{xx} - \gamma u^3 + \omega u = 0
-\end{equation}
-For ordinary NLS ($\beta_4 = 0$), an exact solitary wave solution is known. For certain values of $\beta_2, \beta_4 < 0$ (i.e. those for which the solitary wave does not have an oscillating tail), an exact solitary wave solution is also known \cite[(5)]{Tam2020} (from Karlsson and Hook, 1994). For $\beta_4 = -1$, \cite[Figure 4(a)]{Tam2020} depicts regions in the $(\beta_2, \omega)$ plane where solitary wave solutions have been shown to exist (numerically, at least). For our purposes, we are interested only in solitary waves with oscillating tails. For now, we assume all such solutions exist, although it may be possible to show that.
+\section{Existence of multi-pulse solitary waves}
 
-Assume that $\beta_4 \neq 0$, so that \cref{NLS4real} does not reduce to the ordinary NLS equation. We rewrite equation \cref{NLS4real} by letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$ to get the first order system
+Let $\beta_4 < 0$. Using a spatial dynamics approach, we rewrite equation \cref{standingwavereal} by letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$ to get the first order system
 \begin{equation}\label{Fsystem}
 U' = F(U) = \begin{pmatrix}
 u_2 \\ u_3 \\ \frac{24}{\beta_4} u_4 \\ \omega u_1 - \gamma u_1^3.
@@ -244,36 +284,26 @@ Equation \cref{Fsystem} has a conserved quantity
 \begin{equation}\label{FsystemH}
 H(u_1, u_2, u_3, u_4) = -u_4 u_2 - \frac{1}{2} u_3^2 + \frac{\beta_2}{4}u_2^2 - \frac{\gamma}{4} u_1^4 + \frac{1}{2}\omega u_1,
 \end{equation}
-which we obtain by multiplying \cref{NLS4real} by $u_x$ and integrating once, where the first term on the RHS is also integrated by parts. $F(0) = 0$, and the characteristic polynomial of $DF(0)$ is
+which we obtain by multiplying \cref{standingwavereal} by $u_x$ and integrating once, where the first term on the RHS is also integrated by parts. $F(0) = 0$, and the characteristic polynomial of $DF(0)$ is
 \[
 p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
 \]
-which has a quartet of complex eigenvalues $\pm a \pm b i$ when $3 \beta_2^2 + 2 \omega \beta_4 < 0$. For the case of $\beta_4 < 0$ (which is the one we are interested in), this is equivalent to $\omega > \omega_c$ \cite[(11)]{Tam2020}, where
-\begin{equation}\label{omegac}
-\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
-\end{equation}
-Note that for the pure quartic equation, $\omega_c = 0$. Thus whenever $\omega > \omega_c$, 0 is a hyperbolic equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds. A primary pulse solution is a homoclinic orbit connecting this equilibrium point to itself, and corresponds to an exponentially localized solitary wave solution of \cref{NLS4real}. For $\omega > \omega_c$, the localized pulse solution corresponding to this homoclinic orbit will have exponentially decaying, oscillatory tails.
+which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$. Thus for $\omega > \omega_c$, 0 is a hyperbolic equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds. From a spatial dynamics perspective, the primary pulse solution is a homoclinic orbit connecting this equilibrium point to itself.  For $\omega > \omega_c$, the exponentially localized pulse solution corresponding to this homoclinic orbit will have oscillatory tails. In particular, this is always the case for PQSs. 
 
-For fixed $\omega > \omega_c$, we assume the primary pulse solution $U(x) = (\phi_x, \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ exists. The first component $\phi(x)$ is the corresponding solitary wave, which is the first component of $U(x)$. We assume in addition that $\phi(x)$ is orbitally stable, i.e. $d''(\omega) > 0$. Since \cref{NLSsystem} is Hamiltonian, the immediately implies that all spectrum for the linearization about the primary pulse is purely imaginary.
-
-We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. The only difference is that the multi-pulse can be constructed using ``up'' and ``down'' copies of the primary pulse, so that neighboring pulses are either in phase or out of phase. This should be a straightforward adaptation.
+We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. The main difference is that neighboring pulses in the multi-pulse can be either in-phase or out-of-phase. 
 
 \begin{theorem}\label{theorem:multiexist}
-Assume appropriate hypotheses. Fix $\omega > \omega_c$, and let $\pm a \pm bi$ be the eigenvalues of $DF(0)$. Let $U(x)$ be an exponentially localized solution to \cref{Fsystem}. Then for any 
+Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}, and fix $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal}, and let $U(x) = (u_1(x), u_2(x), u_3(x), u_4(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}, with $u_1(x) = \phi(x)$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$. Then for any 
 \begin{itemize}
 \item $n \geq 2$
-\item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$ with at least one of the $k_j \in \{0, 1 \}$.
-\item Sequence of phase parameters $\{ \theta_1, \dots, \theta_{n-1} \} \in \{0, \pi \}^{n-1}$, which represent the phase difference between adjacent copies of the primary pulse. 
+\item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$, with at least one of the $k_j \in \{0, 1 \}$
+\item Sequence of phase parameters $\{ \theta_1, \dots, \theta_n \} \in \{0, \pi \}^n$, with $\theta_1 = 1$
 \end{itemize}
 there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \geq m_0$, there exists a unique $n-$modal solution $U_n(x)$ to \cref{Fsystem} which is of the form
   \begin{equation}\label{qn}
-  U_n(x) = \sum_{j = 1}^{n} e^{i \phi_n } U^j(x) + r(x),
+  U_n(x) = \sum_{j = 1}^{n} e^{i \theta_j } U^j(x) + r(x),
   \end{equation}
-  where each $U^j(x)$ is a translate of the primary pulse $U(x)$, and the phase of each translate $U^j(x)$ is
-  \begin{equation}\label{phin}
-  \phi_1 = 0, \quad \phi_n = \sum_{j=1}^{n-1} \theta_j, 
-  \end{equation}
-  Uniqueness is up to translation and multiplication by $T(\theta)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
+  where each $U^j(x)$ is a translate of the primary pulse $U(x)$. Uniqueness is up to translation and multiplication by $T(\theta)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
   \begin{equation*}
   X_j \approx \frac{\pi}{b}(2 m + k_j) + \tilde{X},
   \end{equation*}
@@ -281,14 +311,13 @@ there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \
   \begin{equation}\label{rbound}
   \|r\|_\infty \leq C e^{-a X_{\mathrm{min}}},
   \end{equation}
-  where $X_{\mathrm{min}} = \min\{X_1, \dots, X_{n-1}\}$. This bound holds for all derivatives with respect to $x$.
+  where $X_{\mathrm{min}} = \min\{X_1, \dots, X_{n-1}\}$. This bound holds in addition for all derivatives with respect to $x$.
+\begin{proof}
+Since for $\omega > \omega_c$, the spectrum of $DF(0)$ is a quartet of eigenvalues $\pm a \pm b i$, equation \cref{Fsystem} has a conserved quantity \cref{FsystemH}, and the Melnikov integral $M = \int_{-\infty}^\infty \phi_x^2 dx$ is positive, the result follows from \cite[Theorem~3.6]{SandstedeStrut}, with the straightforward modification that the multi-pulse is constructed from copies of $U(x)$ and $-U(x)$. The bound on $r(x)$ and its derivatives with respect to $x$, which follows from \cite{Sandstede1993} and \cite{Sandstede1998}.
+\end{proof}
 \end{theorem}
 
-\section{Spectrum of primary pulse}
-
-For pure quartic solitary waves, the essential spectrum is given by \cref{PQSessspec}, which depends only on $\omega$ and is bounded away from the origin for $\omega > 0$. The boundary of the essential spectrum is at $\pm \omega i$. There are two eigenvalues at 0 resulting from translation invariance and phase invariance. There is an additional pair of eigenvalues at $\pm 0.9972 \omega i$ \cite{Tam2019} (independent of $\beta_4$) which corresponds to an internal mode of the pure quartic solitary wave. For $\beta_2 \neq 0$ (non-pure quartic solitary waves), there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is in \cite[Figure 9]{Tam2020}, which is the case $\beta_4 = -1, \beta_2 = 0.7$).
-
-\section{Spectrum of multi-pulses}
+\section{Spectrum of multi-pulse solitary waves}
 
 For each $n-$pulse $\phi_n$, we can compute the spectrum of the linearized operator $\calL(\phi_n)$. Roughly speaking, since there are two eigenfunctions in the kernel of the primary pulse $\calL(\phi)$, each additional pulse in $\phi_n$ will result in four additional eigenvalues near 0 which come from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure. We call these interaction eigenvalues. To do this, we write the eigenvalue problem $\calL(\phi)u \lambda u$ as the first order system
 \begin{equation}
@@ -422,8 +451,6 @@ Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigen
 \caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for in-phase double pulses 2-5. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
 \label{fig:inteigpred}
 \end{figure}
-
- makes the equation for f parameter free ?
 
 % \bibliographystyle{amsalpha}
 \bibliography{NLS4.bib}
