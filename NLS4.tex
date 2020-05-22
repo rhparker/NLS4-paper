@@ -106,13 +106,21 @@
 % \end{keyword}
 % \end{frontmatter}
 
-\section{Setup}
+\section{Introduction}
 
-Consider the following 4th order generalization of the NLS equation
+\section{Background}
+
+The following fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS)
 \begin{equation}\label{NLS4}
 i \psi_t + \frac{\beta_4}{24}\psi_{xxxx} - \frac{\beta}{2}\psi_{xx} + \gamma |\psi|^2 \psi = 0,
 \end{equation}
-which is \cite[(4)]{Tam2020}. The case $\beta_2 = -2, \beta_4 = 0$ corresponds to the ordinary NLS equation, and when $\beta_2 = 0$ we have a pure 4th order equation. A recent study \cite{Tam2019} demonstrated numerically the existence and spectral stability of pure quartic solitary wave solutions to \cref{NLS4} for $\beta_2 = 0, \beta_4 < 0$.
+was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second- and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$ in \cite{Tam2020}). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQSs) occur when $\beta_2 = $ and $\beta_4 < 0$, i.e. satisfy the equation
+\begin{equation}\label{PQSeq}
+i \psi_t + \frac{\beta_4}{24}\psi_{xxxx} + \gamma |\psi|^2 \psi = 0,
+\end{equation}
+By using the rescaling $\psi(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\phi(\omega^{1/4}x)$, 
+
+There has been much recent interest in PQSs due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions to \cref{NLS4} was shown in \cite{Tam2019}, and criteria for existence of 
 
 Writing \cref{NLS4} as a system of real-valued equations in $u = (v, w)$,
 \begin{align}\label{NLSsystem}
@@ -216,7 +224,7 @@ which is bounded away from the origin and does not depend on $\beta_2,\beta_4$. 
 \begin{equation}
 \sigma_{ess} = \{ k i : |k| \geq (\omega - \omega_c) \},
 \end{equation}
-which does depend on $\beta_2,\beta_4$, but is bounded away from the origin for $\omega > \omega_c$.
+which does depend on $\beta_2,\beta_4$, but is bounded away from the origin for $\omega > \omega_c$, where $\omega_c$ is defined below in \cref{omegac}.
 
 \section{Existence of multi-pulses}
 
@@ -244,7 +252,7 @@ which has a quartet of complex eigenvalues $\pm a \pm b i$ when $3 \beta_2^2 + 2
 \begin{equation}\label{omegac}
 \omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
 \end{equation}
-Note that for the pure quartic equation, $\omega_c = 0$. Thus whenever $\omega > \omega_c$, 0 is a hyperbolic equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds. A primary pulse solution is a homoclinic orbit connecting this equilibrium point to itself, and corresponds to an exponentially localized solitary wave solution of \cref{NLS4real}
+Note that for the pure quartic equation, $\omega_c = 0$. Thus whenever $\omega > \omega_c$, 0 is a hyperbolic equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds. A primary pulse solution is a homoclinic orbit connecting this equilibrium point to itself, and corresponds to an exponentially localized solitary wave solution of \cref{NLS4real}. For $\omega > \omega_c$, the localized pulse solution corresponding to this homoclinic orbit will have exponentially decaying, oscillatory tails.
 
 For fixed $\omega > \omega_c$, we assume the primary pulse solution $U(x) = (\phi_x, \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ exists. The first component $\phi(x)$ is the corresponding solitary wave, which is the first component of $U(x)$. We assume in addition that $\phi(x)$ is orbitally stable, i.e. $d''(\omega) > 0$. Since \cref{NLSsystem} is Hamiltonian, the immediately implies that all spectrum for the linearization about the primary pulse is purely imaginary.
 
@@ -414,6 +422,8 @@ Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigen
 \caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for in-phase double pulses 2-5. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
 \label{fig:inteigpred}
 \end{figure}
+
+ makes the equation for f parameter free ?
 
 % \bibliographystyle{amsalpha}
 \bibliography{NLS4.bib}
