@@ -25,6 +25,8 @@
   urlcolor = siamexlinkcolor,
 }
 
+% default SIAM options for cleveref
+
 \usepackage[capitalize,nameinlink]{cleveref}
 % Per SIAM Style Manual, "section" should be lowercase
 \crefname{section}{section}{sections}
@@ -54,6 +56,7 @@
 % Make number non-italic in any environment.
 \crefdefaultlabelformat{#2\textup{#1}#3}
 
+% useful macros
 \def\noi{\noindent}
 \def\T{{\mathbb T}}
 \def\R{{\mathbb R}}
@@ -71,7 +74,6 @@
 \def\calL{{\mathcal L}}
 \def\calI{{\mathcal I}}
 
-
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\ran}{ran}
 
@@ -84,30 +86,20 @@
 
 \graphicspath{ {images/} }
 
-\title{Multi-pulse solitary waves in fourth-order NLS equation}
+\title{Multi-pulse solitary waves in a fourth-order NLS equation}
 
 \begin{document}
 
 \maketitle
 
-% \begin{frontmatter}
-% \title{NLS4}
-
-% \author[1]{Ross Parker}
-%     \ead{ross\_parker@brown.edu}
-% \author[1]{Bj\"{o}rn Sandstede}
-%     \ead{bjorn\_sandstede@brown.edu}
-
-% \address[1]{Division of Applied Mathematics, Brown University, Providence, RI 02912, USA}
-
-% \begin{abstract}
-% \end{abstract}
-
-% \begin{keyword}
-% \end{keyword}
-% \end{frontmatter}
-
 \section{Introduction}
+It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the Nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions and 40 years of the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At the most fundamental level, the realization of the soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened new directions both in the theoretical and experimental fronts that continue to this day. On the other hand, as better fibers were built and with technological advances leading to the invention of photonic crystal fibers, that in particular enabled the engineering of the dispersion resulting on new discoveries such as supercontinuum generation realized in regimes far from the NLS equation.   
+In this vein, a recent experimental work in silicon photonic
+crystal waveguides produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading dispertion term is fourth order. A few recent results both on theory and experiments have followed \cite{Tam2019, Tam2020} that on the theoretical side include existence and linear stability properties. Our results presented here provide a more rigorous study of PQS including for the first time the existence of pulse trains which we suggest can support the creation of such trains in laser cavities.
+
+\noindent
+After a brief background, we first present results on the existence and stability of solitons in the more general case where both second and fourth order dispersion are accounted for. This results include the particular case of PQS. The second part of the paper proves the existence of (in phase and out of phase) pulse trains, which in turn are unstable. Nuerical examples are presented in the last section.
+
 
 \section{Background}
 
@@ -127,9 +119,9 @@ Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t}
 \end{equation}
 For PQSs, equation \cref{standingwavereal} can be written in parameter-free form by using the rescaling $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}(\omega^{1/4}x)$ to obtain the equation
 \begin{equation}\label{PQSparfree}
-\frac{\beta_4}{24}\tilde{u}_{xxxx} + u^3 - \tilde{u} = 0
+\frac{\beta_4}{24}\tilde{u}_{xxxx} + \tilde{u}^3 - \tilde{u} = 0
 \end{equation}
-A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
+Observe that the power or photon number of PQS scale as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical (NLS) solitons. A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
 \begin{equation}\label{NLS4onepar}
 \tilde{u}_{xxxx} + 2 \sigma \tilde{u}_{xx} +  \tilde{u} - |\tilde{u}|^2 \tilde{u} = 0,
 \end{equation}
@@ -168,7 +160,7 @@ Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independe
 \end{equation}
 which can be written as
 \begin{equation}\label{standingwaveeq2}
-\frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma |u|^2 u - \omega u = 0
+\frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u - \omega u = 0
 \end{equation}
 
 The following theorem gives criteria for the existence of real-valued solitary wave solutions to \cref{standingwaveeq2} in terms of the parameters $\beta_2$, $\beta_4$ and $\omega$. We only consider $\beta_4 < 0$, since that is the physically relevant regime.
@@ -206,7 +198,7 @@ d(\omega) = \calE(u(\omega)) - \omega\calQ(u(\omega)).
 By \cite[(2.21)]{Grillakis1987},
 \begin{align}\label{ddoubleprime}
 d''(\omega) = \langle \calQ'(u(x; \omega)), \partial_\omega u(x; \omega) \rangle
-= \int_{-\infty}^\infty (x; \omega) \partial_\omega (x; \omega) dx
+= \int_{-\infty}^\infty Q'(x; \omega) \partial_\omega u(x; \omega) dx
 \end{align}
 By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $u(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity is easy to compute numerically, and we take this stability criterion as a hypothesis.
 
@@ -271,6 +263,18 @@ which is bounded away from the origin and independent of $\beta_4$ and $\beta_2$
 which does depend on $\beta_4$ and $\beta_2$, but is bounded away from the origin.
 
 By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For pure quartic solitary waves, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$) \cite{Tam2019}, which corresponds to an internal mode of the solitary wave. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). These internal mode eigenvalues must be purely imaginary and will have no bearing on our analysis.
+
+\subsection{Generalization to higher order solitons}
+In a recent conference presentation \cite{Runge2020}, it was shown this by  incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser one can manipulate the net-cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation:
+
+\begin{equation}\label{HONLS}
+-(i)^k\frac{d^k u}{dx^k}+ \omega u - \gamma u^3 = 0,
+\end{equation}
+
+\noindent
+where k = 6,8,10,... (even), whose profile satisfy the scaling 
+$u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}
+(\omega^{1/k}x)$.
 
 \section{Existence of multi-pulse solitary waves}
 
@@ -392,7 +396,7 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \includegraphics[width=8cm]{images/PQS1.eps} &
 \includegraphics[width=8cm]{images/PQS1log.eps}
 \end{tabular}
-\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{NLS4real} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. }
+\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. }
 \label{fig:PQS}
 \end{figure} 
 
@@ -416,7 +420,7 @@ To construct double pulses, we glue together two copies of the primary pulse at 
 \includegraphics[width=8cm]{images/DPplus.eps} &
 \includegraphics[width=8cm]{images/DPminus.eps}
 \end{tabular}
-\caption{First eight double pulse solutions $\phi_2(x)$ constructed from two pure quartic solitary wave solution $\phi(x)$ to \cref{NLS4real} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. In-phase double pulses (left panel), opposite phase double pulses (right panel). }
+\caption{First eight double pulse solutions $\phi_2(x)$ constructed from two pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. In-phase double pulses (left panel), opposite phase double pulses (right panel). }
 \label{fig:doublepulses}
 \end{figure} 
 
