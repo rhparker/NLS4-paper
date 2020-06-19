@@ -107,11 +107,11 @@ The following fourth-order generalization of the nonlinear Schr{\"o}dinger equat
 \begin{equation}\label{NLS4}
 i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma |u|^2 u = 0,
 \end{equation}
-was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second- and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$ in \cite{Tam2020}). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQSs) occur when $\beta_2 = $ and $\beta_4 < 0$, i.e. satisfy the equation
+was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second- and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$ in \cite{Tam2020}). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQSs) occur when $\beta_2 = 0$ and $\beta_4 < 0$, i.e. $u(x,t)$ satisfies the equation
 \begin{equation}\label{PQSeq}
 i u_t + \frac{\beta_4}{24}u_{xxxx} + \gamma |u|^2 u = 0.
 \end{equation}
-Unlike ordinary NLS solitons, PQSs have oscillatory, exponentially decaying tails. There has been much recent interest in PQSs due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions to \cref{PQSeq} was shown in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation cref{NLS4} in terms of the parameters $\beta_2$ and $\omega$ is given in \cite{Tam2020}.
+Unlike ordinary NLS solitons, PQSs have oscillatory, exponentially decaying tails. There has been much recent interest in PQSs due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions to \cref{PQSeq} was shown in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation \cref{NLS4} in terms of the parameters $\beta_2$ and $\omega$ is given in \cite{Tam2020}.
 
 Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$, satisfy the ODE 
 \begin{equation}\label{standingwavereal}
@@ -170,11 +170,7 @@ Let $\beta_4 < 0$, and define
 \begin{equation}\label{omegac}
 \omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
 \end{equation}
-Then for either
-\begin{enumerate}[(i)]
-\item $\omega > \omega_c$ \\
-\item $0 < \omega < \omega_c$ and $\beta_2 < 0$
-\end{enumerate}
+Then for either (i) $\omega > \omega_c$, or (ii) $0 < \omega < \omega_c$ and $\beta_2 < 0$, 
 there exists a real-valued, symmetric, exponentially localized solution $u(x; \omega) \in H^2(\R) \cap C^5(\R)$ of the standing wave equation \cref{standingwaveeq2}. 
 \begin{proof}
 The existence result follows from \cite{Groves1998}, which uses the mountain pass lemma and the concentration-compactness principle. Exponential localization follows from the stable manifold theorem.
@@ -225,9 +221,7 @@ It is straightforward to verify that
 \calL^+(\phi) \partial_x \phi &= 0 \\
 \calL^+(\phi)(-\partial_\omega \phi) &= \phi
 \end{align*}
-Furthermore, since $\calL^-$ is self-adjoint and $\phi' \perp \ker \calL^-$, there exists $z$ such that $\calL^- z = u'$. For the second-order NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. 
-
-Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
+Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists $z$ such that $\calL^-(\phi) z = \phi'$. For the second-order NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
 \begin{equation}\label{Lphikernel}
 \begin{aligned}
 \calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, 
@@ -267,7 +261,7 @@ which does depend on $\beta_4$ and $\beta_2$, but is bounded away from the origi
 By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For pure quartic solitary waves, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$) \cite{Tam2019}, which corresponds to an internal mode of the solitary wave. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). These internal mode eigenvalues must be purely imaginary and will have no bearing on our analysis.
 
 \subsection{Generalization to higher order solitons}
-In a recent conference presentation \cite{Runge2020}, it was shown this by  incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser one can manipulate the net-cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation:
+In a recent conference presentation \cite{Runge2020}, it was shown this by incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser one can manipulate the net-cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation:
 
 \begin{equation}\label{HONLS}
 -(i)^k\frac{d^k u}{dx^k}+ \omega u - \gamma u^3 = 0,
@@ -303,11 +297,11 @@ Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}, and fix $\ome
 \begin{itemize}
 \item $n \geq 2$
 \item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$, with at least one of the $k_j \in \{0, 1 \}$
-\item Sequence of phase parameters $\{ \theta_1, \dots, \theta_n \} \in \{0, \pi \}^n$, with $\theta_1 = 1$
+\item Sequence of phase parameters $\{ \theta_1, \dots, \theta_n \} \in \{-1, 1 \}^n$, with $\theta_1 = 1$
 \end{itemize}
 there exists a nonnegative integer $m_0$ such that for any integer $m$ with $m \geq m_0$, there exists a unique $n-$modal solution $U_n(x)$ to \cref{Fsystem} which is of the form
   \begin{equation}\label{qn}
-  U_n(x) = \sum_{j = 1}^{n} e^{i \theta_j } U^j(x) + r(x),
+  U_n(x) = \sum_{j = 1}^{n} \theta_j U^j(x) + r(x),
   \end{equation}
   where each $U^j(x)$ is a translate of the primary pulse $U(x)$. Uniqueness is up to translation and multiplication by $T(\theta)$. The distance between the peaks of $U^j$ and $U^{j+1}$ is $2 X_j$, where
   \begin{equation}\label{pulsedistances}
@@ -359,30 +353,82 @@ The associated variational equation and adjoint variational equation are
 V'(x) = K(\phi)V(x) \label{vareq} \\
 W'(x) = -K(\phi)^*W(x)\label{adjvareq}
 \end{align}
-The variational equation \cref{vareq} has two linearly independent, exponentially decaying solutions $V^+(x) = (U'(x), 0)^T$ and $V^-(x) = (0, U(x))^T$, where $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ is the primary pulse. Corresponding to these are two linearly independent, exponentially decaying solutions $\Psi_+(x)$ and $\Psi_-(x)$ to the adjoint variational equation \cref{vareq}. 
+The variational equation \cref{vareq} has two linearly independent, exponentially decaying solutions $\tilde{Q}(x) = (U'(x), 0)^T$ and $Q(x) = (0, U(x))^T$, where $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ is the primary pulse solution. Corresponding to these are two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) = (\Psi'(x), 0)$ and $Q^*(x) = (0, \Psi(x) )$ to the adjoint variational equation \cref{vareq}, where
+\[
+\Psi(x) =
+\left( -\frac{\beta_4}{24} \partial_x^3 \phi(x) + \frac{\beta_2}{2} \partial_x \phi(x),
+\frac{\beta_4}{24} \partial_x^2 \phi(x) - \frac{\beta_2}{2} \phi(x),
+- \frac{\beta_4}{24} \partial_x \phi(x), \phi(x) \right)
+\]
 
-At this point, we can (and eventually will!) state a theorem which will give us formulas for the interaction eigenvalues. This is analogous to \cite[Theorem 2]{Sandstede1998}, and the proof is a straightforward adaptation of that theorem, with the only change being a different ansatz in place of \cite[(3.5)]{Sandstede1998}. For the present, we will just give the formulas for the interaction eigenvalues for the 2-pulse.
+The following theorem, which is analagous to \cite[Theorem 2]{Sandstede1998}, reduces the problem of locating the eigenvalues of the linearization about a $n$-pulse to finding the determininant of an $n\times n$ matrix. The proof is given in \cref{sec:blockmatrixproof}.
 
-Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X$ and phase difference $\theta$. Define the two Melnikov integrals
+\begin{theorem}\label{th:blockmatrix}
+Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}. Let $U(x)$ be the symmetric primary pulse solution from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
+\begin{equation}\label{blockmatrixcond}
+E(\lambda) = \det S(\lambda) = 0,
+\end{equation}
+where $S(\lambda)$ is the $2n \times 2n$ block matrix
+\begin{equation}\label{blockeq}
+S(\lambda) = 
+\begin{pmatrix}
+A + \lambda^2 M I & 0 \\
+0 & \tilde{A} - \lambda^2 \tilde{M} I
+\end{pmatrix} + R(\lambda).
+\end{equation}
+The tri-diagonal matrices $A$ and $\tilde{A}$ are defined by
+\begin{equation*}
+A = \begin{pmatrix}
+-a_1 & a_1 \\
+a_1 & -a_1 - a_2 &  a_2 \\
+& a_2 & -a_2 - a_3 &  a_3 \\
+& & \ddots & \ddots \\
+& & &  a_{n-1} & -a_{n-1} \\
+\end{pmatrix}, \quad
+\tilde{A} = \begin{pmatrix}
+-\tilde{a}_1 & \tilde{a}_1 \\
+\tilde{a}_1 & -\tilde{a}_1 - \tilde{a}_2 &  \tilde{a}_2 \\
+& \tilde{a}_2 & -\tilde{a}_2 - \tilde{a}_3 &  \tilde{a}_3 \\
+& & \ddots & \ddots \\
+& & &  \tilde{a}_{n-1} & -\tilde{a}_{n-1} \\
+\end{pmatrix}
+\end{equation*}
+where
 \begin{align*}
-M^- &= \int_{-\infty}^\infty q(x) \partial_\omega q(x) dx \\
-M^+ &= \int_{-\infty}^\infty \partial_x (x) z(x) dx,
+a_i &= \theta_i \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle, \quad
+\tilde{a}_i = \theta_i \theta_{i+1} \langle \Psi'(X_i), U'(-X_i) \rangle
 \end{align*}
-where we note that $M_- = d''(\omega)$, the stability criterion from \cite{Grillakis1987}. We are assuming that $M_- > 0$. Let 
+and
 \begin{align*}
-a^- &= \langle \Psi^-(-X), V_-(X) \rangle \\
-a^+ &= \langle \Psi^+(-X), V_+(X) \rangle 
+M &= \int_{-\infty}^\infty \phi(x) \partial_\omega \phi(x) dx = d''(\omega) > 0, \quad
+\tilde{M} = \int_{-\infty}^\infty \partial_x \phi(x) z(x) dx.
 \end{align*}
-Then, to leading order, the four interaction eigenvalues for a 2-pulse are given by
+The remainder term $R(\lambda)$ is analytic in $\lambda$ and has uniform bound
+\[
+|R(\lambda)| \leq C\left(|\lambda| + e^{-\alpha X_{\min}})^3\right).
+\]
+\end{theorem}
+
+As a corollary, we can compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$. In all cases, the 2-pulse will be unstable. The hypothesis $\tilde{M} > 0$ is supported by numerical computation.
+
+\begin{corollary}\label{2pstab}
+Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $\theta_1, \theta_2$. Then there are four interaction eigenvalues associated with $U_2(x)$, which are, to leading order, given by
 \begin{equation}\label{inteigpred}
 \begin{aligned}
-\lambda^- &= \pm \sqrt{ \frac{2 a^-}{M^-} \cos(\theta) }\\
-\lambda^+ &= \pm \sqrt{ \frac{-2 a^+}{M^+} \cos(\theta) }
+\lambda &= \pm \sqrt{ \frac{2 a}{M} \theta_1 \theta_2 }, \quad
+\tilde{\lambda} = \pm \sqrt{ \frac{-2 \tilde{a}}{\tilde{M}} \theta_1 \theta_2 },
 \end{aligned}
 \end{equation}
-We should be able to prove that $a^+$ and $a^-$ have the same sign (numerics confirms this), so under the assumption that $M^-$ and $M^+$ are both positive, this will always give us a pair of imaginary eigenvalues and a pair of real eigenvalues, so the double pulse is unstable for both in-phase and out-of-phase configurations.
+where
+\begin{align*}
+a &= \theta_1 \theta_2 \langle \Psi(X), U(-X) \rangle, \quad
+\tilde{a} = \theta_1 \theta_2 \langle \Psi'(X), U'(-X) \rangle 
+\end{align*}
+If $\tilde{M} > 0$, then, in all cases, one pair is real and one pair is purely imaginary.
+\end{corollary}
 
-In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, we expect that the 2-pulse will have two pairs of internal mode eigenvalues. This will not affect stability, since we have shown there is a positive, real eigenvalue.
+\begin{remark}In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, the 2-pulse will have two pairs of internal mode eigenvalues. Since we have shown that the 2-pulse is not stable, these additional internal mode eigenvalues have no effect on stability of 2-pulse solutions.
+\end{remark}
 
 \section{Numerical Results}
 
@@ -441,9 +487,10 @@ To determine the spectrum of the linearization about the double pulse solutions,
 \end{tabular}
 \caption{Close-up of spectrum showing pair of internal mode eigenvalues (red) and eigenvalues corresponding to the essential spectrum (blue) for third in-phase double pulse. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
 \label{fig:doubleinternalmode}
-\end{figure} 
+\end{figure}
 
-Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigenvalues $\lambda_\pm$ between the value computed by Matlab's eigenvalue solver \texttt{eig} and that given by the leading order term in the formula \cref{inteigpred} versus the pulse separation distance $X$. The error decreases as $X$ increases, as predicted. The error plots are not as ``neat'' as I might like, but that is likely a result of the error in computing the terms in \cref{inteigpred}, which requires evaluating the primary pulse along an exponentially decaying tail.
+Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigenvalues $\lambda_\pm$ between the value computed by Matlab's eigenvalue solver \texttt{eig} and that given by the leading order term in the formula \cref{inteigpred} versus the pulse separation distance $X$. The error decreases as $X$ increases, as predicted. 
+% The error plots are not as ``neat'' as I might like, but that is likely a result of the error in computing the terms in \cref{inteigpred}, which requires evaluating the primary pulse along an exponentially decaying tail.
 
 \begin{figure}[H]
 \centering
@@ -456,51 +503,71 @@ Finally, \cref{fig:inteigpred} plots the log of the relative error for the eigen
 
 \appendix
 
-\section{Proof of Theorem}
+\section{Proof of Theorem \ref{th:blockmatrix}}\label{sec:blockmatrixproof}
 
-The proof is adapted from \cite{Manukian} and \cite{Sandstede1998}. Let 
-\begin{align*}
-U(x) &= (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))^T 
-\end{align*}
-be the primary pulse solution, and let
-\begin{align*}
-U_n(x) &= (\phi_n(x), \partial_x \phi(x)_n, \partial_x^2 \phi(x)_n, \frac{\beta_4}{24} \partial_x^3 \phi_n(x))
-\end{align*}
-be an $n$-modal solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist} with phase parameters $\theta_1, \dots, \theta_n \in \{ 0, \pi\}^n$ and pulse separation distances $X_1, \dots, X_{n-1}$ given by \cref{pulsedistances}. As in \cite{Sandstede1998}, we can write $U_n(x)$ piecewise as the $2n$ pieces
+The proof is adapted from \cite{Manukian} and \cite{Sandstede1998}. Let $U(x)$ be the primary pulse solution, with first component $\phi(x)$. Let $U_n(x)$ be be an $n$-modal solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist} with phase parameters $\theta_1, \dots, \theta_n \in \{ -1, 1 \}^n$ and pulse separation distances $X_1, \dots, X_{n-1}$ given by \cref{pulsedistances}. Let $\phi_n(x)$ be the first component of $U_n(x)$. As in \cite{Sandstede1998}, we can write $U_n(x)$ piecewise as the $2n$ pieces
 \begin{equation}\label{Unpiecewise}
 \begin{aligned}
-U_i^-(x) &= \cos(\theta_i) U(x) + \tilde{U}_i^-(x) && x \in [-X_{i-1}, 0] \\
-U_i^+(x) &=  \cos(\theta_i) U(x) + \tilde{U}_i^+(x) && x \in [0, X_i]
+U_i^-(x) &= \theta_i U(x) + \tilde{U}_i^-(x) && x \in [-X_{i-1}, 0] \\
+U_i^+(x) &= \theta_i U(x) + \tilde{U}_i^+(x) && x \in [0, X_i]
 \end{aligned}
 \end{equation}
-where $X_0 = X_n = \infty$, and the pieces are joined together end-to-end. The eigenvalue problem associated with the multi-pulse $U_n$ is given by \cref{multieig}. It follows from \cref{Lphikernel} (with $\phi_n$ in place of $\phi$) that
+where $X_0 = X_n = \infty$, and the pieces are joined together end-to-end. As in \cite[Theorem 1]{Sandstede1998} and \cite[Lemma 3.20]{Sandstede1993}, we have the estimates
+\begin{equation}\label{tildeUestimates}
+\begin{aligned}
+\tilde{U}_i^+(X_i) &= \theta_{i+1} U(-X_i) + \mathcal{O}(e^{-2 \alpha X_{\min}}) \\
+\tilde{U}_{i+1}^-(-X_i) &= \theta_i U(X_i) + \mathcal{O}(e^{-2 \alpha X_{\min}})
+\end{aligned}
+\end{equation}
+
+The eigenvalue problem associated with the multi-pulse $U_n$ is given by \cref{multieig}, with $\phi_n$ in place of $\phi$. It follows from \cref{Lphikernel} that
 \begin{equation}\label{Kkernel}
 \begin{aligned}
-[Y^n_+(x)]' &= K(\phi_n)Y^n_+(x), \quad [Z^n_+(x)]' = K(\phi_n)Z^n_+(x) + B_1 Y^n_+(x) \\
-[Y^n_-(x)]' &= K(\phi_n)Y^n_-(x), \quad [Z^n_-(x)]' = K(\phi_n)Z^n_-(x) + B_1 Y^n_-(x)
+[Y(x)]' &= K(\phi_n)Y(x), \quad [Z(x)]' = K(\phi_n)Z(x) + B_1 Y(x) \\
+[\tilde{Y}(x)]' &= K(\phi_n)\tilde{Y}(x), \quad [\tilde{Z}(x)]' = K(\phi_n)\tilde{Z}(x) + B_1 \tilde{Y}(x)
 \end{aligned}
 \end{equation}
 where
 \begin{equation}
 \begin{aligned}
-Y^n_-(x) &= ( 0, U_n(x) ) \\
-Y^n_+(x) &= ( \partial_x U_n(x), 0) \\
-Z^n_-(x) &= ( \partial_\omega U_n(x), 0 ) \\
-Z^n_+(x) &= ( 0, Z_n(x) ).
+Y(x) &= ( 0, U_n(x) )^T, \quad
+Z(x) = ( \partial_\omega U_n(x), 0 )^T \\
+\tilde{Y}(x) &= ( \partial_x U_n(x), 0)^T, \quad
+\tilde{Z}(x) = ( 0, Z_n(x) )^T,
 \end{aligned}
 \end{equation}
-The analysis is identical to that of \cite{Manukian}, except the piecewise eigenfunction ansatz in this case is
-\begin{equation}\label{Vansatz}
-V_i^\pm = c_i( ) + d_i( )
-\end{equation}  
+and $Z_n(x) = (z_n(x), \partial_x z_n(x), \partial_x^2 z_n(x), \frac{\beta_4}{24} \partial_x^3 z_n(x))$, and the first component $z_n(x)$ solves $\calL^-(\phi_n)z_n = \phi_n'$.
 
-
-
-
-
-
-
-
+The analysis is identical to that of \cite{Manukian}, except the piecewise ansatz for the eigenfunction also involves $Z(x)$ and $\tilde{Z}(x)$. Writing the functions \cref{Kkernel} in piecewise form as with \cref{Unpiecewise}, we will use the ansatz
+\begin{align}\label{Vansatz}
+V_i^\pm(x)' &= d_i(Y_i^\pm(x) + \lambda Z_i^\pm(x)) + \tilde{d}_i(\tilde{Y}_i^\pm(x) + \lambda \tilde{Z}_i^\pm(x)) + W_i^\pm && i = 1, \dots, n.
+\end{align}
+Substutiting this into \cref{multieig} and simplifying using \cref{Kkernel}, the remainder functions $W_i^\pm(x)$ solve the equation
+\begin{align}\label{Wsolves}
+W_i^\pm(x)' &= K(\phi_n)W_i^\pm(x) + \lambda^2 d_i B Z_i^\pm(x) + \lambda^2 \tilde{d}_i B \tilde{Z}_i^\pm(x) && i = 1, \dots, n
+\end{align}
+Following \cite{Manukian,Sandstede1998}, we obtain a unique piecewise solution $W^\pm(x)$ which generically has $n$ jumps at $x = 0$ in the direction of $Q^*(0) \oplus \tilde{Q}^*(0)$. Using the definitions of $Q^*(x)$ and $\tilde{Q}^*(x)$ together with \cref{tildeUestimates} and \cite[(3.19)]{Manukian}, these jumps are given by
+\begin{align*}
+\xi_i &= \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle (d_{i+1} - d_i) 
++ \theta_{i-1} \langle \Psi(-X_{i-1}), U(X_{i-1}) \rangle (d_i - d_{i-1} )  \\
+&\qquad + \lambda^2 \theta_i d_i \int_{-\infty}^\infty \langle \Psi(y), B \partial_\omega U(y) \rangle dy 
++ \mathcal{O}((|\lambda| + e^{-\alpha X_{\min}})^3) \\
+\tilde{\xi}_i &= \theta_{i+1} \langle \Psi'(X_i), U'(-X_i) \rangle (\tilde{d}_{i+1} - \tilde{d}_i) 
++ \theta_{i-1} \langle \Psi'(-X_{i-1}), U'(X_{i-1}) \rangle (\tilde{d}_i - \tilde{d}_{i-1}) \\
+&\qquad- \lambda^2 \theta_i \tilde{d}_i \int_{-\infty}^\infty \langle \Psi(y), B Z(y) \rangle dy 
++ \mathcal{O}((|\lambda| + e^{-\alpha X_{\min}})^3),
+\end{align*}
+where $Z(x) = (z(x), \partial_x z(x), \partial_x^2 z(x), \frac{\beta_4}{24} \partial_x^3 z(x))$. By symmetry, $\Psi(-x) = -R \Psi(x)$ and $U(-x) = R U(x)$, where $R$ is the standard reversor operator $R(u_1, u_2, u_3, u_4) = (u_1, -u_2, u_3, -u_4)$, thus we have $\langle \Psi(-X_{i-1}), U(X_{i-1}) \rangle = -\langle \Psi(X_{i-1}), U(-X_{i-1}) \rangle$ and $\langle \Psi'(-X_{i-1}), U'(X_{i-1}) \rangle = -\langle \Psi'(X_{i-1}), U'(-X_{i-1}) \rangle$. Using these relations, multiplying by $\theta_i$ and using the definition of $B$, this simplifies to the jump conditions
+\begin{align*}
+\xi_i &= \theta_i \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle (d_{i+1} - d_i) 
+- \theta_{i-1} \theta_i  \langle \Psi(X_{i-1}), U(-X_{i-1}) \rangle (d_i - d_{i-1}) \\
+&\qquad + \lambda^2 d_i \int_{-\infty}^\infty \phi(y) \partial_\omega \phi(y) dy 
++ \mathcal{O}((|\lambda| + e^{-\alpha X_{\min}})^3) \\
+\tilde{\xi}_i &= \theta_i \theta_{i+1} \langle \Psi'(X_i), U'(-X_i) \rangle (\tilde{d}_{i+1} - \tilde{d}_i)
+- \theta_{i-1} \theta_i  \langle \Psi'(X_{i-1}), U'(-X_{i-1}) \rangle (\tilde{d}_i - \tilde{d}_{i-1}) \\
+&\qquad- \lambda^2 \tilde{d}_i \int_{-\infty}^\infty \partial_y \phi(y) z(y) dy
++ \mathcal{O}((|\lambda| + e^{-\alpha X_{\min}})^3),
+\end{align*}
 
 
 
