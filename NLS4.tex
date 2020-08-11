@@ -87,7 +87,14 @@
 
 \graphicspath{ {images/} }
 
-\title[Multi-pulses in 4th order NLS]{Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation}
+% \author{Bj\"orn Sandstede}
+% \address{Division of Applied Mathematics, Brown University, 
+% Providence, RI 02912}
+% \email{bjorn\_sandstede@brown.edu}
+
+\begin{document}
+
+\title[Multi-pulses in fourth-order NLS]{Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation}
 
 \author{Ross Parker}
 \address{Department of Mathematics, Southern Methodist University, 
@@ -97,22 +104,18 @@
 \author{Alejandro Aceves}
 \address{Department of Mathematics, Southern Methodist University, 
  Dallas, Texas 75275}
-\email{aaceves@mail.smu.edu}
+\email{aaceves@smu.edu}
 
-\author{Bj\"orn Sandstede}
-\address{Division of Applied Mathematics, Brown University, 
-Providence, RI 02912}
-\email{bjorn\_sandstede@brown.edu}
-
-\begin{document}
+\begin{abstract}
+In the present work, we consider the existence and spectral stability of multi-pulse solitary wave solutions to a nonlinear Schr\"odinger equation with both fourth and second order dispersion terms. We first give a criterion for the existence of a single solitary wave solution in terms of the coefficients of the dispersion terms, and then show that a discrete family of multi-pulse solutions exists which is characterized by the distances between the individual pulses. We then use Lin's method to reduce the spectral problem for these multi-pulses to computing the determinant a matrix which is, to leading order, block diagonal. Under an additional assumption, which can be verified numerically, we show that all multi-pulses are spectrally unstable. For double pulses, numerical computations are presented which are in good agreement with our analytical results.
+\end{abstract}
 
 \maketitle
 
 \section{Introduction}
-It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the Nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. As better fibers were built and technological advances lead to the invention of photonic crystal fibers, that in particular enabled the engineering of the dispersion resulting in new discoveries such as supercontinuum generation realized in regimes far from the NLS equation. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading order dispersion term is fourth order. A few recent results, both theoretical and experimental, have followed \cite{Tam2019, Tam2020} that include existence and linear stability properties. Our results presented here provide a more rigorous study of PQS including for the first time the existence of pulse trains which could support the creation of such trains in laser cavities.
+It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. As better fibers were built and technological advances lead to the invention of photonic crystal fibers, that in particular enabled the engineering of the dispersion resulting in new discoveries such as supercontinuum generation realized in regimes far from the NLS equation. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading order dispersion term is fourth order. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}. Our results presented here provide a more rigorous study of PQS, including for the first time the existence of pulse trains.
 
-After a brief background, we first present results on the existence and stability of solitons in the more general case where both second and fourth order dispersion are accounted for. This results include the particular case of PQS. The second part of the paper proves the existence of (in phase and out of phase) pulse trains, which in turn are unstable. Numerical examples are presented in the last section.
-
+After a brief background, we first present results on the existence and stability of solitons in the more general case where both second and fourth order dispersion are accounted for. This includes the particular case of PQS. The second part of the paper proves the existence of (in phase and out of phase) multi-pulses; under a mild assumption, all of these pulse trains are unstable. Numerical examples are presented in the last section, followed by a brief discussion of conclusions and directions for future work.
 
 \section{Background}
 
@@ -509,6 +512,10 @@ Finally, we verify \cref{corr:2pstab} by plotting the log of the relative error 
 \caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
 \label{fig:inteigpred}
 \end{figure}
+
+\section{Conclusions and future directions}
+
+In this paper, we constructed $n$-pulse solutions to a nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms, and used an adaptation of Lin's method to reduce the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. For future research, we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}, as well as generalizations to other nonlinearities. It would be interesting to perform numerical time-stepping starting with perturbed multi-pulses to investigate how the instability evolves in time. Since all multi-pulses appear to be unstable, however, it is unlikely that these multi-pulse solutions could be found experimentally in laser cavities. 
 
 \section{Proof of stability results}
 
