@@ -121,7 +121,7 @@ After a brief background, we first present results on the existence and stabilit
 
 The fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS)
 \begin{equation}\label{NLS4}
-i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma |u|^2 u = 0
+i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u = 0
 \end{equation}
 was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second and fourth order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$, which is used in \cite{BlancoPQS,Tam2019,Tam2020} and is common in the optics literature). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQS) occur when $\beta_2 = 0$ and $\beta_4 < 0$, i.e. $u(x,t)$ satisfies the equation
 \begin{equation}\label{PQSeq}
@@ -131,11 +131,12 @@ Unlike ordinary NLS solitons, PQS have oscillatory, exponentially decaying tails
 
 Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$, satisfy the ODE 
 \begin{equation}\label{standingwavereal}
-\frac{\beta_4}{24}u_{xxxx} - \frac{\beta}{2}u_{xx} + \gamma u^3 - \omega u = 0,
+\frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma u^3 - \omega u = 0,
 \end{equation}
-which is a rescaling of \cite[(7)]{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter-free form by using the rescaling $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}(\omega^{1/4}x)$ to obtain the equation
+which is a rescaling of \cite[(7)]{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter free form by using the rescaling $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}
+\big(({\frac{\omega}{|\beta_4|})^{1/4}x\big)$ to obtain the equation
 \begin{equation}\label{PQSparfree}
-\frac{\beta_4}{24}\tilde{u}_{xxxx} + \tilde{u}^3 - \tilde{u} = 0.
+-\frac{1}{24}\tilde{u}_{xxxx} + \tilde{u}^3 - \tilde{u} = 0.
 \end{equation}
 We observe that the power or photon number of PQS scale as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical NLS solitons. A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
 \begin{equation}\label{NLS4onepar}
@@ -288,7 +289,7 @@ u_2 \\ u_3 \\ \frac{24}{\beta_4} u_4 \\ \omega u_1 - \gamma u_1^3
 \end{equation}
 This system has a conserved quantity
 \begin{equation}\label{FsystemH}
-H(u_1, u_2, u_3, u_4) = -u_4 u_2 - \frac{1}{2} u_3^2 + \frac{\beta_2}{4}u_2^2 - \frac{\gamma}{4} u_1^4 + \frac{1}{2}\omega u_1,
+H(u_1, u_2, u_3, u_4) = -u_4 u_2 - \frac{1}{2} u_3^2 + \frac{\beta_2}{4}u_2^2 - \frac{\gamma}{4} u_1^4 + \frac{1}{2}\omega u_1^2,
 \end{equation}
 which we obtain by multiplying \cref{standingwavereal} by $u_x$ and integrating once. $F(0) = 0$, and the characteristic polynomial of $DF(0)$ is
 \[
