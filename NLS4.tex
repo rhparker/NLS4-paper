@@ -1,4 +1,4 @@
-\documentclass[12pt,reqno]{amsart}
+\documentclass[12pt]{elsarticle}
 \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}%
 \let\bibsection\relax
 \usepackage{amsrefs}
@@ -94,28 +94,31 @@
 
 \begin{document}
 
-\title[Multi-pulses in fourth-order NLS]{Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation}
+\begin{frontmatter}
 
-\author{Ross Parker}
-\address{Department of Mathematics, Southern Methodist University, 
- Dallas, Texas 75275}
-\email{rhparker@smu.edu}
+\title{Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation}
 
-\author{Alejandro Aceves}
-\address{Department of Mathematics, Southern Methodist University, 
- Dallas, Texas 75275}
-\email{aaceves@smu.edu}
+\author[1]{Ross Parker}
+    \ead{rhparker@smu.edu}
+\author[1]{Alejandro Aceves}
+    \ead{aaceves@smu.edu}
+
+\address[1]{Department of Mathematics, Southern Methodist University, Dallas, Texas 75275}
 
 \begin{abstract}
-In the present work, we consider the existence and spectral stability of multi-pulse solitary wave solutions to a nonlinear Schr\"odinger equation with both fourth and second order dispersion terms. We first give a criterion for the existence of a single solitary wave solution in terms of the coefficients of the dispersion terms, and then show that a discrete family of multi-pulse solutions exists which is characterized by the distances between the individual pulses. We then use Lin's method to reduce the spectral problem for these multi-pulses to computing the determinant a matrix which is, to leading order, block diagonal. Under an additional assumption, which can be verified numerically, we show that all multi-pulses are spectrally unstable. For double pulses, numerical computations are presented which are in good agreement with our analytical results.
+In the present work, we consider the existence and spectral stability of multi-pulse solitary wave solutions to a nonlinear Schr\"odinger equation with both fourth and second order dispersion terms. We first give a criterion for the existence of a single solitary wave solution in terms of the coefficients of the dispersion terms, and then show that a discrete family of multi-pulse solutions exists which is characterized by the distances between the individual pulses. We then reduce the spectral stability problem for these multi-pulses to computing the determinant of a matrix which is, to leading order, block diagonal. Under an additional assumption, which can be verified numerically, we show that all multi-pulses are spectrally unstable. For double pulses, numerical computations are presented which are in good agreement with our analytical results.
 \end{abstract}
 
-\maketitle
+\begin{keyword}
+nonlinear Schr\"{o}dinger equation \sep solitary waves \sep multi-pulse solutions \sep nonlinear optics \MSC{37K40, 37K45, 37N20}
+\end{keyword}
+
+\end{frontmatter}
 
 \section{Introduction}
-It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. As better fibers were built and technological advances lead to the invention of photonic crystal fibers, that in particular enabled the engineering of the dispersion resulting in new discoveries such as supercontinuum generation realized in regimes far from the NLS equation. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading order dispersion term is fourth order. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}. Our results presented here provide a more rigorous study of PQS, including for the first time the existence of pulse trains.
+It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the NLS soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. As better fibers were built, and technological advances led to the invention of photonic crystal fibers, that enabled the engineering of the dispersion resulting in new discoveries such as supercontinuum generation realized in regimes far from the NLS equation. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading order dispersion term is fourth order. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}. Our results presented here provide a more rigorous study of this general model, including for the first time the existence and spectral stability of multi-pulse solutions.
 
-After a brief background, we first present results on the existence and stability of solitons in the more general case where both second and fourth order dispersion are accounted for. This includes the particular case of PQS. The second part of the paper proves the existence of (in phase and out of phase) multi-pulses; under a mild assumption, all of these pulse trains are unstable. Numerical examples are presented in the last section, followed by a brief discussion of conclusions and directions for future work.
+After a brief background, we first present results on the existence and stability of the primary soliton solution in the more general case where both second and fourth order dispersion are accounted for. This includes the particular case of PQS. Under a standard assumption, which can be verified numerically, the primary pulse solution is orbitally stable. The second part of the paper proves the existence of multi-pulses. These are solutions which resemble multiple, well-separated copies of the primary soliton; neighboring pulses in the multi-pulse can be either in phase or out of phase. We then look at the spectral stability of these multi-pulses. Under a mild assumption, which can be verified numerically, all of these pulse trains are unstable. Numerical examples are then presented, followed by a brief discussion of conclusions and directions for future work. The final section contains the proofs for the spectral stability results.
 
 \section{Background}
 
@@ -123,22 +126,26 @@ The fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS)
 \begin{equation}\label{NLS4}
 i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u = 0
 \end{equation}
-was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second and fourth order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$, which is used in \cite{BlancoPQS,Tam2019,Tam2020} and is common in the optics literature). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQS) occur when $\beta_2 = 0$ and $\beta_4 < 0$, i.e. $u(x,t)$ satisfies the equation
+was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second and fourth order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$, which is used in \cite{BlancoPQS,Tam2019,Tam2020} and is common in the optics literature). Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQS) occur when $\beta_2 = 0$ and $\beta_4 < 0$. In that case, $u(x,t)$ satisfies the equation
 \begin{equation}\label{PQSeq}
 i u_t + \frac{\beta_4}{24}u_{xxxx} + \gamma |u|^2 u = 0.
 \end{equation}
-Unlike ordinary NLS solitons, PQS have oscillatory, exponentially decaying tails, and there has been much recent interest in PQS due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions was shown in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation \cref{NLS4} in terms of the parameters $\beta_2$ and $\omega$ is discussed in \cite{Tam2020}.
+Unlike ordinary NLS solitons, PQS have oscillatory, exponentially decaying tails. There has been much recent interest in PQS due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions was shown numerically in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation \cref{NLS4} in terms of the parameters $\beta_2$, $\beta_4$, and $\omega$ is discussed in \cite{Tam2020}.
 
 Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$, satisfy the ODE 
 \begin{equation}\label{standingwavereal}
 \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma u^3 - \omega u = 0,
 \end{equation}
-which is a rescaling of \cite[(7)]{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter free form by using the rescaling $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}
-\big(({\frac{\omega}{|\beta_4|})^{1/4}x\big)$ to obtain the equation
+which is a rescaling of \cite[(7)]{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter free form by using the rescaling 
+\[
+u(x; \omega) = \sqrt{\frac{\omega}{\gamma}} \tilde{u}
+\left( \left(\frac{\omega}{|\beta_4|}\right)^{1/4}x \right)
+\]
+to obtain the equation
 \begin{equation}\label{PQSparfree}
 -\frac{1}{24}\tilde{u}_{xxxx} + \tilde{u}^3 - \tilde{u} = 0.
 \end{equation}
-We observe that the power or photon number of PQS scale as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical NLS solitons. A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
+We observe that the power or photon number of PQS scales as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical NLS solitons. A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
 \begin{equation}\label{NLS4onepar}
 \tilde{u}_{xxxx} + 2 \sigma \tilde{u}_{xx} +  \tilde{u} - |\tilde{u}|^2 \tilde{u} = 0,
 \end{equation}
@@ -150,7 +157,7 @@ is a non-dimensional parameter characterizing the relative strengths of the quad
 
 For ordinary NLS, an analytic solution can be obtained by the inverse scattering transform \cite{Zak72}. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has been obtained by Karlsson and H{\"o}{\"o}k \cite{KarllsonHook} when $\omega = 24 \beta_2^2 / 25 |\beta_4|$. 
 
-\section{Mathematical setup}
+\section{Mathematical setup}\label{sec:setup}
 
 Our analysis follows Grillakis, Shatah, and Strauss \cite{Grillakis1987}. Equation \cref{NLS4} can be written in Hamiltonian form as 
 \begin{equation}\label{NLSHam}
@@ -158,20 +165,19 @@ Our analysis follows Grillakis, Shatah, and Strauss \cite{Grillakis1987}. Equati
 \end{equation}
 where $J = -i$ and the energy $\calE$ is given by
 \begin{equation}\label{defH}
-\calE(u) = \frac{1}{2} \int_{-\infty}^\infty \left( \frac{\beta_4}{24}|u_{xx}|^2 + \frac{\beta_2}{2}|u_{x}|^2 + \frac{\gamma}{2} |u|^4 \right) dx
+\calE(u) = \frac{1}{2} \int_{-\infty}^\infty \left( \frac{\beta_4}{24}|u_{xx}|^2 + \frac{\beta_2}{2}|u_{x}|^2 + \frac{\gamma}{2} |u|^4 \right) dx.
 \end{equation}
 The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta)$, given by $T(\theta)u = e^{i\theta}u$. The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
 \begin{equation}\label{defQ}
 \mathcal{Q}(u) = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx.
 \end{equation}
-
 We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1987}.
 
 \begin{hypothesis}\label{hyp:wp}
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
 \end{hypothesis}
 
-Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, standing waves satisfy the equation $\calE'(u) + w u = 0$, which can be written as
+Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, this equation has the form $\calE'(u) + w u = 0$, which can be written as
 \begin{equation}\label{standingwaveeq2}
 \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u - \omega u = 0.
 \end{equation}
@@ -196,7 +202,7 @@ For $\omega > \omega_c$, it follows from \cite{Groves1998} that there exists a c
 \noi We make the following standard smoothness assumption (see, for example, \cite[Assumption 2]{Grillakis1987}) concerning the solutions $\phi(x; \omega)$ to \cref{standingwavereal}.
 
 \begin{hypothesis}\label{hyp:smoothmap}
-The map $\omega \mapsto \phi(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $\phi(x; \omega)$ exists by \cref{theorem:solitonexist} for all $\omega \in \calI$ for a given $\beta_4 < 0$ and $\beta_2$.
+The map $\omega \mapsto \phi(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $\phi(x; \omega)$ exists.
 \end{hypothesis}
 
 Define the scalar
@@ -211,10 +217,10 @@ d''(\omega) = \langle \calQ'(\phi(x; \omega)), \partial_\omega \phi(x; \omega) \
 where $\partial_\omega \phi(x; \omega)$ is well-defined by \cref{hyp:smoothmap}. By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $\phi(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity can be computed numerically, and we take this stability criterion as a hypothesis.
 
 \begin{hypothesis}\label{hyp:dccpos}
-For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists by \cref{theorem:solitonexist}, $d''(\omega) > 0$.
+For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists, $d''(\omega) > 0$.
 \end{hypothesis}
 
-Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator
+Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$, given by
 \begin{align}\label{defLphi}
 \calL(\phi) = 
 \begin{pmatrix}
@@ -225,25 +231,27 @@ Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the pr
 where
 \begin{align*}
 \calL^-(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - \gamma \phi^2 \\
-\calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2
+\calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2.
 \end{align*}
 It is straightforward to verify that 
-\begin{align*}
+\begin{equation}\label{kerLpmrelations}
+\begin{aligned}
 \calL^-(\phi) \phi &= 0 \\
 \calL^+(\phi) \partial_x \phi &= 0 \\
 \calL^+(\phi)(-\partial_\omega \phi) &= \phi.
-\end{align*}
-Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists $z$ such that $\calL^-(\phi) z = \phi'$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
+\end{aligned}
+\end{equation}
+Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists a function $z$ such that $\calL^-(\phi) z = \phi'$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
 \begin{equation}\label{Lphikernel}
 \begin{aligned}
-\calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, 
+\calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, \quad
 \calL(\phi)\begin{pmatrix} \partial_\omega \phi \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\ \phi \end{pmatrix} \\
-\calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, 
+\calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, \quad
 \calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix}.
 \end{aligned}
 \end{equation}
 
-To find the essential spectrum, which is independent of $\phi$ and only depends on the background state, the linear operator $\calL(\phi)$ is exponentially asymptotic to $\calL(0)$, given by
+The spectrum of $\calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker \calL(\phi) - \lambda \calI$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $\calL(\phi)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
 \begin{align}\label{defL0}
 \calL(0) = 
 \begin{pmatrix}
@@ -258,22 +266,22 @@ thus the eigenvalue problem $\calL(0) v = \lambda v$ is equivalent to $(\calL_0 
 \end{align*}
 from which it follows that
 \begin{align*}
-\sigma_{ess} = \left\{ \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right) : k \in \R \right\}.
+\sigma_{\text{ess}} = \left\{ \pm i \left( -\frac{\beta_4}{24}k^4 - \frac{\beta_2}{2}k^2 + \omega \right) : k \in \R \right\}.
 \end{align*}
 If $\beta_4 < 0$ and $\beta_2 \leq 0$, the essential spectrum is given by 
 \begin{equation}\label{PQSessspec}
-\sigma_{ess} = \{ k i : k \in \R, |k| \geq \omega \},
+\sigma_{\text{ess}} = \{ k i : k \in \R, |k| \geq \omega \},
 \end{equation}
-which is purely imaginary, bounded away from the origin, and independent of $\beta_4$ and $\beta_2$. If $\beta_4 < 0$, $\beta_2 > 0$, and $\omega > \omega_c$, the essential is given by 
+which is purely imaginary, bounded away from the origin, and independent of $\beta_4$ and $\beta_2$. In particular, this is the case for PQS. If $\beta_4 < 0$, $\beta_2 > 0$, and $\omega > \omega_c$, the essential spectrum is given by 
 \begin{equation}\label{essspec2}
-\sigma_{ess} = \{ k i : k \in \R, |k| \geq (\omega - \omega_c) \},
+\sigma_{\text{ess}} = \{ k i : k \in \R, |k| \geq \omega - \omega_c \},
 \end{equation}
-which is also purely imaginary and bounded away from the origin, but does depend on $\beta_4$ and $\beta_2$.
+which is also purely imaginary and bounded away from the origin, but does depend on $\beta_4$ and $\beta_2$ via $\omega_c$.
 
-By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For pure quartic solitary waves, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$), which corresponds to an internal mode of the solitary wave \cite{Tam2019}. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). By \cref{hyp:dccpos}, these internal mode eigenvalues must be purely imaginary and thus will have no bearing on our analysis.
+By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For PQS, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$), which corresponds to an internal mode of the solitary wave \cite{Tam2019}. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). By \cref{hyp:dccpos}, these internal mode eigenvalues must be purely imaginary.
 
 \subsection{Generalization to higher order solitons}
-In a recent conference presentation \cite{Runge2020}, it was shown this by incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser one can manipulate the net-cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation
+In a recent conference presentation \cite{Runge2020}, it was shown this by incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser, one can manipulate the net cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation
 \begin{equation}\label{HONLS}
 -(i)^k\frac{d^k u}{dx^k}+ \omega u - \gamma u^3 = 0,
 \end{equation}
@@ -281,7 +289,7 @@ where $k \geq 6$ is a positive, even integer, and the pulse profile satisfies th
 
 \section{Existence of multi-pulse solitary waves}
 
-A multi-pulse is a multi-modal solitary wave resembling multiple, well-separated copies of the primary solitary wave. To prove the existence of multi-pulses, we will reframe the problem using a spatial dynamics approach. From this perspective, the primary solitary wave is a homoclinic orbit connecting the unstable and stable manifolds of a saddle equilibrium. A multi-pulse is a multi-loop homoclinic orbit which remains close to the primary homoclinic orbit. Letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$, we rewrite equation \cref{standingwavereal} as the first order system
+A multi-pulse is a multi-modal solitary wave resembling multiple, well-separated copies of the primary solitary wave. To prove the existence of multi-pulse solutions to \cref{standingwavereal}, we will reframe the problem using a spatial dynamics approach. From this perspective, the primary solitary wave is a homoclinic orbit connecting the unstable and stable manifolds of a saddle equilibrium. A multi-pulse is a multi-loop homoclinic orbit which remains close to the primary homoclinic orbit. Letting $U = (u_1, u_2, u_3, u_4) = (u, \partial_x u, \partial_x^2 u, \frac{\beta_4}{24} \partial_x^3 u)$, we rewrite equation \cref{standingwavereal} as the first order system
 \begin{equation}\label{Fsystem}
 U' = F(U) = \begin{pmatrix}
 u_2 \\ u_3 \\ \frac{24}{\beta_4} u_4 \\ \omega u_1 - \gamma u_1^3
@@ -295,7 +303,7 @@ which we obtain by multiplying \cref{standingwavereal} by $u_x$ and integrating 
 \[
 p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
 \]
-which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. The main difference is that neighboring peaks in the multi-pulse can be either in-phase or out-of-phase. 
+which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails, with the frequency of oscillations approximately equal to $b$. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. 
 
 \begin{theorem}\label{theorem:multiexist}
 Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}, and fix $\beta_4 < 0$ and $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
@@ -311,7 +319,7 @@ U_n\left( x + 2 \sum_{k=1}^{i-1} X_k \right) = \begin{cases}
 \theta_i U(x) + \tilde{U}_i^-(x) & x \in [0, X_i]
 \end{cases}
 \end{equation}
-for $i = 1, \dots, n$, where $X_0 = X_n = \infty$. Uniqueness is up to translation and multiplication by $T(\theta)$. The distances between consecutive peaks are $2 X_i$, where
+for $i = 1, \dots, n$, where $X_0 = X_n = \infty$. Uniqueness is up to translation and multiplication by $T(\theta)$. The distances between consecutive peaks are given by $2 X_i$, where
 \begin{equation}\label{pulsedistances}
 X_i \approx \frac{\pi}{b}(2 m + k_i) + \tilde{X},
 \end{equation}
@@ -323,7 +331,7 @@ and $\tilde{X}$ is a constant. In addition, we have the estimates
 \tilde{U}_{i+1}^-(-X_i) &= \theta_i U(X_i) + \mathcal{O}(e^{-2 a X_{\min}}),
 \end{aligned}
 \end{equation}
-where $X_{\mathrm{min}} = \min \{ X_1, \dots X_{n-1} \}$, which hold in addition for all derivatives with respect to $x$.
+where $X_{\mathrm{min}} = \min \{ X_1, \dots X_{n-1} \}$, which hold as well for all derivatives with respect to $x$.
 \begin{proof}
 Since the spectrum of $DF(0)$ is a quartet of eigenvalues $\pm a \pm b i$ for $\omega > \omega_c$, equation \cref{Fsystem} has a conserved quantity \cref{FsystemH}, and the Melnikov integral $M = \int_{-\infty}^\infty \phi_x^2 dx$ is positive, the result follows from \cite[Theorem~3.6]{SandstedeStrut}, with the straightforward modification that the multi-pulse is constructed from copies of $U(x)$ and $-U(x)$. The estimates \cref{Unestimates} follow from \cite{Sandstede1993,Sandstede1998}.
 \end{proof}
@@ -331,7 +339,7 @@ Since the spectrum of $DF(0)$ is a quartet of eigenvalues $\pm a \pm b i$ for $\
 
 \section{Spectrum of multi-pulse solitary waves}\label{sec:multieig}
 
-Let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ be the primary pulse solution, and let $U_n = (\phi_n(x), \partial_x \phi_n(x), \partial_x^2 \phi_n(x), \frac{\beta_4}{24} \partial_x^3 \phi_n(x))$ be a multi-loop homoclinic orbit solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist}, so that the first component $\phi_n$ of $U_n$ is a multi-pulse solitary wave solution to \cref{standingwavereal}. As in \cite{Sandstede1998,Manukian}, we will locate the eigenvalues near the origin of the linearized operator $\calL(\phi_n)$. For an $n$-pulse standing wave $\phi_n$, since there are two eigenfunctions in the kernel of the primary pulse $\calL(\phi)$, each additional pulse in $\phi_n$ will result in four additional eigenvalues near 0. Since these arise from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure, we call them interaction eigenvalues. Once again using a spatial dynamics approach, we rewrite the eigenvalue problem $\calL(\phi_n)v = \lambda v$ as the first order system
+Let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ be the primary homoclinic orbit corresponding to the primary pulse $\phi(x)$, and let $U_n = (\phi_n(x), \partial_x \phi_n(x), \partial_x^2 \phi_n(x), \frac{\beta_4}{24} \partial_x^3 \phi_n(x))$ be a multi-loop homoclinic orbit solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist}. The first component $\phi_n$ of $U_n$ is a multi-pulse solitary wave solution to \cref{standingwavereal}. As in \cite{Sandstede1998,Manukian}, we will locate the eigenvalues near the origin of the linearized operator $\calL(\phi_n)$. Both $\calL(\phi)$ and $\calL(\phi_n)$ have two eigenfunctions in the kernel. Since the kernel of $\calL(\phi)$ is 2-dimensional, we expect that $\calL(\phi_n)$ will have $4(n-1)$ additional eigenvalues near 0. Since these arise from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure, we call them interaction eigenvalues. Once again using a spatial dynamics approach, we rewrite the eigenvalue problem $\calL(\phi_n)v = \lambda v$ as the first order system
 \begin{equation}\label{multieig}
 V'(x) = K(\phi_n)V(x) + \lambda B_1 V(x),
 \end{equation}
@@ -367,18 +375,18 @@ has two linearly independent, exponentially decaying solutions $\tilde{Q}(x) = (
 \begin{align}
 W'(x) = -K(\phi)^*W(x)\label{adjvareq}
 \end{align}
-has two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) = (\Psi'(x), 0)$ and $Q^*(x) = (0, \Psi(x) )$, where
-\[
+has two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) = (\Psi'(x), 0)^T$ and $Q^*(x) = (0, \Psi(x) )^T$, where
+\begin{equation}\label{defPsi}
 \Psi(x) =
 \left( -\frac{\beta_4}{24} \partial_x^3 \phi(x) + \frac{\beta_2}{2} \partial_x \phi(x),
 \frac{\beta_4}{24} \partial_x^2 \phi(x) - \frac{\beta_2}{2} \phi(x),
-- \frac{\beta_4}{24} \partial_x \phi(x), \phi(x) \right)
-\]
+- \frac{\beta_4}{24} \partial_x \phi(x), \phi(x) \right).
+\end{equation}
 
 The following theorem, which is analogous to \cite[Theorem 2]{Sandstede1998}, reduces the problem of locating the eigenvalues of $\calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
 
 \begin{theorem}\label{th:blockmatrix}
-Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}. Let $U(x)$ be the symmetric primary pulse solution from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
+Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}. Let $U(x)$ be the primary homoclinic orbit from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
 \begin{equation}\label{blockmatrixcond}
 E(\lambda) = \det S(\lambda) = 0,
 \end{equation}
@@ -402,20 +410,21 @@ a_1 & -a_1 - a_2 &  a_2 \\
 \end{equation*}
 where
 \begin{align*}
-a_i &= \theta_i \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle \end{align*}
-and
+a_i &= \theta_i \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle,
+\end{align*}
+and $\Psi(x)$ is defined by \cref{defPsi}. The constants $M$ and $\tilde{M}$ are given by
 \begin{align*}
 M &= \int_{-\infty}^\infty \phi(x) \partial_\omega \phi(x) dx = d''(\omega) > 0, \quad
-\tilde{M} = \int_{-\infty}^\infty \partial_x \phi(x) z(x) dx.
+\tilde{M} = \int_{-\infty}^\infty \partial_x \phi(x) z(x) dx,
 \end{align*}
-The remainder term $R(\lambda)$ is analytic in $\lambda$ and has uniform bound
+where $z(x)$ is defined in \cref{sec:setup} after \cref{kerLpmrelations}. The remainder term $R(\lambda)$ is analytic in $\lambda$ and has uniform bound
 \[
 |R(\lambda)| \leq C\left( |\lambda|(|\lambda| + e^{-\alpha X_{\min}})^2 + e^{-(2 \alpha + \gamma)X_{\min} }) \right),
 \]
 where $\gamma > 0$.
 \end{theorem}
 
-If $\tilde{M} > 0$, which is supported by numerical computation, then all multi-pulse solutions are unstable.
+If $\tilde{M} > 0$, which is supported by numerical computation, then all multi-pulse solutions are unstable by the following corollary.
 
 \begin{corollary}\label{corr:multiunstable}
 Let $U_n(x)$ be a n-pulse constructed using \cref{theorem:multiexist}. Then there are $2(n-1)$ pairs of interaction eigenvalues $\lambda_1, \dots \lambda_{n-1}$ and $\tilde{\lambda}_1, \dots \tilde{\lambda}_{n-1}$, given by
@@ -425,7 +434,7 @@ Let $U_n(x)$ be a n-pulse constructed using \cref{theorem:multiexist}. Then ther
 \tilde{\lambda}_i &= \sqrt{-(a^2 + b^2) \frac{\mu_i}{\tilde{M}}} + \mathcal{O}\left( e^{-(2 \alpha + \gamma)X_{\min} } \right) && i = 1, \dots, n-1,
 \end{aligned}
 \end{equation}
-where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. If $\tilde{M} > 0$, then one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary, thus there is a positive real eigenvalue.
+where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. If $\tilde{M} > 0$, then one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues.
 \end{corollary}
 
 Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$.
@@ -434,8 +443,8 @@ Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$.
 Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $\theta_1, \theta_2$. Then there are four interaction eigenvalues associated with $U_2(x)$, which are, to leading order, given by
 \begin{equation}\label{inteigpred}
 \begin{aligned}
-\lambda &= \pm \sqrt{ \frac{2 a_1}{M} \theta_1 \theta_2 }, \quad
-\tilde{\lambda} = \pm \sqrt{ \frac{-2 (a^2 + b^2) a_1}{\tilde{M}} \theta_1 \theta_2 },
+\lambda &= \pm \sqrt{ \frac{2 a_1}{M} }, \quad
+\tilde{\lambda} = \pm \sqrt{ \frac{-2 (a^2 + b^2) a_1}{\tilde{M}} },
 \end{aligned}
 \end{equation}
 where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. If $\tilde{M} > 0$, then one pair is real and one pair is purely imaginary.
@@ -446,19 +455,18 @@ where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. If $\tilde{M
 
 \section{Numerical Results}
 
-To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic solitary wave for $\beta_4 = -1$ (\cref{fig:PQS}), we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions. 
-
+To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic solitary wave for $\beta_4 = -1$ (\cref{fig:PQS}), we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$.
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
 \includegraphics[width=8cm]{images/PQS1.eps} &
 \includegraphics[width=8cm]{images/PQS1log.eps}
 \end{tabular}
-\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. }
+\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions. }
 \label{fig:PQS}
 \end{figure} 
 
-To determine the spectrum of the linearization about the primary pulse, we construct the linear operator $\calL(\phi)$ using Fourier spectral differentiation matrices and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig} (\cref{fig:PQSspec}, left panel). We note that the essential spectrum is discrete as a consequence of the spatial discretization as well as the presence of a pair of internal mode eigenvalues.  
+To determine the spectrum of the linearization about the primary pulse, we construct the linear operator $\calL(\phi)$ using Fourier spectral differentiation matrices and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig} (\cref{fig:PQSspec}, left panel). We note that the essential spectrum is discrete, which is a consequence of the spatial discretization, as well as the presence of a pair of internal mode eigenvalues on the imaginary axis.  
 
 \begin{figure}[H]
 \centering
@@ -470,7 +478,7 @@ To determine the spectrum of the linearization about the primary pulse, we const
 \label{fig:PQSspec}
 \end{figure} 
 
-For the single pulse solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases, $M = d''(\omega) > 0$ (for example for $\beta_4 = -1, \beta_2 = 0, \omega = 1$, $d''(\omega) = 0.7291$), which suggests that primary pulse solution is orbitally stable. In addition, numerical computation suggests that $\tilde{M} > 0$. To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method we used above. The first eight double pulse solutions are shown in \cref{fig:doublepulses}. Arbitrary multi-pulses can similarly be constructed.
+For the primary solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases, $M = d''(\omega) > 0$, which suggests that primary pulse solution is orbitally stable. In addition, numerical computation suggests that $\tilde{M} > 0$. To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method we used above. The first eight double pulse solutions are shown in \cref{fig:doublepulses}. Arbitrary multi-pulses can similarly be constructed.
 
 \begin{figure}[H]
 \centering
@@ -482,7 +490,7 @@ For the single pulse solitary wave solutions, we can compute the stability crite
 \label{fig:doublepulses}
 \end{figure} 
 
-For the spectrum of the linearization about the double pulse solutions $\calL(\phi_2)$, there is in all cases a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulses are all unstable (\cref{fig:doublespec}). There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they would not affect stability in any case.
+For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is (for both in phase and out of phase double pulses) a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulse solutions are all unstable (\cref{fig:doublespec}), which verifies \cref{corr:2pstab}. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability.
 
 \begin{figure}[H]
 \centering
@@ -503,7 +511,7 @@ For the spectrum of the linearization about the double pulse solutions $\calL(\p
 \label{fig:doubleinternalmode}
 \end{figure}
 
-Finally, we verify \cref{corr:2pstab} by plotting the log of the relative error of the interaction eigenvalues between that given by the leading order term in \cref{inteigpred} and that computed by Matlab versus the pulse separation distance $X$ (\cref{fig:inteigpred}). The error decreases as $X$ increases, as predicted. 
+Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:2pstab} by plotting the log of the relative error between the leading order term in \cref{inteigpred} and the eigenvalues computed by Matlab versus the pulse separation distance $X$ (\cref{fig:inteigpred}). 
 
 \begin{figure}[H]
 \centering
@@ -516,17 +524,17 @@ Finally, we verify \cref{corr:2pstab} by plotting the log of the relative error 
 
 \section{Conclusions and future directions}
 
-In this paper, we constructed $n$-pulse solutions to a nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms, and used an adaptation of Lin's method to reduce the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. For future research, we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}, as well as generalizations to other nonlinearities. It would be interesting to perform numerical time-stepping starting with perturbed multi-pulses to investigate how the instability evolves in time. Since all multi-pulses appear to be unstable, however, it is unlikely that these multi-pulse solutions could be found experimentally in laser cavities. 
+In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification that the primary soliton is orbitally stable. We then constructed $n$-pulse solutions by splicing together multiple copies of the primary pulse, and reduced the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. For future research, we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}. We expect that these results would hold for these higher order variants, and that all multi-pulse solutions would be unstable. We could also study generalizations to other nonlinearities. It would be interesting to perform numerical time-stepping starting with perturbed multi-pulses to investigate how the instability evolves in time. Although all multi-pulse solutions to this fourth order model are unstable, this equation represents an idealization of the experimental situation since energy is always conserved. A more realistic model might incorporate gains and losses of energy in the laser cavity, and it is possible that stable multi-pulses could exist in such a scenario.
 
 \section{Proof of stability results}
 
 \subsection{Proof of Theorem \ref{th:blockmatrix}}\label{sec:blockmatrixproof}
 
-The proof is adapted from \cite[Section 3.4]{Manukian} and the proof of \cite[Theorem 2]{Sandstede1998}. It follows from \cref{Lphikernel} that
+The proof is adapted from \cite[Section 3.4]{Manukian} and the proof of \cite[Theorem 2]{Sandstede1998}, and uses an implementation of the Lyapunov-Schmidt reduction known as Lin's method. It follows from \cref{Lphikernel} that
 \begin{equation}\label{Kkernel}
 \begin{aligned}
 [Y(x)]' &= K(\phi_n)Y(x), \quad [Z(x)]' = K(\phi_n)Z(x) + B_1 Y(x) \\
-[\tilde{Y}(x)]' &= K(\phi_n)\tilde{Y}(x), \quad [\tilde{Z}(x)]' = K(\phi_n)\tilde{Z}(x) + B_1 \tilde{Y}(x)
+[\tilde{Y}(x)]' &= K(\phi_n)\tilde{Y}(x), \quad [\tilde{Z}(x)]' = K(\phi_n)\tilde{Z}(x) + B_1 \tilde{Y}(x),
 \end{aligned}
 \end{equation}
 where
@@ -538,13 +546,13 @@ Z(x) = ( \partial_\omega U_n(x), 0 )^T \\
 \tilde{Z}(x) = ( 0, Z_n(x) )^T,
 \end{aligned}
 \end{equation}
-and $Z_n(x) = (z_n(x), \partial_x z_n(x), \partial_x^2 z_n(x), \frac{\beta_4}{24} \partial_x^3 z_n(x))$, where the first component $z_n(x)$ solves $\calL^-(\phi_n)z_n = \phi_n'$. The analysis is identical to that of \cite{Manukian}, except the piecewise ansatz for the eigenfunction also involves $Z(x)$ and $\tilde{Z}(x)$. Writing the functions \cref{Kkernel} in piecewise form as with \cref{Unpiecewise}, we will take the ansatz
+$Z_n(x) = (z_n(x), \partial_x z_n(x), \partial_x^2 z_n(x), \frac{\beta_4}{24} \partial_x^3 z_n(x))$, and the first component $z_n(x)$ solves $\calL^-(\phi_n)z_n = \phi_n'$. The analysis is identical to that of \cite{Manukian}, except the piecewise ansatz for the eigenfunction also involves $Z(x)$ and $\tilde{Z}(x)$. Writing the functions \cref{Kkernel} in piecewise form as with \cref{Unpiecewise}, we take the ansatz
 \begin{align}\label{Vansatz}
-V_i^\pm(x)' &= d_i(Y_i^\pm(x) + \lambda Z_i^\pm(x)) + \tilde{d}_i(\tilde{Y}_i^\pm(x) + \lambda \tilde{Z}_i^\pm(x)) + W_i^\pm && i = 1, \dots, n.
+V_i^\pm(x)' &= d_i(Y_i^\pm(x) + \lambda Z_i^\pm(x)) + \tilde{d}_i(\tilde{Y}_i^\pm(x) + \lambda \tilde{Z}_i^\pm(x)) + W_i^\pm && i = 1, \dots, n,
 \end{align}
-Substituting \cref{Vansatz} into \cref{multieig} and simplifying using \cref{Kkernel}, the remainder functions $W_i^\pm(x)$ solve the equation
+where $V_i^- \in C^0( [-X_{i-1}, 0], \C^8 )$ and $V_i^+ \in C^0( [0, X_i], \C^8 )$. Substituting \cref{Vansatz} into \cref{multieig} and simplifying using \cref{Kkernel}, the remainder functions $W_i^\pm(x)$ solve the equation
 \begin{align}\label{Wsolves}
-W_i^\pm(x)' &= K(\phi_n)W_i^\pm(x) + \lambda^2 d_i B Z_i^\pm(x) + \lambda^2 \tilde{d}_i B \tilde{Z}_i^\pm(x) && i = 1, \dots, n
+W_i^\pm(x)' &= K(\phi_n)W_i^\pm(x) + \lambda^2 d_i B Z_i^\pm(x) + \lambda^2 \tilde{d}_i B \tilde{Z}_i^\pm(x) && i = 1, \dots, n.
 \end{align}
 Following \cite{Manukian,Sandstede1998}, we obtain a unique piecewise solution $W_i^\pm(x)$ which generically has $n$ jumps at $x = 0$ in the direction of $Q^*(0) \oplus \tilde{Q}^*(0)$. Using the definitions of $Q^*(x)$ and $\tilde{Q}^*(x)$ together with \cref{Unestimates} and \cite[(3.19)]{Manukian}, these jumps are given by
 \begin{equation}\label{jumpcond1}
@@ -578,7 +586,7 @@ Finally, we relate $\langle \Psi(X_i), U(-X_i) \rangle$ and $\langle \Psi'(X_i),
 \begin{align}
 \langle \Psi'(x), U(-x) &= \langle \Psi'(-x), U(x) \rangle = s e^{-2 a x} \sin(2 b x + p) + \mathcal{O}(e^{-(2 \alpha + \gamma)x}) \label{IPdPsiU} \\
 \langle \Psi'(x), U'(-x) \rangle &= 
-\langle \Psi'(x), U'(-x) \rangle = -s e^{-2 a x} \left( b \cos(2 b x + p) - a \sin(2 b x + p) \right) + \mathcal{O}(e^{-(2 \alpha + \gamma)x}) \label{IPdPsidU}
+\langle \Psi'(x), U'(-x) \rangle = -s e^{-2 a x} \left( b \cos(2 b x + p) - a \sin(2 b x + p) \right) + \mathcal{O}(e^{-(2 \alpha + \gamma)x}), \label{IPdPsidU}
 \end{align}
 where $s > 0$ and $\gamma > 0$. Differentiating $\langle \Psi(-x), U(x) \rangle$ with respect to $x$, since the operator $\partial_x$ is skew symmetric, 
 \begin{align*}
@@ -588,10 +596,10 @@ thus we can integrate \cref{IPdPsiU} by parts to get
 \begin{align*}
 \langle \Psi(x), U(-x) \rangle = -\frac{1}{a^2 + b^2} s e^{-2 a x} \left( b \cos(2 b x + p) + a \sin(2 b x + p) \right) + \mathcal{O}(e^{-(2 \alpha + \gamma)x}).
 \end{align*}
-In the proof of \cite[Theorem 3]{Sandstede1998}, the distances $X_i$ are chosen to solve $s e^{-2 a X_i} \sin(2 b X_i + p) = \mathcal{O}(e^{-(2 \alpha + \gamma)X_i})$, thus for $X = X_i$ we have
+In the proof of \cite[Theorem 3]{Sandstede1998}, the distances $X_i$ are chosen to solve $s e^{-2 a X_i} \sin(2 b X_i + p) = \mathcal{O}(e^{-(2 \alpha + \gamma)X_i})$, thus for $x = X_i$ we have
 \begin{align}\label{IPrelation1}
-\langle \Psi'(x), U'(-x) \rangle = (a^2 + b^2)
-\langle \Psi(x), U(-x) \rangle + \mathcal{O}(e^{-(2 \alpha + \gamma)x})
+\langle \Psi'(X_i), U'(-X_i) \rangle = (a^2 + b^2)
+\langle \Psi(X_i), U(-X_i) \rangle + \mathcal{O}(e^{-(2 \alpha + \gamma)X_i}).
 \end{align}
 Using \cref{IPrelation1} and \cref{PsiR}, multiplying by $\theta_i$, and using the definition of $B$, equations \cref{jumpcond1} simplify to the jump conditions
 \begin{align*}
@@ -610,7 +618,10 @@ which we write in matrix form as in the statement of the theorem.
 
 For \cref{corr:multiunstable}, let $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ be the eigenvalues of $A$, which are real and distinct as in the proof of \cite[Theorem 5]{Parker2020}. Following the steps in that proof and using the rescaling in \cite[Theorem 3]{Sandstede1998}, there are $2(n-1)$ pairs of interaction eigenvalues, given by \cref{inteigs}, which are either real or purely imaginary by Hamiltonian symmetry. Since $M > 0$ by \cref{hyp:dccpos}, if $\tilde{M} > 0$ as well, then one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary. \cref{corr:2pstab} is the specific case $n = 2$, where the nonzero eigenvalue of $A$ can be computed directly.
 
-% \bibliographystyle{amsalpha}
+\paragraph{Acknowledgments}
+
+This material is based upon work supported by the U.S. National Science Foundation under the RTG grant DMS-1840260 (R.P. and A.A.).
+
 \bibliography{NLS4.bib}
 
 \end{document}
