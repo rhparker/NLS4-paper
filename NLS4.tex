@@ -87,10 +87,7 @@
 
 \graphicspath{ {images/} }
 
-% \author{Bj\"orn Sandstede}
-% \address{Division of Applied Mathematics, Brown University, 
-% Providence, RI 02912}
-% \email{bjorn\_sandstede@brown.edu}
+\newcommand{\revised}[1]{ \textcolor{red}{#1} }
 
 \begin{document}
 
@@ -155,7 +152,17 @@ where
 \]
 is a non-dimensional parameter characterizing the relative strengths of the quadratic and quartic dispersion terms.
 
-For ordinary NLS, an analytic solution can be obtained by the inverse scattering transform \cite{Zak72}. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has been obtained by Karlsson and H{\"o}{\"o}k \cite{KarllsonHook} when $\omega = 24 \beta_2^2 / 25 |\beta_4|$. 
+For ordinary NLS, an analytic solution can be obtained by the inverse scattering transform \cite{Zak72}. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has been obtained by Karlsson and H{\"o}{\"o}k \cite{KarllsonHook} when $\omega = 24 \beta_2^2 / 25 |\beta_4|$. \revised{We consider here only the case $\beta_4 < 0$, which is the regime for which PQS exist \cite{Tam2019} and which is considered in the generalized model in \cite{Tam2020}}.
+
+\revised{
+\begin{remark}
+In a recent conference presentation \cite{Runge2020}, it was shown this by incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser, one can manipulate the net cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation
+\begin{equation}\label{HONLS}
+-(i)^k\frac{d^k u}{dx^k}+ \omega u - \gamma u^3 = 0,
+\end{equation}
+where $k \geq 6$ is a positive, even integer, and the pulse profile satisfies the scaling relation $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}(\omega^{1/k}x)$.
+\end{remark}
+}
 
 \section{Mathematical setup}\label{sec:setup}
 
@@ -167,11 +174,11 @@ where $J = -i$ and the energy $\calE$ is given by
 \begin{equation}\label{defH}
 \calE(u) = \frac{1}{2} \int_{-\infty}^\infty \left( \frac{\beta_4}{24}|u_{xx}|^2 + \frac{\beta_2}{2}|u_{x}|^2 + \frac{\gamma}{2} |u|^4 \right) dx.
 \end{equation}
-The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta)$, given by $T(\theta)u = e^{i\theta}u$. The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
+The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta)$, given by $T(\theta)u = e^{i\theta}u$, which is known as gauge symmetry. The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
 \begin{equation}\label{defQ}
 \mathcal{Q}(u) = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx.
 \end{equation}
-We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1987}.
+\revised{The energy is also invariant under the translation group $[\tau(s)]u(\cdot) = u(\cdot - s)$ and the reversor operator $[\rho(u)](x) = u(-x)$.} We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1987}.
 
 \begin{hypothesis}\label{hyp:wp}
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
@@ -188,15 +195,19 @@ Let $\beta_4 < 0$, and define
 \begin{equation}\label{omegac}
 \omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
 \end{equation}
-Then for either (i) $\omega > \omega_c$, or (ii) $0 < \omega < \omega_c$ and $\beta_2 < 0$, 
+Then for either \revised{ (i) $\omega > \omega_c$ and $\beta_2 \in \R$, or (ii) $0 < \omega \leq \omega_c$ and $\beta_2 < 0$ }, 
 there exists a real-valued, symmetric, exponentially localized solution $\phi(x; \omega) \in H^2(\R) \cap C^5(\R)$ of the standing wave equation \cref{standingwaveeq2}. 
 \begin{proof}
-The existence result follows directly from \cite{Groves1998}, which uses the mountain pass lemma and the concentration-compactness principle. Exponential localization follows from the stable manifold theorem.
+\revised{The existence result follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional, and the proof uses the mountain pass lemma and the concentration-compactness principle. Since $\beta_4 < 0$, we write $\beta_4 = -|\beta_4|$, multiply equation \cref{standingwaveeq2} by $-24/|\beta_4|$, and rearrange to obtain
+\begin{equation}\label{standingwaveeqGroves}
+u_{xxxx} + \frac{12 \beta_2}{|\beta_4|}u_{xx} + \frac{24 \omega}{|\beta_4|}u = \frac{24 \gamma}{|\beta_4|} |u|^2 u,
+\end{equation}
+which is of the form considered in \cite{Groves1998} with $\mu = 12 \beta_2 / |\beta_4|$ and $c = -24 \omega/|\beta_4|$. The condition $c < 0$ is equivalent to $\omega > 0$, and the condition $\mu < 2 \sqrt{-c}$ is equivalent to $3 \beta_2/\sqrt{|\beta_4|} < \sqrt{6 \omega}$. For any $\beta_2 \in \R$, these are satisfied if $\omega > \omega_c \geq 0$. In addition, these are satisfied whenever $\beta_2 < 0$ and $\omega > 0$. Cases (i) and (ii) in the statement of the theorem divide the region of existence into two disjoint sets which have physical significance (see remark below)}. Exponential localization follows from the stable manifold theorem.
 \end{proof}
 \end{theorem}
 
 \begin{remark}
-For $\omega > \omega_c$, it follows from \cite{Groves1998} that there exists a countably infinite family of distinct solitary-wave solutions, which are the multi-pulse solutions we will construct below. In addition, for $\beta_2 = 0$, $\omega_c = 0$, thus PQS exist for all $\omega > 0$.
+\revised{For $0 < \omega < \omega_c$ and $\beta_2 < 0$, the primary solitary wave solutions have exponentially decaying but non-oscillatory tails, and for $\omega > \omega_c$ and all $\beta_2$, the primary solitary wave solutions have tails which are exponentially decaying and oscillatory. (See \cite[Figure 2(a)]{Tam2020}; the frequency $\omega$ is denoted by $\mu$ in that paper).} It follows from \cite{Groves1998} that there exists a countably infinite family of distinct solitary-wave solutions, which are the multi-pulse solutions we will construct below. In addition, we note that for $\beta_2 = 0$, $\omega_c = 0$, thus PQS exist for all $\omega > 0$.
 \end{remark}
 
 \noi We make the following standard smoothness assumption (see, for example, \cite[Assumption 2]{Grillakis1987}) concerning the solutions $\phi(x; \omega)$ to \cref{standingwavereal}.
@@ -233,7 +244,8 @@ where
 \calL^-(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - \gamma \phi^2 \\
 \calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2.
 \end{align*}
-It is straightforward to verify that 
+
+\revised{Since the PDE \cref{NLS4} has two continuous symmetries (gauge symmetry and translation invariance), and each symmetry corresponds to a kernel eigenvalue for the PDE (and vice versa),  there are exactly two eigenfunctions to \cref{defLphi} with eigenvalue 0 for the linearization about any solution $\phi$.} It is straightforward to verify that 
 \begin{equation}\label{kerLpmrelations}
 \begin{aligned}
 \calL^-(\phi) \phi &= 0 \\
@@ -241,7 +253,7 @@ It is straightforward to verify that
 \calL^+(\phi)(-\partial_\omega \phi) &= \phi.
 \end{aligned}
 \end{equation}
-Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists a function $z$ such that $\calL^-(\phi) z = \phi'$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. Thus $\calL(\phi)$ has a kernel with (at least) algebraic multiplicity 4 and geometric multiplicity 2, i.e.
+\revised{By substituting $\phi(\cdot + s)$ into \cref{NLS4}, differentiating with respect to $s$, and taking $s \rightarrow 0$, we can verify that $\calL^+(\phi) \partial_x \phi = 0$ corresponds to translation invariance. Similarly, $\calL^-(\phi) \phi = 0$ corresponds to gauge invariance. Since the PDE \cref{NLS4} has only two continuous symmetries, $\ker \calL^-(\phi) = \spn\{\phi\}$ and $\ker \calL^+(\phi) = \spn\{\partial_x \phi\}$.} Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists a function $z$ such that $\calL^-(\phi) z = \phi'$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. \revised{Thus $\calL(\phi)$ has a kernel with geometric multiplicity 2 and algebraic multiplicity at least 4, and the corresponding eigenfunctions and generalized eigenfuncions are given by}
 \begin{equation}\label{Lphikernel}
 \begin{aligned}
 \calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, \quad
@@ -250,6 +262,16 @@ Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-
 \calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix}.
 \end{aligned}
 \end{equation}
+
+Under following additional hypothesis, which can be verified numerically, the kernel of $\calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4
+
+\begin{hypothesis}$\tilde{M} \neq 0$, where 
+\end{hypothesis}
+
+We then have the following lemma.
+
+\begin{lemma}\label{lemma:Lphikernel}
+\end{lemma}
 
 The spectrum of $\calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker \calL(\phi) - \lambda \calI$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $\calL(\phi)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
 \begin{align}\label{defL0}
@@ -279,13 +301,6 @@ which is purely imaginary, bounded away from the origin, and independent of $\be
 which is also purely imaginary and bounded away from the origin, but does depend on $\beta_4$ and $\beta_2$ via $\omega_c$.
 
 By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For PQS, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$), which corresponds to an internal mode of the solitary wave \cite{Tam2019}. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). By \cref{hyp:dccpos}, these internal mode eigenvalues must be purely imaginary.
-
-\subsection{Generalization to higher order solitons}
-In a recent conference presentation \cite{Runge2020}, it was shown this by incorporating an intracavity programmable pulse-shaper in a mode-locked fiber laser, one can manipulate the net cavity dispersion by applying a phase to the pulse so that to leading order, the stationary pulse generated is modeled by the higher-order NLS equation
-\begin{equation}\label{HONLS}
--(i)^k\frac{d^k u}{dx^k}+ \omega u - \gamma u^3 = 0,
-\end{equation}
-where $k \geq 6$ is a positive, even integer, and the pulse profile satisfies the scaling relation $u(x; \omega) = \sqrt{\frac{\omega}{\gamma}}\tilde{u}(\omega^{1/k}x)$.
 
 \section{Existence of multi-pulse solitary waves}
 

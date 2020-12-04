@@ -1,0 +1,99 @@
+\documentclass[11pt]{letter}
+
+\usepackage[hmargin={1.0in,1.0in},%
+            vmargin={1.0in,1.0in},%
+            nohead,%
+            nofoot,%
+            ]{geometry}                                 % the page layout without fancyhdr
+\pagestyle{empty}
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+\address{Ross Parker \\
+Department of Mathematics \\
+Southern Methodist University \\
+Dallas, TX 75275 \\
+\texttt{rhparker@smu.edu}}%
+\signature{Ross Parker}
+\begin{letter}{Editor, Physica D}
+
+\opening{Dear Editor,}
+
+On behalf of my co-author Alejandro Aceves, I would like to submit our revision of the article ``Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation'' for consideration of publication in Physica D. 
+
+We are grateful to the referees for their careful reading of the original manuscript, and their comments and suggestions regarding how we could improve it. All the suggestions for improvement from the two reviewers have been systematically taken into careful consideration, as noted below. In addition, the revised portions of the manuscript are indicated using red text.
+
+Given the improvements made in accordance with the requests of the referees, we hope that you will now find the manuscript to be suitable for publication in Physica D. We will be sincerely looking forward to your editorial decision.
+
+Reviewer 1: \emph{My only concern is the indefiniteness of the number of zero eigenvalues of the single-pulse solution and multi-pulse solutions. The number of zero eigenvalues of the single- pulse dictate how many interaction eigenvalues are near the origin for the multi-pulse solution. This is a crucial information and needs to be addressed explicitly in the theory and also numerically, not implicitly.}
+
+\begin{enumerate}
+\item \emph{There is a need for a definite statement about the number of zero eigenvalues of these multi-pulse solutions in Corollary 1 and Corollary 2 which needs to be supported in the theory.}
+\vspace{4mm}
+
+\item \emph{I suggest that the authors establish numerically the number of zero eigenvalues in figure 2 and figures 4 and 5 and update the paper and update the paper accordingly.}
+\vspace{4mm}
+
+\item \emph{Is it possible for this PDE to support other multi-pulse solutions that the components of these multi-pulse solutions are not almost equidistant?}
+\vspace{4mm}
+\end{enumerate}
+
+Reviewer 2
+\begin{enumerate}[(a)]
+\item \emph{In the first paragraph the sentence, ``As better fibers were built...'', is awkwardly worded.}
+\vspace{4mm}
+
+\item \emph{Regarding the statement of Theorem 1: where did $\omega_c$ come from? Please explain.
+for $\omega > \omega_c$, can $\beta_2$ be of either sign?} The proof of the the theorem has been elaborated to explain how $\omega_c$ is derived from Groves (1997). The original statement of the theorem was not clear, and has been revised to explain that the case $\omega > \omega_c$ applies for all $\beta_2$. In addition, we explain that these two disjoint regions have physical significance, which is explained in the following remark, along with a reference to a figure illustrating this result in Tam (2020).
+\vspace{4mm}
+
+\item \emph{The multiplicity of the null eigenvalue follows from symmetries and the fact the system is Hamiltonian. What calculation(s) need to be presented to ensure there are no more eigenfunctions and/or generalized eigenfunctions? Does it follow from the already given assumptions? Or, is an additional one needed?}
+\vspace{4mm}
+
+\item \emph{Section 3.1 should simply be a remark at the end of Section 2.} Done.
+\vspace{4mm}
+
+\item \emph{Above equation (25) we are told we should ``expect...4(n-1) additional eigenvalues  near 0''. Why is this so? An explanation and reference are needed.}
+\vspace{4mm}
+
+\item \emph{Theorem 3 is said to be analogous to [11, Theorem 2]. This is undoubtedly true. But, is it not the case that [8] is also relevant here; especially, since in [8] systems with the same symmetries as NLS were discussed.}
+\vspace{4mm}
+
+\item \emph{In equation (3) the upper left block has a ``+'', and the lower right block has a ``-''. This is the key to the instability result. Can some insight - beyond looking at the mathematical calculation - be provided as to why this is so?}
+\vspace{4mm}
+
+\item \emph{There is the constant assumption that $\tilde{M} > 0$. For pure NLS it can be shown, 
+\[
+\tilde{M} = \frac{1}{4 \beta_2} \int_{-\infty}^{+\infty} \phi(x)^2 dx > 0, \qquad \beta_2 < 0.
+\]
+In general,
+\[
+\tilde{M} = \int_{-\infty}^{+\infty} \phi'(x)[\mathcal{L^-}]^{-1}(\phi'(x)) dx.
+\]
+I expect this quantity - as well as $d''(\omega)$ - to appear when using the Hamiltonian-Krein index theory (which is a different formulation, and extension of, the GSS theory) to determine the spectral stability of the base pulse. So, cannot the assumption $\tilde{M} > 0$ be proven given the assumption the base pulse is stable? I think it can. The authors should do so, or explain what further things are needed to make it happen. I expect Chapters 4 and 5 of [15] (as well as the references therein) will be helpful. }
+\vspace{4mm}
+
+\item \emph{On the bottom of page 10 we are told the essential spectrum is discrete because of the spatial discretization. Is it not really because you are looking at a spatially periodic problem? After all, discrete systems still have curves of essential spectra.}
+\vspace{4mm}
+
+\item \emph{On page 11 there is the phrase, ``suggests that primary pulse solution is orbitally stable.'' Given the assumption $d''(\omega) > 0$, prove it!}
+\vspace{4mm}
+
+\item \emph{In the Section 7 I would like to see a discussion of the implications of the mathematical results for the experimental results. Do they agree? If not, what then is missing from the mathematical model?}
+\vspace{4mm}
+
+\item \emph{We should see some numerical results concerning the evolution of these unstable multi-pulses. Do they collapse back into a single pulse? Or, something more interesting?}
+\vspace{4mm}
+
+\end{enumerate}
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
+
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}
