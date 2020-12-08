@@ -483,7 +483,7 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \includegraphics[width=8cm]{images/PQS1.eps} &
 \includegraphics[width=8cm]{images/PQS1log.eps}
 \end{tabular}
-\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions. }
+\caption{Pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$. (left panel). Plot of $\log \phi(x)$ vs $x$ (right panel) showing exponentially-decaying oscillatory tails. Spatial discretization is a uniform grid with $N = 1024$ grid points, and we use periodic boundary conditions. }
 \label{fig:PQS}
 \end{figure} 
 
@@ -495,7 +495,7 @@ To determine the spectrum of the linearization about the primary pulse, we const
 \includegraphics[width=8cm]{images/PQSspec.eps} &
 \includegraphics[width=8cm]{images/PQSinternalmode.eps}
 \end{tabular}
-\caption{Spectrum of pure quartic solitary wave (left panel), $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. Kernel eigenvalues in black, internal mode eigenvalues in red. Eigenvalues in blue correspond to the discrete essential spectrum. Eigenfunction corresponding to internal mode eigenvalue (right panel).}
+\caption{Spectrum of pure quartic solitary wave (left panel), $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$. \revised{Spectrum comprises essential spectrum (blue open circles), internal mode eigenvalues (magenta stars), and kernel eigenvalue with geometric multiplicity 2 and algebraic multiplicity 4 (black X).} Eigenfunction corresponding to internal mode eigenvalue (right panel).}
 \label{fig:PQSspec}
 \end{figure} 
 
@@ -507,19 +507,19 @@ For the primary solitary wave solutions, we can compute the stability criterion 
 \includegraphics[width=8cm]{images/DPplus.eps} &
 \includegraphics[width=8cm]{images/DPminus.eps}
 \end{tabular}
-\caption{First eight double pulse solutions $\phi_2(x)$ constructed from two pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$. In-phase double pulses (left panel), opposite phase double pulses (right panel). }
+\caption{First eight double pulse solutions $\phi_2(x)$ constructed from two pure quartic solitary wave solution $\phi(x)$ to \cref{standingwavereal} with $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$. In-phase double pulses (left panel), opposite phase double pulses (right panel). }
 \label{fig:doublepulses}
 \end{figure} 
 
-For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is (for both in phase and out of phase double pulses) a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues, thus the double pulse solutions are all unstable (\cref{fig:doublespec}), which verifies \cref{corr:2pstab}. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability.
+For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in phase and out of phase double pulses, a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{images/inteigsDP1plus.eps} &
-\includegraphics[width=8cm]{images/inteigsDP1plus.eps}
+\includegraphics[width=8cm]{images/DP1specpp.eps} &
+\includegraphics[width=8cm]{images/DP1specmp.eps}
 \end{tabular}
-\caption{Eigenvalues for first in-phase double pulse (left panel) and first out-of-phase double pulse (right panel). Interaction eigenvalues shown in red, and kernel eigenvalues in black. Eigenvalues in blue correspond to the discrete essential spectrum; as expected, these eigenvalues are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. Internal mode eigenvalues are not shown. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
+\caption{Eigenvalues for first in-phase double pulse (left panel) and first out-of-phase double pulse (right panel). \revised{Spectrum comprises interaction eigenvalues (red dots), essential spectrum (blue open circles), internal mode eigenvalues (magenta stars), and kernel eigenvalue with geometric multiplicity 2 and algebraic multiplicity 4 (black X).} $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:doublespec}
 \end{figure} 
 
@@ -528,7 +528,7 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \begin{tabular}{c}
 \includegraphics[width=8cm]{images/DP3internalmode.eps}
 \end{tabular}
-\caption{Close-up of spectrum showing pair of internal mode eigenvalues (red) and eigenvalues corresponding to the essential spectrum (blue) for third in-phase double pulse. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
+\caption{Close-up of spectrum near $\lambda = i$ showing pair of internal mode eigenvalues (magenta stars) and essential spectrum eigenvalues (blue open circles). Third in-phase double pulse. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:doubleinternalmode}
 \end{figure}
 
@@ -539,7 +539,7 @@ Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:
 \begin{tabular}{c}
 \includegraphics[width=8cm]{images/inteigpred.eps}
 \end{tabular}
-\caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$.}
+\caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:inteigpred}
 \end{figure}
 
