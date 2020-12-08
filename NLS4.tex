@@ -530,7 +530,7 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \includegraphics[width=8cm]{images/DP1specpp.eps} &
 \includegraphics[width=8cm]{images/DP1specmp.eps}
 \end{tabular}
-\caption{Eigenvalues for first in-phase double pulse (left panel) and first out-of-phase double pulse (right panel). \revised{Spectrum comprises interaction eigenvalues (red dots), essential spectrum (blue open circles), internal mode eigenvalues (magenta stars), and kernel eigenvalue with geometric multiplicity 2 and algebraic multiplicity 4 (black X).} $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
+\caption{Eigenvalues for first in-phase double pulse (left panel) and first out-of-phase double pulse (right panel). \revised{Spectrum comprises interaction eigenvalues (red dots), essential spectrum (blue open circles), internal mode eigenvalues (magenta stars), and kernel eigenvalue with geometric multiplicity 2 and algebraic multiplicity 4 (black X). See \cref{fig:doublevrvi} for eigenfunctions corresponding to interaction eigenvalues for first in-phase double pulse.} $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:doublespec}
 \end{figure} 
 
@@ -541,6 +541,18 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \end{tabular}
 \caption{Close-up of spectrum near $\lambda = i$ showing pair of internal mode eigenvalues (magenta stars) and essential spectrum eigenvalues (blue open circles). Third in-phase double pulse. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:doubleinternalmode}
+\end{figure}
+
+\revised{For the first in-phase double pulse ($k_1 = 0$), the eigenfunctions $v_r(x)$ and $v_i(x)$ corresponding to the real and imaginary interaction eigenvalue $\lambda_r$ and $\lambda_i$ (respectively) are shown in \cref{fig:doublevrvi}. For in-phase double pulses with $k_0$ even, $v_r(x)$ resembles a linear combination of translates of $(0, \phi)^T$, and $v_i(x)$ resembles a linear combination of translates of $(\partial_x \phi, 0)^T$. (See \cref{sec:proofs} for the construction of these eigenfunctions using Lin's method). This is the same for out-of-phase double pulses with $k_1$ odd, and is reversed for in-phase double pulses with $k_1$ odd and out-of-phase double pulses with $k_1$ even.}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{cc}
+\includegraphics[width=8cm]{images/DP0ppvr} &
+\includegraphics[width=8cm]{images/DP0ppvi}
+\end{tabular}
+\caption{\revised{Eigenfunction $v_r(x)$ corresponding to $\lambda_r = 0.0891$ (left panel), and real and imaginary parts of eigenfunction $v_i(x)$ corresponding to $\lambda_i = 0.1098i$ (right panel) for first in-phase double pulse $(k_1 = 0)$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}}
+\label{fig:doublevrvi}
 \end{figure}
 
 Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:2pstab} by plotting the log of the relative error between the leading order term in \cref{inteigpred} and the eigenvalues computed by Matlab versus the pulse separation distance $X$ (\cref{fig:inteigpred}). 
@@ -558,7 +570,7 @@ Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:
 
 In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification that the primary soliton is orbitally stable. We then constructed $n$-pulse solutions by splicing together multiple copies of the primary pulse, and reduced the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. For future research, we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}. We expect that these results would hold for these higher order variants, and that all multi-pulse solutions would be unstable. We could also study generalizations to other nonlinearities. It would be interesting to perform numerical time-stepping starting with perturbed multi-pulses to investigate how the instability evolves in time. Although all multi-pulse solutions to this fourth order model are unstable, this equation represents an idealization of the experimental situation since energy is always conserved. A more realistic model might incorporate gains and losses of energy in the laser cavity, and it is possible that stable multi-pulses could exist in such a scenario.
 
-\section{Proof of stability results}
+\section{Proof of stability results}\label{sec:proofs}
 
 \subsection{Proof of Theorem \ref{th:blockmatrix}}\label{sec:blockmatrixproof}
 
