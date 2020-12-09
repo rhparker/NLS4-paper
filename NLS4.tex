@@ -74,6 +74,7 @@
 \def\calQ{{\mathcal Q}}
 \def\calL{{\mathcal L}}
 \def\calI{{\mathcal I}}
+\def\calF{{\mathcal F}}
 
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\ran}{ran}
@@ -474,7 +475,9 @@ where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. If $\tilde{M
 \begin{remark}In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, the 2-pulse will have two pairs of internal mode eigenvalues. If $\tilde{M} > 0$, the 2-pulse is unstable, and these internal mode eigenvalues have no additional effect on stability.
 \end{remark}
 
-\section{Numerical Results}
+\section{Numerical results}
+
+\subsection{Primary pulse}
 
 To construct the primary pulse solution $\phi(x)$, we start with the known solitary wave solution for NLS and gradually modify the parameters $\beta_2$ and $\beta_4$, solving for the new solitary wave solution at each step using a Newton conjugate-gradient method \cite[Chapter 7.2.4]{YangCh7} implemented in MATLAB. To obtain the pure quartic solitary wave for $\beta_4 = -1$ (\cref{fig:PQS}), we perform this procedure along the line segment connecting $(\beta_2, \beta_4) = (-2, 0)$ and $(\beta_2, \beta_4) = (0, -1)$.
 \begin{figure}[H]
@@ -499,7 +502,11 @@ To determine the spectrum of the linearization about the primary pulse, we const
 \label{fig:PQSspec}
 \end{figure} 
 
-For the primary solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases, $M = d''(\omega) > 0$, \revised{thus primary pulse solution is orbitally stable by \cite[Theorem 3.5]{Grillakis1987}}. In addition, numerical computation suggests that $\tilde{M} > 0$. To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method we used above. The first four double pulse solutions are shown in \cref{fig:doublepulses}. 
+For the primary solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases, $M = d''(\omega) > 0$, \revised{thus primary pulse solution is orbitally stable by \cite[Theorem 3.5]{Grillakis1987}}. In addition, numerical computation suggests that $\tilde{M} > 0$.
+
+\subsection{Construction of multipulses}
+
+To construct double pulses, we glue together two copies of the primary pulse at the pulse distances predicted by \cref{theorem:multiexist} and solve for the double pulse solution using the same Newton conjugate-gradient method we used above. The first four double pulse solutions are shown in \cref{fig:doublepulses}. 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
@@ -522,6 +529,8 @@ Arbitrary multi-pulses can similarly be constructed (\cref{fig:triplepulses}). A
 \label{fig:triplepulses}
 \end{figure} 
 
+\subsection{Spectrum of double pulses}
+
 For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in-phase and out-of-phase double pulses, a pair of purely imaginary interaction eigenvalues $\pm \lambda_i$ and a pair of real interaction eigenvalues $\pm \lambda_r$. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
 
 \begin{figure}[H]
@@ -543,7 +552,7 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \label{fig:doubleinternalmode}
 \end{figure}
 
-\revised{For the first in-phase double pulse ($k_1 = 0$), the eigenfunctions $v_r(x)$ and $v_i(x)$ corresponding to the real and imaginary interaction eigenvalue $\lambda_r$ and $\lambda_i$ (respectively) are shown in \cref{fig:doublevrvi}. For in-phase double pulses with $k_0$ even, $v_r(x)$ resembles a linear combination of translates of $(0, \phi)^T$, and $v_i(x)$ resembles a linear combination of translates of $(\partial_x \phi, 0)^T$. (See \cref{sec:proofs} for the construction of these eigenfunctions using Lin's method). This is the same for out-of-phase double pulses with $k_1$ odd, and is reversed for in-phase double pulses with $k_1$ odd and out-of-phase double pulses with $k_1$ even.}
+\revised{For the first in-phase double pulse ($k_1 = 0$), the eigenfunctions $v_r(x)$ and $v_i(x)$ corresponding to the real and imaginary interaction eigenvalue $\lambda_r$ and $\lambda_i$ (respectively) are shown in \cref{fig:doublevrvi}. For in-phase double pulses with $k_1$ even, $v_r(x)$ resembles a linear combination of translates of $(0, \phi)^T$, and $v_i(x)$ resembles a linear combination of translates of $(\partial_x \phi, 0)^T$. (See \cref{sec:proofs} for the construction of these eigenfunctions using Lin's method). This is the same for out-of-phase double pulses with $k_1$ odd, and is reversed for in-phase double pulses with $k_1$ odd and out-of-phase double pulses with $k_1$ even.}
 
 \begin{figure}[H]
 \centering
@@ -565,6 +574,24 @@ Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:
 \caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:inteigpred}
 \end{figure}
+
+\subsection{Timestepping}
+
+We perform numerical timestepping experiments to characterize the nature of the instability for multipulse solutions to \cref{NLS4}. Since the multipulses we constructed above are standing waves with frequency $\omega$, we rewrite \cref{NLS4} in a co-rotating frame as 
+\begin{equation}\label{NLS4rot}
+u_t = i\left( \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} - \omega u + \gamma |u|^2 u \right),
+\end{equation}
+so that the solutions of interest are equilibrium solutions to \cref{NLS4rot}. For the timestepping scheme, we use a split-step Fourier method \cite{Agrawal2013,Bogomolov2006} 
+\[
+u(x,t+h) = \calF^{-1} \left\{  e^{i h \left( (\beta_4/24) k^4 - (\beta_2/2)k^2 - \omega \right) } \calF\left( e^{ih |u(x,t)|^2} u(x,t) \right) \right\},
+\]
+where $h$ is the time step size, $k$ is the frequency in Fourier space, and the Fourier transform $\calF$ is implement using the fast Fourier transform.
+
+For double pulses, given the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the eigenfunction resembling copies of $(\partial_x \phi, 0)^T$, or the phase difference between the two peak, corresponding to the eigenfunction resembling copies of $(0, \phi)^T$. (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
+
+
+
+
 
 \section{Conclusions and future directions}
 
