@@ -585,34 +585,24 @@ so that the solutions of interest are equilibrium solutions to \cref{NLS4rot}. F
 \begin{equation}\label{eq:splitstep}
 u(x,t+h) = \calF^{-1} \left\{  e^{i h \left( (\beta_4/24) k^4 - (\beta_2/2)k^2 - \omega \right) } \calF\left( e^{ih |u(x,t)|^2} u(x,t) \right) \right\},
 \end{equation}
-where $h$ is the time step size, $k$ is the frequency in Fourier space, and the Fourier transform $\calF$ is implement using the fast Fourier transform.
+where $h$ is the time step size, $k$ is the frequency in Fourier space, and the Fourier transform $\calF$ is implemented using the fast Fourier transform.
 
-For double pulses, given the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the peak translation eigenfunction resembling copies of $(\partial_x \phi, 0)^T$, or the phase difference between the two peaks, corresponding to the peak rotation eigenfunction resembling copies of $(0, \phi)^T$. (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
+For double pulses, based on the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the eigenfunction $\tilde{v}(x))$, or in the phase difference between the two peaks,  corresponding to the eigenfunction $v(x)$). (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
 
-\cref{fig:timestep0pp} shows timestepping results for the first in-phase double pulse ($k_1 = 0)$. Since the peak translation eigenfunction corresponds to a pair of imaginary eigenvalues, when the two peaks are pulled apart, they oscillate briefly about the equilibrium distance before the structure loses stability (\cref{fig:timestep0pp}, top right). Since the peak rotation eigenfunction corresponds to a pair of real eigenvalues, when the two peaks are rotated in opposite directions, the phase difference between the peaks continues to grow (\cref{fig:timestep0pp}, bottom). \cref{fig:timestep1pp} shows timestepping results for the second in-phase double pulse ($k_1 = 1)$. Since the peak translation eigenfunction corresponds to a pair of real eigenvalues, when the two peaks are pulled apart, they separate immediately (\cref{fig:timestep1pp}, top right). Since the peak rotation eigenfunction corresponds to a pair of imaginary eigenvalues, when the two peaks are rotated in opposite directions, the phase difference between peaks briefly oscillates about 0 before the structure  loses stability  (\cref{fig:timestep1pp}, bottom). For in-phase double pulses with $k$ even, the timestepping results are similar to those in \cref{fig:timestep0pp}, and for in-phase double pulses with $k$ odd, the timestepping results are similar to those in \cref{fig:timestep1pp}. This is reversed for out-of-phase double pulses.
+\cref{fig:timestep0pp} shows timestepping results for the first and second in-phase double pulses. For $k_0 = 0$, $\lambda$ is real and $\tilde{\lambda}$ is imaginary. When the two peaks are pulled apart,  they oscillate briefly about the equilibrium position before the structure loses stability. When the two peaks are rotated in opposite directions, the phase difference between the peaks continues to grow. For $k_0 = 1$, $\lambda$ is imaginary and $\tilde{\lambda}$ is real. When the two peaks are pulled apart, they separate immediately. When the two peaks are rotated in opposite directions, the phase difference between peaks briefly oscillates about 0 before the structure loses stability. For in-phase double pulses with $k$ even, the timestepping results are similar to those in the left column of \cref{fig:timestep0pp}, and for in-phase double pulses with $k$ odd, the timestepping results are similar to those in the right column of. \cref{fig:timestep0pp}. This is reversed for out-of-phase double pulses.
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{cc}
-\includegraphics[width=8cm]{images/DP0ppwaterfall} &
-\includegraphics[width=8cm]{images/DP0ppstretchwaterfall} \\
-\includegraphics[width=8cm]{images/DP0ppphasewaterfall} &
-\includegraphics[width=6cm]{images/DP0ppphasedifference}
-\end{tabular}
-\caption{Timestepping results for the first in-phase double pulse ($k_1 = 0$). Upper left panel is evolution of unperturbed solution. Upper right panel is evolution of solution perturbed by increasing peak distance by $0.3680$ (10 grid points). Lower left panel is evolution of solution perturbed by rotating peaks to phase difference of $\pi/8$; the evolution of this phase difference is shown in the lower right panel. Time evolution by split-step Fourier method \cref{eq:splitstep} with time step $h = 0.001$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
-\label{fig:timestep0pp}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{ccc}
-\includegraphics[width=8cm]{images/DP1ppwaterfall} &
+\includegraphics[width=8cm]{images/DP0ppstretchwaterfall} &
 \includegraphics[width=8cm]{images/DP1ppstretchwaterfall} \\
-\includegraphics[width=8cm]{images/DP1ppphasewaterfall} &
+\includegraphics[width=8cm]{images/DP0ppphasewaterfall} &
+\includegraphics[width=8cm]{images/DP1ppphasewaterfall} \\
+\includegraphics[width=6cm]{images/DP0ppphasedifference} &
 \includegraphics[width=6cm]{images/DP1ppphasedifference}
 \end{tabular}
-\caption{Timestepping results for the second in-phase double pulse ($k_1 = 1$). Elements of figure are the same as in \cref{fig:timestep0pp}  }
-\label{fig:timestep1pp}
+\caption{Timestepping results for the first in-phase double pulse ($k_1 = 0$, left column) and the second in-phase double pulse ($k_1 = 1$, right column). Top row is evolution of solution perturbed by increasing inter-peak distance by $0.3680$ (10 grid points). Middle row is evolution of solution perturbed by rotating peaks in opposite directions to attain a phase difference of $\pi/8$; the evolution of this phase difference is shown in the bottom row. Time evolution by split-step Fourier method \cref{eq:splitstep} with time step $h = 0.001$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
+\label{fig:timestep0pp}
 \end{figure}
 
 \section{Conclusions and future directions}
