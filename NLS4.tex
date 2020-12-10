@@ -531,7 +531,7 @@ Arbitrary multi-pulses can similarly be constructed (\cref{fig:triplepulses}). A
 
 \subsection{Spectrum of double pulses}
 
-For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in-phase and out-of-phase double pulses, a pair of purely imaginary interaction eigenvalues $\pm \lambda_i$ and a pair of real interaction eigenvalues $\pm \lambda_r$. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
+For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in-phase and out-of-phase double pulses, a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
 
 \begin{figure}[H]
 \centering
@@ -552,7 +552,7 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \label{fig:doubleinternalmode}
 \end{figure}
 
-\revised{For the first in-phase double pulse ($k_1 = 0$), the eigenfunctions $v_r(x)$ and $v_i(x)$ corresponding to the real and imaginary interaction eigenvalue $\lambda_r$ and $\lambda_i$ (respectively) are shown in \cref{fig:doublevrvi}. For in-phase double pulses with $k_1$ even, $v_r(x)$ resembles a linear combination of translates of $(0, \phi)^T$, which we will call the peak rotation eigenfunction, and $v_i(x)$ resembles a linear combination of translates of $(\partial_x \phi, 0)^T$, which we will call the peak translation eigenfunction (see \cref{sec:proofs} for the construction of these eigenfunctions using Lin's method). These names refer to the behavior of the double pulse solution upon perturbation (see timestepping results below). This is the same for out-of-phase double pulses with $k_1$ odd, and is reversed for in-phase double pulses with $k_1$ odd and out-of-phase double pulses with $k_1$ even.}
+\revised{For a double pulse, let $\pm \lambda$ and $\pm \tilde{\lambda}$ be the interaction eigenvalues from \cref{corr:2pstab}, and let $v(x)$ and $\tilde{v}(x)$ be the corresponding eigenfunctions. The eigenfunction $v(x)$ resembles a linear combination of translates of $(0, \phi)^T$, and the eigenfunction $\tilde{v}(x)$ resembles a linear combination of translates of $(\partial_x \phi, 0)^T$ (\cref{fig:doublevrvi}).  (See \cref{sec:proofs} for the construction of these eigenfunctions using Lin's method). For in-phase double pulses, $\lambda$ is real and $\tilde{\lambda}$ is imaginary for $k_0$ even, and $\lambda$ is imaginary and $\tilde{\lambda}$ is real for $k_0$ odd. These are reversed for out-of-phase double pulses.}
 
 \begin{figure}[H]
 \centering
@@ -560,18 +560,18 @@ For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse so
 \includegraphics[width=8cm]{images/DP0ppvr} &
 \includegraphics[width=8cm]{images/DP0ppvi}
 \end{tabular}
-\caption{\revised{Eigenfunction $v_r(x)$ corresponding to $\lambda_r = 0.0891$ (left panel), and real and imaginary parts of eigenfunction $v_i(x)$ corresponding to $\lambda_i = 0.1098i$ (right panel) for first in-phase double pulse $(k_1 = 0)$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}}
+\caption{\revised{Eigenfunctions $v(x)$ (left panel) and $\tilde{v}(x)$ (right panel) for first in-phase double pulse $(k_1 = 0)$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}}
 \label{fig:doublevrvi}
 \end{figure}
 
-Finally, we verify the formulas for the interaction eigenvalues from \cref{corr:2pstab} by plotting the log of the relative error between the leading order term in \cref{inteigpred} and the eigenvalues computed by Matlab versus the pulse separation distance $X$ (\cref{fig:inteigpred}). 
+Finally, we verify the formulas for the interaction eigenvalues $\lambda$ and $\tilde{\lambda}$ from \cref{corr:2pstab} by plotting the log of the relative error between the leading order term in \cref{inteigpred} and the eigenvalues computed by Matlab versus the pulse separation distance $X$ (\cref{fig:inteigpred}). 
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{c}
 \includegraphics[width=8cm]{images/inteigpred.eps}
 \end{tabular}
-\caption{Log of the relative error for the eigenvalues $\lambda_\pm$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
+\caption{Log of the relative error for the eigenvalues $\lambda$ and $\tilde{\lambda}$ versus the pulse separation $X$ for the first five in-phase double pulses. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:inteigpred}
 \end{figure}
 
