@@ -114,7 +114,7 @@ nonlinear Schr\"{o}dinger equation \sep solitary waves \sep multi-pulse solution
 \end{frontmatter}
 
 \section{Introduction}
-It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the NLS soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. As better fibers were built, and technological advances led to the invention of photonic crystal fibers, that enabled the engineering of the dispersion resulting in new discoveries such as supercontinuum generation realized in regimes far from the NLS equation. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic solitons (PQS) \cite{BlancoPQS}; the term reflects that for this waveguide the leading order dispersion term is fourth order. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}, \revised{which is a version of the nonlinear Schr{\"o}dinger equation with cubic nonlinearity and both second and fourth order dispersion terms}.
+It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the NLS soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. \revised{Novel fiber designs and technological advances, which in particular led to the invention of the photonic crystal fiber (PCF) and waveguides on a chip, enabled the engineering of the chromatic dispersion resulting in new discoveries and dynamics beyond the NLS equation regime; most notably is the generation of supercontinuun in a PCF. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic optical solitons (PQS) o a chip \cite{BlancoPQS}. The term "quartic" indicates that for this waveguide, the leading order dispersion is fourth order}. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}, \revised{which is a version of the nonlinear Schr{\"o}dinger equation with cubic nonlinearity and both second and fourth order dispersion terms}.
 
  Our results presented here provide a more rigorous study of this general model, including for the first time the existence and spectral stability of multi-pulse solutions.
 
@@ -134,32 +134,36 @@ was recently investigated in \cite{Tam2020} in a study of the properties of soli
 \begin{equation}\label{PQSeq}
 i u_t + \frac{\beta_4}{24}u_{xxxx} + \gamma |u|^2 u = 0.
 \end{equation}
-Unlike ordinary NLS solitons, PQS have oscillatory, exponentially decaying tails. There has been much recent interest in PQS due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions was shown numerically in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation \cref{NLS4} in terms of the parameters $\beta_2$, $\beta_4$, and $\omega$ is discussed in \cite{Tam2020}.
+Unlike ordinary NLS solitons, PQS have oscillatory, exponentially decaying tails. There has been much recent interest in PQS due to the their discovery in experimental media by Blanco-Redondo et al. in 2016 \cite{BlancoPQS}. The existence and spectral stability of PQS solutions was shown numerically in \cite{Tam2019}, and the existence of solitary wave solutions to the more general equation \cref{NLS4} in terms of the parameters $\beta_2$, $\beta_4$, and $\omega$ is discussed in \cite{Tam2020}. \revised{We consider only the case $\beta_4 < 0$, which is the regime for which PQS exist \cite{Tam2019} and which is considered in the generalized model in \cite{Tam2020}}.
 
-Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$, satisfy the ODE 
+Real-valued, standing wave solutions, i.e. solutions of the form $e^{i \omega t} u(x)$ with $\omega > 0$, satisfy the ODE 
 \begin{equation}\label{standingwavereal}
 \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma u^3 - \omega u = 0,
 \end{equation}
-which is a rescaling of \cite[(7)]{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter free form by using the rescaling 
-\[
+which is a rescaling of \cite{champneys1998}. For PQS, equation \cref{standingwavereal} can be written in parameter free form by using the rescaling $
 u(x; \omega) = \sqrt{\frac{\omega}{\gamma}} \tilde{u}
 \left( \left(\frac{\omega}{|\beta_4|}\right)^{1/4}x \right)
-\]
+$
 to obtain the equation
 \begin{equation}\label{PQSparfree}
 -\frac{1}{24}\tilde{u}_{xxxx} + \tilde{u}^3 - \tilde{u} = 0.
+\end{equation} 
+We observe that the power or photon number of PQS scales as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical NLS solitons. \revised{For $\beta_4 < 0$, the more general rescaling \cite[Section VI]{Tam2020} 
+\begin{equation}\label{rescaling}
+U = \sqrt{\frac{\gamma}{\omega}} U, \quad
+X = \left( \frac{24 \omega}{|\beta_4|}\right)^{1/4} x
 \end{equation}
-We observe that the power or photon number of PQS scales as $\omega^{3/4}$ compared to the $\omega^{1/2}$ scaling of classical NLS solitons. A more general rescaling \cite[Section VI]{Tam2020} transforms equation \cref{standingwavereal} into the one-parameter equation
-\begin{equation}\label{NLS4onepar}
-\tilde{u}_{xxxx} + 2 \sigma \tilde{u}_{xx} +  \tilde{u} - |\tilde{u}|^2 \tilde{u} = 0,
+transforms equation \cref{standingwavereal} into the one-parameter equation
+\begin{equation}\label{eq:NLS4rescaled}
+U'''' + 2 \sigma U" +  U - U^3 = 0,
 \end{equation}
-where 
-\[
+where $U'$ denotes differentiation with respect to $X$}, and 
+\begin{equation}\label{eq:sigma}
 \sigma = \sqrt{\frac{3}{2 \omega |\beta_4| }}\beta_2
-\]
-is a non-dimensional parameter characterizing the relative strengths of the quadratic and quartic dispersion terms.
+\end{equation}
+is a non-dimensional parameter characterizing the relative strengths of the quadratic and quartic dispersion terms. In particular, $\sigma = 0$ for PQS.
 
-For ordinary NLS, an analytic solution can be obtained by the inverse scattering transform \cite{Zak72}. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has been obtained by Karlsson and H{\"o}{\"o}k \cite{KarllsonHook} when $\omega = 24 \beta_2^2 / 25 |\beta_4|$. \revised{We consider here only the case $\beta_4 < 0$, which is the regime for which PQS exist \cite{Tam2019} and which is considered in the generalized model in \cite{Tam2020}}.
+For ordinary NLS, an analytic solution can be obtained by the inverse scattering transform \cite{Zak72}. For $\beta_4 < 0$ and $\beta_2 < 0$, an analytic solution has been obtained by Karlsson and H{\"o}{\"o}k \cite{KarllsonHook} when $\omega = 24 \beta_2^2 / 25 |\beta_4|$, \revised{which corresponds to $\sigma = -5/4$ in \cref{eq:NLS4rescaled}}.
 
 \revised{
 \begin{remark}
@@ -191,30 +195,21 @@ The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
 \end{hypothesis}
 
-Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, this equation has the form $\calE'(u) + w u = 0$, which can be written as
-\begin{equation}\label{standingwaveeq2}
-\frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u - \omega u = 0.
-\end{equation}
-The following theorem gives criteria for the existence of real-valued solitary wave solutions to \cref{standingwaveeq2} in terms of the parameters $\beta_2$, $\beta_4$ and $\omega$. For the remainder of this paper, we will only consider $\beta_4 < 0$, since that is the physically relevant regime.
+Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, this equation has the form $\calE'(u) + w u = 0$. \revised{For real-valued solutions, this can be written in rescaled form as \cref{eq:NLS4rescaled}}. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
 
 \begin{theorem}\label{theorem:solitonexist}
-Let $\beta_4 < 0$, and define
-\begin{equation}\label{omegac}
-\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
-\end{equation}
-Then for either \revised{ (i) $\omega > \omega_c$ and $\beta_2 \in \R$, or (ii) $0 < \omega \leq \omega_c$ and $\beta_2 < 0$ }, 
-there exists a real-valued, symmetric, exponentially localized solution $\phi(x; \omega) \in H^2(\R) \cap C^5(\R)$ of the standing wave equation \cref{standingwaveeq2}. 
+For $\sigma < 1$, there exists a real-valued, symmetric, exponentially localized solution $\phi(x; \sigma) \in H^2(\R) \cap C^5(\R)$ of the rescaled standing wave equation \cref{eq:NLS4rescaled}.
 \begin{proof}
-\revised{The existence result follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional, and the proof uses the mountain pass lemma and the concentration-compactness principle. Since $\beta_4 < 0$, we write $\beta_4 = -|\beta_4|$, multiply equation \cref{standingwaveeq2} by $-24/|\beta_4|$, and rearrange to obtain
-\begin{equation}\label{standingwaveeqGroves}
-u_{xxxx} + \frac{12 \beta_2}{|\beta_4|}u_{xx} + \frac{24 \omega}{|\beta_4|}u = \frac{24 \gamma}{|\beta_4|} |u|^2 u,
-\end{equation}
-which is of the form considered in \cite{Groves1998} with $\mu = 12 \beta_2 / |\beta_4|$ and $c = -24 \omega/|\beta_4|$. The condition $c < 0$ is equivalent to $\omega > 0$, and the condition $\mu < 2 \sqrt{-c}$ is equivalent to $3 \beta_2/\sqrt{|\beta_4|} < \sqrt{6 \omega}$. For any $\beta_2 \in \R$, these are satisfied if $\omega > \omega_c \geq 0$. In addition, these are satisfied whenever $\beta_2 < 0$ and $\omega > 0$. Cases (i) and (ii) in the statement of the theorem divide the region of existence into two disjoint sets which have physical significance (see remark below)}. Exponential localization follows from the stable manifold theorem.
+\revised{The existence result follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional, and the proof uses the mountain pass lemma and the concentration-compactness principle. Equation \cref{eq:NLS4rescaled} is of this form with $c = -1$ and $\mu = 2 \sigma$, thus a solution exists for $\sigma < 1$. Exponential localization follows from the stable manifold theorem.}
 \end{proof}
 \end{theorem}
 
 \begin{remark}
-\revised{For $0 < \omega < \omega_c$ and $\beta_2 < 0$, the primary solitary wave solutions have exponentially decaying but non-oscillatory tails, and for $\omega > \omega_c$ and all $\beta_2$, the primary solitary wave solutions have tails which are exponentially decaying and oscillatory. (See \cite[Figure 2(a)]{Tam2020}; the frequency $\omega$ is denoted by $\mu$ in that paper).} It follows from \cite{Groves1998} that there exists a countably infinite family of distinct solitary-wave solutions, which are the multi-pulse solutions we will construct below. In addition, we note that for $\beta_2 = 0$, $\omega_c = 0$, thus PQS exist for all $\omega > 0$.
+\revised{For the original system \cref{standingwavereal}, the condition $\sigma < 1$ corresponds to either $\beta_2 \leq 0$ or $\beta_2 > 0$ and $\omega > \omega_c$, where 
+\begin{equation}\label{omegac}
+\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
+\end{equation}
+This divides the set of $(\omega, \beta_2)$ for which solutions exist into two disjoint regions. For $0 < \omega < \omega_c$ and $\beta_2 < 0$, the primary solitary wave solutions have exponentially decaying but non-oscillatory tails. For $\omega > \omega_c$ and all $\beta_2$, the primary solitary wave solutions have tails which are exponentially decaying and oscillatory. (See \cite[Figure 2(a)]{Tam2020}; the frequency $\omega$ is denoted by $\mu$ in that paper). In addition, we note that $\sigma = 0$ for PQS, thus PQS exist for all $\omega > 0$.} 
 \end{remark}
 
 \noi We make the following standard smoothness assumption (see, for example, \cite[Assumption 2]{Grillakis1987}) concerning the solutions $\phi(x; \omega)$ to \cref{standingwavereal}.
@@ -270,15 +265,15 @@ where
 \end{aligned}
 \end{equation}
 
-Under following additional hypothesis, which can be verified numerically, the kernel of $\calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4
+% Under following additional hypothesis, which can be verified numerically, the kernel of $\calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4
 
-\begin{hypothesis}$\tilde{M} \neq 0$, where 
-\end{hypothesis}
+% \begin{hypothesis}$\tilde{M} \neq 0$, where 
+% \end{hypothesis}
 
-We then have the following lemma.
+% We then have the following lemma.
 
-\begin{lemma}\label{lemma:Lphikernel}
-\end{lemma}
+% \begin{lemma}\label{lemma:Lphikernel}
+% \end{lemma}
 
 The spectrum of $\calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker \calL(\phi) - \lambda \calI$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $\calL(\phi)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
 \begin{align}\label{defL0}
@@ -589,7 +584,7 @@ where $h$ is the time step size, $k$ is the frequency in Fourier space, and the 
 
 For double pulses, based on the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the eigenfunction $\tilde{v}(x))$, or in the phase difference between the two peaks,  corresponding to the eigenfunction $v(x)$). (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
 
-\cref{fig:timestep0pp} shows timestepping results for the first and second in-phase double pulses. For $k_0 = 0$, $\lambda$ is real and $\tilde{\lambda}$ is imaginary. When the two peaks are pulled apart,  they oscillate briefly about the equilibrium position before the structure loses stability. When the two peaks are rotated in opposite directions, the phase difference between the peaks continues to grow. For $k_0 = 1$, $\lambda$ is imaginary and $\tilde{\lambda}$ is real. When the two peaks are pulled apart, they separate immediately. When the two peaks are rotated in opposite directions, the phase difference between peaks briefly oscillates about 0 before the structure loses stability. For in-phase double pulses with $k$ even, the timestepping results are similar to those in the left column of \cref{fig:timestep0pp}, and for in-phase double pulses with $k$ odd, the timestepping results are similar to those in the right column of. \cref{fig:timestep0pp}. This is reversed for out-of-phase double pulses.
+\cref{fig:timestep0pp} shows timestepping results for the first and second in-phase double pulses. For $k_0 = 0$, $\lambda$ is real and $\tilde{\lambda}$ is imaginary. When the two peaks are pulled apart,  they oscillate briefly about the equilibrium position before the structure loses stability. When the two peaks are rotated in opposite directions, the phase difference between the peaks continues to grow. For $k_0 = 1$, $\lambda$ is imaginary and $\tilde{\lambda}$ is real. When the two peaks are pulled apart, they separate immediately. When the two peaks are rotated in opposite directions, the phase difference between peaks briefly oscillates about 0 before the structure loses stability. For in-phase double pulses with $k$ even, the timestepping results are similar to those in the left column of \cref{fig:timestep0pp}, and for in-phase double pulses with $k$ odd, the timestepping results are similar to those in the right column of \cref{fig:timestep0pp}. This is reversed for out-of-phase double pulses.
 
 \begin{figure}[H]
 \centering
@@ -601,13 +596,15 @@ For double pulses, based on the eigenfunctions we computed in the previous secti
 \includegraphics[width=6cm]{images/DP0ppphasedifference} &
 \includegraphics[width=6cm]{images/DP1ppphasedifference}
 \end{tabular}
-\caption{Timestepping results for the first in-phase double pulse ($k_1 = 0$, left column) and the second in-phase double pulse ($k_1 = 1$, right column). Top row is evolution of solution perturbed by increasing inter-peak distance by $0.3680$ (10 grid points). Middle row is evolution of solution perturbed by rotating peaks in opposite directions to attain a phase difference of $\pi/8$; the evolution of this phase difference is shown in the bottom row. Time evolution by split-step Fourier method \cref{eq:splitstep} with time step $h = 0.001$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
+\caption{Timestepping results for the first in-phase double pulse ($k_1 = 0$, left column) and the second in-phase double pulse ($k_1 = 1$, right column). Top row is evolution of norm of solution perturbed by increasing inter-peak distance by $0.3680$ (10 grid points). Middle row is evolution of real part of solution perturbed by rotating peaks in opposite directions to attain a phase difference of $\pi/8$; the evolution of this phase difference is shown in the bottom row. Time evolution by split-step Fourier method \cref{eq:splitstep} with time step $h = 0.001$. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$.}
 \label{fig:timestep0pp}
 \end{figure}
 
 \section{Conclusions and future directions}
 
-In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification that the primary soliton is orbitally stable. We then constructed $n$-pulse solutions by splicing together multiple copies of the primary pulse, and reduced the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. For future research, we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}. We expect that these results would hold for these higher order variants, and that all multi-pulse solutions would be unstable. We could also study generalizations to other nonlinearities. It would be interesting to perform numerical time-stepping starting with perturbed multi-pulses to investigate how the instability evolves in time. Although all multi-pulse solutions to this fourth order model are unstable, this equation represents an idealization of the experimental situation since energy is always conserved. A more realistic model might incorporate gains and losses of energy in the laser cavity, and it is possible that stable multi-pulses could exist in such a scenario.
+In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification that the primary soliton is orbitally stable. \revised{Our theoretical results compare well with experimental pulses reported in \cite{BlancoPQS} on two key aspects: From figure 2b in\cite{BlancoPQS} (for power 0.7W), (i) the flat phase across the pulse is consistent with the theoretical ansatz leading to equation (3); (ii) oscillations observed in the experimental frequency domain are consistent with the theoretical proof of oscillatory tails. To extend the model close to experiments, would require adding linear and nonlinear losses. A more recent experimental work on a laser setting \cite{Blanco_laser} overcome losses. Here the authors demonstrate that the energy of these pulses is proportional to the third power of the inverse pulse duration, which is consistent to the scaling we use leading to equation 5}   
+
+We then constructed $n$-pulse solutions by splicing together multiple copies of the primary pulse, and reduced the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. Under a mild assumption, which can be verified numerically, we showed that all multi-pulse solutions are unstable. \revised{To our knowledge, the are no experimental results on $n$-solitons. It would be interesting to see if future work on lasers \cite{Blanco_laser} could produce $n$-solitons with cavity round-trip separation that would allow our instability predictions to be verified}. Furthermore, in future research we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}. We expect that these results would hold for these higher order variants, and that all multi-pulse solutions would be unstable. We could also study generalizations to other nonlinearities. Although all multi-pulse solutions to this fourth order model are unstable, this equation represents an idealization of the experimental situation since energy is always conserved. A more realistic model might incorporate gains and losses of energy in the laser cavity, and it is possible that stable multi-pulses could exist in such a scenario.
 
 \section{Proof of stability results}\label{sec:proofs}
 
