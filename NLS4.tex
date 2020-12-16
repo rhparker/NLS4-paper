@@ -218,22 +218,22 @@ which are the charge and momentum, respectively. We make the following hypothesi
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
 \end{hypothesis}
 
-Standing waves are solutions of the form $T_1(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. \revised{For real-valued solutions, this can be written in rescaled form as \cref{eq:NLS4rescaled}}. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
+Standing waves are solutions of the form $T_1(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
 
 \begin{theorem}\label{theorem:solitonexist}
-For $\sigma < 1$, there exists a real-valued, symmetric, exponentially localized solution $U_0(X; \sigma) \in H^2(\R) \cap C^5(\R)$ of the rescaled standing wave equation \cref{eq:NLS4rescaled}. \revised{The linearization $\calH = \partial_X^4 + 2 \sigma \partial_X^2 + I - 3 U_0^2$ of \cref{eq:NLS4rescaled} about $U_0$ has exactly one negative eigenvalue with an even eigenfunction and a simple kernel with the odd eigenfunction $U_0'(X; \sigma)$.}
-
+There exists a real-valued, symmetric, exponentially localized solitary wave solution $\phi(x; \omega) \in H^2(\R) \cap C^5(\R)$ to \cref{standingwavereal} if either (i) $\beta_2 \leq 0$, or (ii) $\beta_2 > 0$ and $\omega > \omega_c$, where 
+\begin{equation}\label{omegac}
+\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
+\end{equation}
+\revised{The linearization $\calH = -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2$ of \cref{standingwavereal} about $\phi$ has exactly one negative eigenvalue with an even eigenfunction and a simple kernel with the odd eigenfunction $\partial_x \phi(x; \omega)$.}
 \begin{proof}
-\revised{The existence result is similar to \cite[Theorem 2.1(i)]{Pelinovsky2007} and follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional $\calJ(U)$, and the proof uses the mountain pass lemma and the concentration-compactness principle. Equation \cref{eq:NLS4rescaled} is of this form with $c = -1$, $\mu = 2 \sigma$, thus a solution exists for $\sigma < 1$. Exponential localization follows from the stable manifold theorem. The results for the linearization $\calH$ follow from \cite[Theorem 2.1(ii)]{Pelinovsky2007}.}
+\revised{The existence result is similar to \cite[Theorem 2.1(i)]{Pelinovsky2007},  and follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional $\calJ(U)$, and the proof uses the mountain pass lemma and the concentration-compactness principle. Changing variables using \cref{rescaling}, equation \cref{eq:NLS4rescaled} is of this form with $c = -1$ and $\mu = 2 \sigma$, thus a solution $U_0(x)$ exists for $\sigma < 1$. It follows from the proof of \cite[Theorem 2.1(ii)]{Pelinovsky2007} that the linearization $\partial_X^4 + 2 \sigma \partial_X^2 + I - 3 U_0^2$ of \cref{eq:NLS4rescaled} about $U_0$ has exactly one negative eigenvalue with an even eigenfunction and a simple kernel with the odd eigenfunction $U_0'$. Exponential localization follows from the stable manifold theorem. The result follows upon reversing the change of variables \cref{rescaling}.
+}
 \end{proof}
 \end{theorem}
 
 \begin{remark}\label{remark:soliton}
-\revised{For the original system \cref{standingwavereal}, there exists a symmetric, solitary wave solution $\phi(x; \omega)$ if either $\beta_2 \leq 0$ or $\beta_2 > 0$ and $\omega > \omega_c$, where 
-\begin{equation}\label{omegac}
-\omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
-\end{equation}
-This divides the set of $(\omega, \beta_2)$ for which solutions exist into two disjoint regions. For $0 < \omega < \omega_c$ and $\beta_2 < 0$, the primary solitary wave solutions have exponentially decaying but non-oscillatory tails. For $\omega > \omega_c$ and all $\beta_2$, the primary solitary wave solutions have tails which are exponentially decaying and oscillatory. (See \cite[Figure 2(a)]{Tam2020}; the frequency $\omega$ is denoted by $\mu$ in that paper). In addition, we note that $\sigma = 0$ for PQS, thus PQS exist for all $\omega > 0$.} 
+\revised{The set of $(\omega, \beta_2)$ for which solutions to \cref{standingwavereal} exist can be divided into two disjoint regions. For $0 < \omega < \omega_c$ and $\beta_2 < 0$, the primary solitary wave solutions have exponentially decaying but non-oscillatory tails. For $\omega > \omega_c$ and all $\beta_2$, the primary solitary wave solutions have tails which are exponentially decaying and oscillatory. See \cite[Figure 2(a)]{Tam2020} (the frequency $\omega$ is denoted by $\mu$ in that paper). In addition, we note that $\sigma = 0$ for PQS, thus PQS exist for all $\omega > 0$.} 
 \end{remark}
 
 \noi We make the following standard smoothness assumption (see, for example, \cite[Assumption 2]{Grillakis1987}) concerning the solutions $\phi(x; \omega)$ to \cref{standingwavereal}.
@@ -242,7 +242,7 @@ This divides the set of $(\omega, \beta_2)$ for which solutions exist into two d
 The map $\omega \mapsto \phi(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $\phi(x; \omega)$ exists.
 \end{hypothesis}
 
-Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist} and \cref{remark:soliton}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator \revised{$J \calL(\phi)$, where $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$ is given by
+Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator \revised{$J \calL(\phi)$, where $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$ is given by
 \begin{align}\label{defLphi}
 \calL(\phi) = 
 \begin{pmatrix}
@@ -347,7 +347,7 @@ which we obtain by multiplying \cref{standingwavereal} by $u_x$ and integrating 
 \[
 p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
 \]
-which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails, with the frequency of oscillations approximately equal to $b$. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. 
+which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$, \revised{where $\omega_c$ is defined in \cref{theorem:solitonexist}}. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails, with the frequency of oscillations approximately equal to $b$. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. 
 
 \begin{theorem}\label{theorem:multiexist}
 Assume \cref{hyp:wp} and \cref{hyp:smoothmap}, and fix $\beta_4 < 0$ and $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
