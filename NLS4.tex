@@ -257,7 +257,7 @@ and
 \calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2.
 \end{align*}
 
-Since the linear operator $\calH$ from \cref{theorem:solitonexist} is the same as $\calL^+(\phi)$ after applying the change of variables \cref{rescaling}, $\calL^+(\phi)$ has a single negative eigenvalue and a simple kernel with eigenfunction $\partial_x \phi$. It is straightforward to verify that $\calL^-(\phi) \phi = 0$. We make the following hypothesis concerning the spectrum of $\calL^-(\phi)$.
+Both $\calL^-(\phi)$ and $\calL^+(\phi)$ are self-adjoint, thus their spectrum is real. Since the linear operator $\calH$ from \cref{theorem:solitonexist} is the same as $\calL^+(\phi)$ after applying the change of variables \cref{rescaling}, $\calL^+(\phi)$ has a single negative eigenvalue and a simple kernel with eigenfunction $\partial_x \phi$. It is straightforward to verify that $\calL^-(\phi) \phi = 0$. We make the following hypothesis concerning the spectrum of $\calL^-(\phi)$.
 
 \begin{hypothesis}\label{hyp:Lminusspec}
 The operator $\calL^-(\phi)$ has no negative eigenvalue and has a simple kernel with eigenfunction $\phi$.
@@ -507,6 +507,17 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \label{fig:PQS}
 \end{figure} 
 
+The spectrum of the linear operators $\calL^+(\phi)$ and $\calL^-(\phi)$ is shown in \cref{fig:Lpmspec}, which confirms the results of \ref{theorem:solitonexist} and validates \cref{hyp:Lminusspec}. The point spectrum of $\calL^-(\phi)$ contains an additional positive eigenvalue which does not affect the results above. In addition, we can verify that $M > 0$ and $\tilde{M} > 0$ from \cref{hyp:Mcond} from which it follows by \cref{lemma:stability} that the primary solitary wave $\phi$ is orbitally stable.
+\begin{figure}[H]
+\centering
+\begin{tabular}{c}
+\includegraphics[width=8cm]{images/Lplusspec.pdf}\\
+\includegraphics[width=8cm]{images/Lminusspec.pdf}
+\end{tabular}
+\caption{Point spectrum (red dots) and essential spectrum (blue open circles) of $\calL^+(\phi)$ (top) and $\calL^-(\phi)$ (bottom) for PQS solution to \cref{standingwavereal}. $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$. For these parameters, the point spectrum of $\calL^+(\phi)$ contains an additional internal mode eigenvalue just to the left of the essential spectrum border, which is not shown.}
+\label{fig:Lpmspec}
+\end{figure}  
+
 To determine the spectrum of the linearization about the primary pulse, we construct the linear operator $J \calL(\phi)$ using Fourier spectral differentiation matrices \revised{with periodic boundary conditions} and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig} (\cref{fig:PQSspec}, left panel). \revised{Since the spectral problem is posed on a periodic domain, the essential spectrum is discrete. It is a finite set of points in this case since spatial discretization approximates the eigenvalue problem \cref{multieig} with an $2N \times 2N$ matrix equation, where $N$ is the number of grid points.} We also note the presence of a pair of internal mode eigenvalues on the imaginary axis.  
 
 \begin{figure}[H]
@@ -518,8 +529,6 @@ To determine the spectrum of the linearization about the primary pulse, we const
 \caption{Spectrum of pure quartic solitary wave (left panel), $\beta_2 = 0$, $\beta_4 = -1$, $\omega = 1$, and $\gamma = 1$. \revised{Spectrum comprises essential spectrum (blue open circles), internal mode eigenvalues (magenta stars), and kernel eigenvalue with geometric multiplicity 2 and algebraic multiplicity 4 (black X).} Eigenfunction corresponding to internal mode eigenvalue (right panel).}
 \label{fig:PQSspec}
 \end{figure} 
-
-For the primary solitary wave solutions, we can compute the stability criterion \cref{ddoubleprime} from \cite{Grillakis1987}. In all cases, $M = d''(\omega) > 0$, \revised{thus primary pulse solution is orbitally stable by \cite[Theorem 3.5]{Grillakis1987}}. In addition, numerical computation suggests that $\tilde{M} > 0$.
 
 \subsection{Construction of multipulses}
 
