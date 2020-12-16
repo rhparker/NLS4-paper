@@ -115,9 +115,9 @@ nonlinear Schr\"{o}dinger equation \sep solitary waves \sep multi-pulse solution
 \end{frontmatter}
 
 \section{Introduction}
-It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the NLS soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. \revised{Novel fiber designs and technological advances, which in particular led to the invention of the photonic crystal fiber (PCF) and waveguides on a chip, enabled the engineering of the chromatic dispersion resulting in new discoveries and dynamics beyond the NLS equation regime; most notably is the generation of supercontinuun in a PCF. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic optical solitons (PQS) o a chip \cite{BlancoPQS}. The term "quartic" indicates that for this waveguide, the leading order dispersion is fourth order}. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}, \revised{which is a version of the nonlinear Schr{\"o}dinger equation with cubic nonlinearity and both second and fourth order dispersion terms}.
+It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak72} of the integrability of the nonlinear Schr\"odinger equation (NLS) and the corresponding soliton solutions, and 40 years since the first experimental demonstration by Mollenauer, Stolen and Gordon of optical solitons propagating in fibers \cite{Moll80}. At its most fundamental level, the NLS soliton represents the balance of chromatic second order dispersion and the Kerr self-focusing nonlinearity. The robustness of the soliton opened up new directions in both theoretical and experimental fronts that continue to this day. \revised{Novel fiber designs and technological advances, which in particular led to the invention of the photonic crystal fiber (PCF) and waveguides on a chip, enabled the engineering of the chromatic dispersion resulting in new discoveries and dynamics beyond the NLS equation regime; most notably is the generation of supercontinuun in a PCF. In this vein, recent experimental work in silicon photonic crystal waveguides has produced for the first time what is now known as pure quartic optical solitons (PQS) on a chip \cite{BlancoPQS}. The term ``quartic'' indicates that for this waveguide, the leading order dispersion is fourth order}. In \cite{Tam2019}, spectral stability of PQS was shown numerically, as well as evolution into PQS from Gaussian initial conditions, and this is extended to a more general model in \cite{Tam2020}, \revised{which is a version of the nonlinear Schr{\"o}dinger equation with cubic nonlinearity and both second and fourth order dispersion terms}.
 
- Our results presented here provide a more rigorous study of this general model, including for the first time the existence and spectral stability of multi-pulse solutions.
+Our results presented here provide a more rigorous study of this general model, including for the first time the existence and spectral stability of multi-pulse solutions.
 
 \revised{Multi-pulses, which are multi-modal solitary waves resembling multiple, well-separated copies of a single solitary wave, have been an object of mathematical interest since at least the early 1980s, where Evans, Fenichel, and Faroe proved the existence of a double pulse traveling wave in nerve axon equations \cite{Evans1982}. Existence of multi-pulse solutions to a family of fourth-order, reversible Hamiltonian equations was shown in \cite{Buffoni1996} using the dynamics on the Smale horseshoe set, and a spatial dynamics approach to the same problem is found in \cite{SandstedeStrut}. Of particular interest is the stability of these multi-pulse structures in the case where the primary solitary wave is orbitally stable, and a first step is to study the spectrum of the linearization of the the underlying PDE about these solutions. In general, each eigenvalue in the spectrum of the primary pulse will give rise to a finite set of nearby eigenvalues in the spectrum of the multi-pulse \cite{Alexander1990,Sandstede1998}. Since these result from nonlinear interactions between the tails of neighboring pulses, we call them interaction eigenvalues. If the underlying PDE admits a continuous symmetry such as translation invariance, the spectrum of the primary pulse will contain an eigenvalue at the origin. If one of of interaction eigenvalues for an associated multi-pulse acquires a positive real part, the multi-pulse will be unstable. As long as the essential spectrum does not enter the right half-plane, spectral stability of multi-pulses is determined by these interaction eigenvalues.} 
 
@@ -350,7 +350,7 @@ p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
 which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails, with the frequency of oscillations approximately equal to $b$. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. 
 
 \begin{theorem}\label{theorem:multiexist}
-Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}, and fix $\beta_4 < 0$ and $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
+Assume \cref{hyp:wp} and \cref{hyp:smoothmap}, and fix $\beta_4 < 0$ and $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
 \begin{compactenum}[(i)]
 \item $n \geq 2$
 \item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$, with at least one of the $k_j \in \{0, 1 \}$
@@ -430,7 +430,7 @@ has two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) =
 The following theorem, which is analogous to the results in \cite[Section 3.4]{Manukian}, reduces the problem of locating the eigenvalues of $J \calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
 
 \begin{theorem}\label{th:blockmatrix}
-Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}. Let $U(x)$ be the primary homoclinic orbit from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
+Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, \cref{hyp:Lminusspec}, and \cref{hyp:Mcond}. Let $U(x)$ be the primary homoclinic orbit from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
 \begin{equation}\label{blockmatrixcond}
 E(\lambda) = \det S(\lambda) = 0,
 \end{equation}
@@ -456,45 +456,40 @@ where
 \begin{align*}
 a_i &= \theta_i \theta_{i+1} \langle \Psi(X_i), U(-X_i) \rangle,
 \end{align*}
-and $\Psi(x)$ is defined by \cref{defPsi}. The constants $M$ and $\tilde{M}$ are given by
-\begin{align*}
-M &= \int_{-\infty}^\infty \phi(x) \partial_\omega \phi(x) dx = d''(\omega) > 0, \quad
-\tilde{M} = \int_{-\infty}^\infty \partial_x \phi(x) z(x) dx,
-\end{align*}
-where $z(x)$ is defined in \cref{sec:setup} after \cref{kerLpmrelations}. The remainder term $R(\lambda)$ is analytic in $\lambda$ and has uniform bound
+$\Psi(x)$ is defined by \cref{defPsi}, and the constants $M$ and $\tilde{M}$ are defined in \cref{hyp:Mcond}. The remainder term $R(\lambda)$ is analytic in $\lambda$ and has uniform bound
 \[
 |R(\lambda)| \leq C\left( |\lambda|(|\lambda| + e^{-\alpha X_{\min}})^2 + e^{-(2 \alpha + \gamma)X_{\min} }) \right),
 \]
 where $\gamma > 0$.
 \end{theorem}
 
-If $\tilde{M} > 0$, which is supported by numerical computation, then all multi-pulse solutions are unstable by the following corollary.
+The interaction eigenvalues can be computed using the eigenvalues of the matrix $A$ from \cref{th:blockmatrix}. It follows from this theorem and \cref{hyp:Mcond} that all multi-pulse solutions are unstable.
 
 \begin{corollary}\label{corr:multiunstable}
-Let $U_n(x)$ be a n-pulse constructed using \cref{theorem:multiexist}. Then there are $2(n-1)$ pairs of interaction eigenvalues $\lambda_1, \dots \lambda_{n-1}$ and $\tilde{\lambda}_1, \dots \tilde{\lambda}_{n-1}$, given by
+Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_n(x)$ be a n-pulse constructed using \cref{theorem:multiexist}. Then there are $2(n-1)$ pairs of interaction eigenvalues $\lambda_1, \dots \lambda_{n-1}$ and $\tilde{\lambda}_1, \dots \tilde{\lambda}_{n-1}$, given by
 \begin{equation}\label{inteigs}
 \begin{aligned}
 \lambda_i &= \sqrt{\frac{\mu_i}{M}} + \mathcal{O}\left( e^{-(2 \alpha + \gamma)X_{\min} } \right) && i = 1, \dots, n-1 \\
 \tilde{\lambda}_i &= \sqrt{-(a^2 + b^2) \frac{\mu_i}{\tilde{M}}} + \mathcal{O}\left( e^{-(2 \alpha + \gamma)X_{\min} } \right) && i = 1, \dots, n-1,
 \end{aligned}
 \end{equation}
-where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. If $\tilde{M} > 0$, then one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues.
+where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. One of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues.
 \end{corollary}
 
 Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$.
 
 \begin{corollary}\label{corr:2pstab}
-Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $\theta_1, \theta_2$. Then there are four interaction eigenvalues associated with $U_2(x)$, which are, to leading order, given by
+Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $\theta_1, \theta_2$. Then there are four interaction eigenvalues associated with $U_2(x)$, which are, to leading order, given by
 \begin{equation}\label{inteigpred}
 \begin{aligned}
 \lambda &= \pm \sqrt{ \frac{2 a_1}{M} }, \quad
 \tilde{\lambda} = \pm \sqrt{ \frac{-2 (a^2 + b^2) a_1}{\tilde{M}} },
 \end{aligned}
 \end{equation}
-where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. If $\tilde{M} > 0$, then one pair is real and one pair is purely imaginary.
+where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. One pair is real and one pair is purely imaginary.
 \end{corollary}
 
-\begin{remark}In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, the 2-pulse will have two pairs of internal mode eigenvalues. If $\tilde{M} > 0$, the 2-pulse is unstable, and these internal mode eigenvalues have no additional effect on stability.
+\begin{remark}In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, the 2-pulse will have two pairs of internal mode eigenvalues. Since the 2-pulse is unstable, these internal mode eigenvalues have no additional effect on stability.
 \end{remark}
 
 \section{Numerical results}
@@ -609,7 +604,7 @@ u(x,t+h) = \calF^{-1} \left\{  e^{i h \left( (\beta_4/24) k^4 - (\beta_2/2)k^2 -
 \end{equation}
 where $h$ is the time step size, $k$ is the frequency in Fourier space, and the Fourier transform $\calF$ is implemented using the fast Fourier transform.
 
-For double pulses, based on the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the eigenfunction $\tilde{v}(x))$, or in the phase difference between the two peaks,  corresponding to the eigenfunction $v(x)$). (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
+For double pulses, based on the eigenfunctions we computed in the previous section, we expect to see perturbations evolve either in the distance between the two peaks, corresponding to the eigenfunction $\tilde{v}(x)$, or in the phase difference between the two peaks, corresponding to the eigenfunction $v(x)$. (See \cite[Figure 9]{Pelinovsky2007} for timestepping results for double pulses in the 5th order KdV equation; in that case, there is a single continuous symmetry in the underlying system, and perturbations evolve in the distance between the two peaks).
 
 \cref{fig:timestep0pp} shows timestepping results for the first and second in-phase double pulses. For $k_0 = 0$, $\lambda$ is real and $\tilde{\lambda}$ is imaginary. When the two peaks are pulled apart,  they oscillate briefly about the equilibrium position before the structure loses stability. When the two peaks are rotated in opposite directions, the phase difference between the peaks continues to grow. For $k_0 = 1$, $\lambda$ is imaginary and $\tilde{\lambda}$ is real. When the two peaks are pulled apart, they separate immediately. When the two peaks are rotated in opposite directions, the phase difference between peaks briefly oscillates about 0 before the structure loses stability. For in-phase double pulses with $k$ even, the timestepping results are similar to those in the left column of \cref{fig:timestep0pp}, and for in-phase double pulses with $k$ odd, the timestepping results are similar to those in the right column of \cref{fig:timestep0pp}. This is reversed for out-of-phase double pulses.
 
@@ -723,7 +718,7 @@ which we write in matrix form as in the statement of the theorem.
 
 \subsection{Proof of Corollary \ref{corr:multiunstable} and Corollary \ref{corr:2pstab}}
 
-For \cref{corr:multiunstable}, let $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ be the eigenvalues of $A$, which are real and distinct as in the proof of \cite[Theorem 5]{Parker2020}. Following the steps in that proof and using the rescaling in \cite[Theorem 3]{Sandstede1998}, there are $2(n-1)$ pairs of interaction eigenvalues, given by \cref{inteigs}, which are either real or purely imaginary by Hamiltonian symmetry. Since $M > 0$ by \cref{hyp:dccpos}, if $\tilde{M} > 0$ as well, then one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary. \cref{corr:2pstab} is the specific case $n = 2$, where the nonzero eigenvalue of $A$ can be computed directly.
+For \cref{corr:multiunstable}, let $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ be the eigenvalues of $A$, which are real and distinct as in the proof of \cite[Theorem 5]{Parker2020}. Following the steps in that proof and using the rescaling in \cite[Theorem 3]{Sandstede1998}, there are $2(n-1)$ pairs of interaction eigenvalues, given by \cref{inteigs}, which are either real or purely imaginary by Hamiltonian symmetry. Since $M > 0$ and $\tilde{M} > 0$ by \cref{hyp:Mcond}, one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary. \cref{corr:2pstab} is the specific case $n = 2$, where the nonzero eigenvalue of $A$ can be computed directly.
 
 \paragraph{Acknowledgments}
 
