@@ -74,6 +74,7 @@
 \def\calQ{{\mathcal Q}}
 \def\calL{{\mathcal L}}
 \def\calI{{\mathcal I}}
+\def\calJ{{\mathcal J}}
 \def\calF{{\mathcal F}}
 
 \DeclareMathOperator{\spn}{span}
@@ -220,14 +221,15 @@ For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, wh
 Standing waves are solutions of the form $T_1(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. \revised{For real-valued solutions, this can be written in rescaled form as \cref{eq:NLS4rescaled}}. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
 
 \begin{theorem}\label{theorem:solitonexist}
-For $\sigma < 1$, there exists a real-valued, symmetric, exponentially localized solution $\phi(x; \sigma) \in H^2(\R) \cap C^5(\R)$ of the rescaled standing wave equation \cref{eq:NLS4rescaled}.
+For $\sigma < 1$, there exists a real-valued, symmetric, exponentially localized solution $U_0(X; \sigma) \in H^2(\R) \cap C^5(\R)$ of the rescaled standing wave equation \cref{eq:NLS4rescaled}. \revised{The linearization $\calH = \partial_X^4 + 2 \sigma \partial_X^2 + I - 3 U_0^2$ of \cref{eq:NLS4rescaled} about $U_0$ has exactly one negative eigenvalue with an even eigenfunction and a simple kernel with the odd eigenfunction $U_0'(X; \sigma)$.}
+
 \begin{proof}
-\revised{The existence result follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional, and the proof uses the mountain pass lemma and the concentration-compactness principle. Equation \cref{eq:NLS4rescaled} is of this form with $c = -1$ and $\mu = 2 \sigma$, thus a solution exists for $\sigma < 1$. Exponential localization follows from the stable manifold theorem.}
+\revised{The existence result is similar to \cite[Theorem 2.1(i)]{Pelinovsky2007} and follows from \cite{Groves1998}, in which it is shown that a homoclinic orbit solution to the 4th order nonlinear ODE $r'''' + \mu r'' - cr = f(r, r', r'')$ exists when $c < 0$ and $\mu < 2 \sqrt{-c}$. (The required form of $f$ is given in \cite{Groves1998}). The homoclinic orbit is a critical point of an energy functional $\calJ(U)$, and the proof uses the mountain pass lemma and the concentration-compactness principle. Equation \cref{eq:NLS4rescaled} is of this form with $c = -1$, $\mu = 2 \sigma$, thus a solution exists for $\sigma < 1$. Exponential localization follows from the stable manifold theorem. The results for the linearization $\calH$ follow from \cite[Theorem 2.1(ii)]{Pelinovsky2007}.}
 \end{proof}
 \end{theorem}
 
-\begin{remark}
-\revised{For the original system \cref{standingwavereal}, the condition $\sigma < 1$ corresponds to either $\beta_2 \leq 0$ or $\beta_2 > 0$ and $\omega > \omega_c$, where 
+\begin{remark}\label{remark:soliton}
+\revised{For the original system \cref{standingwavereal}, there exists a symmetric, solitary wave solution $\phi(x; \omega)$ if either $\beta_2 \leq 0$ or $\beta_2 > 0$ and $\omega > \omega_c$, where 
 \begin{equation}\label{omegac}
 \omega_c = \frac{3}{2} \frac{\beta_2^2}{|\beta_4|}.
 \end{equation}
@@ -240,22 +242,7 @@ This divides the set of $(\omega, \beta_2)$ for which solutions exist into two d
 The map $\omega \mapsto \phi(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $\phi(x; \omega)$ exists.
 \end{hypothesis}
 
-% Define the scalar
-% \begin{equation}
-% d(\omega) = \calE(\phi(\omega)) - \omega\calQ(\phi(\omega)).
-% \end{equation}
-% By \cite[(2.21)]{Grillakis1987},
-% \begin{align}\label{ddoubleprime}
-% d''(\omega) = \langle \calQ'(\phi(x; \omega)), \partial_\omega \phi(x; \omega) \rangle
-% = \int_{-\infty}^\infty \phi(x; \omega) \partial_\omega \phi(x; \omega) dx,
-% \end{align}
-% where $\partial_\omega \phi(x; \omega)$ is well-defined by \cref{hyp:smoothmap}. By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $\phi(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity can be computed numerically, and we take this stability criterion as a hypothesis.
-
-% \begin{hypothesis}\label{hyp:dccpos}
-% For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists, $d''(\omega) > 0$.
-% \end{hypothesis}
-
-Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$, given by
+Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist} and \cref{remark:soliton}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator \revised{$J \calL(\phi)$, where $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$ is given by
 \begin{align}\label{defLphi}
 \calL(\phi) = 
 \begin{pmatrix}
@@ -263,50 +250,68 @@ Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the pr
 -\calL^+(\phi) & 0
 \end{pmatrix},
 \end{align}
-where
+}
+and
 \begin{align*}
 \calL^-(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - \gamma \phi^2 \\
 \calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2.
 \end{align*}
 
-\revised{Since the PDE \cref{NLS4} has two continuous symmetries (gauge symmetry and translation invariance), and each symmetry corresponds to a kernel eigenvalue for the PDE (and vice versa),  there are exactly two eigenfunctions to \cref{defLphi} with eigenvalue 0 for the linearization about any solution $\phi$.} It is straightforward to verify that 
-\begin{equation}\label{kerLpmrelations}
-\begin{aligned}
-\calL^-(\phi) \phi &= 0 \\
-\calL^+(\phi) \partial_x \phi &= 0 \\
-\calL^+(\phi)(-\partial_\omega \phi) &= \phi.
-\end{aligned}
-\end{equation}
-\revised{By substituting $\phi(\cdot + s)$ into \cref{NLS4}, differentiating with respect to $s$, and taking $s \rightarrow 0$, we can verify that $\calL^+(\phi) \partial_x \phi = 0$ corresponds to translation invariance. Similarly, $\calL^-(\phi) \phi = 0$ corresponds to gauge invariance. Since the PDE \cref{NLS4} has only two continuous symmetries, $\ker \calL^-(\phi) = \spn\{\phi\}$ and $\ker \calL^+(\phi) = \spn\{\partial_x \phi\}$.} Furthermore, since $\calL^-(\phi)$ is self-adjoint and $\phi' \perp \ker \calL^-(\phi)$, there exists a function $z$ such that $\calL^-(\phi) z = \phi'$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. \revised{Thus $\calL(\phi)$ has a kernel with geometric multiplicity 2 and algebraic multiplicity at least 4, and the corresponding eigenfunctions and generalized eigenfuncions are given by}
+Since the linear operator $\calH$ from \cref{theorem:solitonexist} is the same as $\calL^+(\phi)$ after applying the change of variables \cref{rescaling}, $\calL^+(\phi)$ has a single negative eigenvalue and a simple kernel with eigenfunction $\partial_x \phi$. It is straightforward to verify that $\calL^-(\phi) \phi = 0$. We make the following hypothesis concerning the spectrum of $\calL^-(\phi)$.
+
+\begin{hypothesis}\label{hyp:Lminusspec}
+The operator $\calL^-(\phi)$ has no negative eigenvalue and has a simple kernel with eigenfunction $\phi$.
+\end{hypothesis}
+
+This hypothesis is proved in \cite{Natali2015} for a specific form of \cref{NLS4} where an exact solution is known for a soliton that does not have oscillatory tails. It follows that the kernel of $J \calL$ has geometric multiplicity 2. We can additionally verify that $\calL^+(\phi)(-\partial_\omega \phi) = \phi$. Since $\calL^-(\phi)$ is self-adjoint, $\ker \calL^-(\phi) = \spn\{\phi\}$ by \cref{hyp:Lminusspec}, thus $\phi \perp \ker \calL^-(\phi)$, there exists a function $z$ such that $\calL^-(\phi) z = \partial_x \phi$. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. It follows that
 \begin{equation}\label{Lphikernel}
 \begin{aligned}
-\calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, \quad
-\calL(\phi)\begin{pmatrix} \partial_\omega \phi \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\ \phi \end{pmatrix} \\
-\calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, \quad
-\calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix}.
+J \calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, \quad
+J \calL(\phi)\begin{pmatrix} \partial_\omega \phi \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\ \phi \end{pmatrix} \\
+J \calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, \quad
+J \calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix},
 \end{aligned}
 \end{equation}
+thus the kernel of $J \calL(\phi)$ has algebraic multiplicity at least 4. To show that there are no more generalized eigenfunctions in the kernel of $J \calL(\phi)$, we will need one additional hypothesis. 
 
-% Under following additional hypothesis, which can be verified numerically, the kernel of $\calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4
+\begin{hypothesis}\label{hyp:Mcond}
+For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists
+\begin{align}
+M &:= \partial_\omega \frac{1}{2} \| \phi \|_{L^2(\R)}^2
+= \int_{-\infty}^\infty \phi(x) \partial_\omega \phi(x) dx > 0 \label{eq:M} \\
+\tilde{M} &:= \langle \partial_x \phi, z \rangle_{L^2(\R)} = \int_{-\infty}^\infty z(x) \partial_x \phi(x) dx > 0 \label{eq:tildeM}
+\end{align}
+\end{hypothesis}
 
-% \begin{hypothesis}$\tilde{M} \neq 0$, where 
-% \end{hypothesis}
+The condition \cref{eq:M} is the Vakhitov–Kolokolov stability criterion \cite{Vakhitov1973}. The two conditions in \cref{hyp:Mcond} are sufficient for orbital stability of the solitary wave solution $\phi$, as shown in the following lemma.
 
-% We then have the following lemma.
+\begin{lemma}\label{lemma:stability}
+Assume \cref{hyp:smoothmap}, \cref{hyp:Lminusspec}, and \cref{hyp:Mcond}. Then the primary solitary wave solution $\phi(x; \omega)$ is orbitally stable.
+\begin{proof}
+This follows from \cite[Section 5.2.2]{Kapitula2013}, which is an extension of the techniques in \cite{Grillakis1990}. Since $\calL^+(\phi)$ has a single negative eigenvalue by \cref{theorem:solitonexist}, $\calL^-(\phi)$ has no negative eigenvalues by \cref{hyp:Lminusspec}, and $\calL(\phi) = \text{diag}(\calL^+(\phi), \calL^-(\phi))$, $\calL^+(\phi)$ has a single negative eigenvalue. Next, we form the symmetric matrix $D$ \cite[5.2.53]{Kapitula2013}, defined by 
+$D_{ij} = \langle \calL(\phi)^{-1} s_i, s_j \rangle$, where $s_j = J^{-1} T_j'(0) \phi$ for $j = 1, 2$. Using \cref{eq:Tgens}, $s_1 = (-\phi, 0)^T$ and $s_2 = (0, \partial_x \phi)$, thus $\calL(\phi)^{-1} s_1 = (\partial_\omega \phi, 0)^T$ and $\calL(\phi)^{-1} s_2 = (0, z)^T$. It follows that $D = \text{diag}(-M, \tilde{M})$. If \cref{hyp:Mcond} holds, $n(D) = 1$. Since $n(\calL(\phi)) = n(D)$, the primary solitary wave solution $\phi$ is orbitally stable by \cite[Theorem5.2.11]{Kapitula2013}.
+\end{proof}
+\end{lemma}
 
-% \begin{lemma}\label{lemma:Lphikernel}
-% \end{lemma}
+It also follows from \cref{hyp:Mcond} that the kernel of $J \calL(\phi)$ has algebraic multiplicity exactly 4.
 
-The spectrum of $\calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $\calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker \calL(\phi) - \lambda \calI$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $\calL(\phi)$ is exponentially asymptotic to the linear operator $\calL(0)$, given by
+\begin{lemma}\label{lemma:kernelL}
+Assume \cref{hyp:Lminusspec} and \cref{hyp:Mcond}. Then the kernel of $J \calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4.
+\begin{proof}
+We showed above that $\ker J \calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity at least 4. All that remains is to show that there can be no other generalized eigenfunctions. If $J \calL(\phi) u = (\partial_\omega \phi, 0)^T$ has a solution, then $\calL^- w = \partial_\omega \phi$ has a solution, which implies $\partial_\omega \phi \perp \ker(\calL^-(\phi)) = \spn\{\phi\}$ by the Fredholm alternative and \cref{hyp:Lminusspec}, contradicting \cref{eq:M}. If $J \calL(\phi) u = (0, z)^T$ has a solution, then $\calL^+ v = -z$ has a solution, which implies $z \perp \ker(\calL^+(\phi)) = \spn\{\partial_x \phi\}$ by the Fredholm alternative and \cref{theorem:solitonexist}, contradicting \cref{eq:tildeM}. 
+\end{proof}
+\end{lemma}
+
+We now discuss the spectrum of $J \calL(\phi)$. The spectrum of $J \calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $J \calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( J \calL(\phi) - \lambda \calI)$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $J \calL(\phi)$ is exponentially asymptotic to the linear operator $J \calL(0)$, given by
 \begin{align}\label{defL0}
-\calL(0) = 
+J \calL(0) = 
 \begin{pmatrix}
 0 & \calL_0 \\
 -\calL_0 & 0
 \end{pmatrix}, \quad
 \calL_0 = -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega,
 \end{align}
-thus the eigenvalue problem $\calL(0) v = \lambda v$ is equivalent to $(\calL_0 + \lambda^2)p = 0$. By \cite[Theorem 3.1.13]{Kapitula2013}, the essential spectrum is given by the curves
+thus the eigenvalue problem $J \calL(0) v = \lambda v$ is equivalent to $(\calL_0 + \lambda^2)p = 0$. By \cite[Theorem 3.1.13]{Kapitula2013}, the essential spectrum is given by the curves
 \begin{align*}
 \left[ -\frac{\beta_4}{24} (ik)^4 + \frac{\beta_2}{2}(ik)^2 + \omega \right]^2 + \lambda^2 &= 0 && k \in \R,
 \end{align*}
@@ -324,7 +329,7 @@ which is purely imaginary, bounded away from the origin, and independent of $\be
 \end{equation}
 which is also purely imaginary and bounded away from the origin, but does depend on $\beta_4$ and $\beta_2$ via $\omega_c$.
 
-By the stability assumption in \cref{hyp:dccpos}, no element of the spectrum of $\calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $\calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $\calL(\phi)$ is contained in the imaginary axis. For PQS, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$), which corresponds to an internal mode of the solitary wave \cite{Tam2019}. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). By \cref{hyp:dccpos}, these internal mode eigenvalues must be purely imaginary.
+We now turn to the point spectrum of $J \calL(\phi)$. By \cref{lemma:kernelL}, the kernel of $J \calL(\phi)$ is given by \cref{Lphikernel}. Since the primary solitary wave is orbitally stable by \cref{lemma:stability}, no element of the spectrum of $J \calL(\phi)$ can have a positive real part. Since the PDE \cref{NLS4} is Hamiltonian, all elements of the spectrum of $J \calL(\phi)$ must come in quartets $\pm \alpha \pm \beta i$, thus the spectrum of $J \calL(\phi)$ is contained in the imaginary axis. For PQS, there is an additional pair of imaginary eigenvalues located right before the essential spectrum boundary (approximately $\pm 0.9972 \omega i$), which corresponds to an internal mode of the solitary wave \cite{Tam2019}. For $\beta_2 \neq 0$, there can be multiple pairs of internal mode eigenvalues (an example of two pairs internal mode eigenvalues is shown in \cite[Figure 9]{Tam2020}). By \cref{lemma:stability}, these internal mode eigenvalues must be purely imaginary.
 
 \section{Existence of multi-pulse solitary waves}
 
@@ -378,7 +383,7 @@ Since the spectrum of $DF(0)$ is a quartet of eigenvalues $\pm a \pm b i$ for $\
 
 \section{Spectrum of multi-pulse solitary waves}\label{sec:multieig}
 
-Let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ be the primary homoclinic orbit corresponding to the primary pulse $\phi(x)$, and let $U_n = (\phi_n(x), \partial_x \phi_n(x), \partial_x^2 \phi_n(x), \frac{\beta_4}{24} \partial_x^3 \phi_n(x))$ be a multi-loop homoclinic orbit solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist}. The first component $\phi_n$ of $U_n$ is a multi-pulse solitary wave solution to \cref{standingwavereal}. As in \cite{Sandstede1998,Manukian}, we will locate the eigenvalues near the origin of the linearized operator $\calL(\phi_n)$. As shown above, both $\calL(\phi)$ and $\calL(\phi_n)$ have two eigenfunctions in the kernel. It remains to locate the interaction eigenvalues, which arise from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure. Once again using a spatial dynamics approach, we rewrite the eigenvalue problem $\calL(\phi_n)v = \lambda v$ as the first order system
+Let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \frac{\beta_4}{24} \partial_x^3 \phi(x))$ be the primary homoclinic orbit corresponding to the primary pulse $\phi(x)$, and let $U_n = (\phi_n(x), \partial_x \phi_n(x), \partial_x^2 \phi_n(x), \frac{\beta_4}{24} \partial_x^3 \phi_n(x))$ be a multi-loop homoclinic orbit solution to \cref{Fsystem} constructed according to \cref{theorem:multiexist}. The first component $\phi_n$ of $U_n$ is a multi-pulse solitary wave solution to \cref{standingwavereal}. As in \cite{Sandstede1998,Manukian}, we will locate the eigenvalues near the origin of the linearized operator $J \calL(\phi_n)$. As shown above in \cref{Lphikernel}, $J \calL(\phi)$ has two eigenfunctions in the kernel from the gauge symmetry and translational invariance; $J \calL(\phi_n)$ will also have two eigenvalues in the kernel from the same symmetries. It remains to locate the interaction eigenvalues, which arise from nonlinear interactions between the tails of neighboring pulses in the multi-pulse structure. Once again using a spatial dynamics approach, we rewrite the eigenvalue problem $J \calL(\phi_n)v = \lambda v$ as the first order system
 \begin{equation}\label{multieig}
 V'(x) = K(\phi_n)V(x) + \lambda B_1 V(x),
 \end{equation}
@@ -422,7 +427,7 @@ has two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) =
 - \frac{\beta_4}{24} \partial_x \phi(x), \phi(x) \right).
 \end{equation}
 
-The following theorem, which is analogous to the results in \cite[Section 3.4]{Manukian}, reduces the problem of locating the eigenvalues of $\calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
+The following theorem, which is analogous to the results in \cite[Section 3.4]{Manukian}, reduces the problem of locating the eigenvalues of $J \calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
 
 \begin{theorem}\label{th:blockmatrix}
 Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, and \cref{hyp:dccpos}. Let $U(x)$ be the primary homoclinic orbit from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
@@ -507,7 +512,7 @@ To construct the primary pulse solution $\phi(x)$, we start with the known solit
 \label{fig:PQS}
 \end{figure} 
 
-To determine the spectrum of the linearization about the primary pulse, we construct the linear operator $\calL(\phi)$ using Fourier spectral differentiation matrices \revised{with periodic boundary conditions} and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig} (\cref{fig:PQSspec}, left panel). \revised{Since the spectral problem is posed on a periodic domain, the essential spectrum is discrete. It is a finite set of points in this case since spatial discretization approximates the eigenvalue problem \cref{multieig} with an $2N \times 2N$ matrix equation, where $N$ is the number of grid points.} We also note the presence of a pair of internal mode eigenvalues on the imaginary axis.  
+To determine the spectrum of the linearization about the primary pulse, we construct the linear operator $J \calL(\phi)$ using Fourier spectral differentiation matrices \revised{with periodic boundary conditions} and compute the eigenvalues using Matlab's eigenvalue solver \texttt{eig} (\cref{fig:PQSspec}, left panel). \revised{Since the spectral problem is posed on a periodic domain, the essential spectrum is discrete. It is a finite set of points in this case since spatial discretization approximates the eigenvalue problem \cref{multieig} with an $2N \times 2N$ matrix equation, where $N$ is the number of grid points.} We also note the presence of a pair of internal mode eigenvalues on the imaginary axis.  
 
 \begin{figure}[H]
 \centering
@@ -548,7 +553,7 @@ Arbitrary multi-pulses can similarly be constructed (\cref{fig:triplepulses}). A
 
 \subsection{Spectrum of double pulses}
 
-For the spectrum of $\calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in-phase and out-of-phase double pulses, a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
+For the spectrum of $J \calL(\phi_2)$, the linearization about the double pulse solution $\phi_2$, there is, for both in-phase and out-of-phase double pulses, a pair of purely imaginary interaction eigenvalues and a pair of real interaction eigenvalues. This verifies the result of \cref{corr:2pstab} that all double pulses are unstable. \revised{The essential spectrum eigenvalues, as expected, are on the imaginary axis and have magnitude $|\lambda| \geq \omega$. There is also a duplication of the internal mode eigenvalues (\cref{fig:doubleinternalmode}); these appear to be purely imaginary, but they do not affect stability since there is always an interaction eigenvalue with positive real part.}
 
 \begin{figure}[H]
 \centering
