@@ -1,3 +1,12 @@
+## AUTO and Fortran stuff
+*.exe
+*.o
+*.m~
+*.mat
+aux/*
+.DS_Store
+.ipynb_checkpoints
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
