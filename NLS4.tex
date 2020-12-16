@@ -177,25 +177,47 @@ where $k \geq 6$ is a positive, even integer, and the pulse profile satisfies th
 
 \section{Mathematical setup}\label{sec:setup}
 
-Our analysis follows Grillakis, Shatah, and Strauss \cite{Grillakis1987}. Equation \cref{NLS4} can be written in Hamiltonian form as 
+Our analysis follows \cite{Grillakis1990} and \cite[Section 5.2]{Kapitula2013}. Separating real and imaginary parts, equation \cref{NLS4} can be written in standard Hamiltonian form as 
 \begin{equation}\label{NLSHam}
 \frac{\partial u}{\partial t} = J \calE'(u(t)),
 \end{equation}
-where $J = -i$ and the energy $\calE$ is given by
+where $u = (v, w)^T$, $J$ is the symplectic matrix
+\begin{equation}
+J = \begin{pmatrix}
+0 & 1 \\ -1 & 0
+\end{pmatrix}
+\end{equation}
+with $J^2 = -I$, and the energy $\calE$ is given by
 \begin{equation}\label{defH}
 \calE(u) = \frac{1}{2} \int_{-\infty}^\infty \left( \frac{\beta_4}{24}|u_{xx}|^2 + \frac{\beta_2}{2}|u_{x}|^2 + \frac{\gamma}{2} |u|^4 \right) dx.
 \end{equation}
-The energy $\mathcal{E}$ is invariant under the complex rotation group $T(\theta)$, given by $T(\theta)u = e^{i\theta}u$, which is known as gauge symmetry. The corresponding conserved quantity, often called the charge \cite[Section 6.C]{Grillakis1987}, is given by
-\begin{equation}\label{defQ}
-\mathcal{Q}(u) = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx.
+The energy $\mathcal{E}$ is invariant under the unitary rotation group $T_1(\theta)$, given by
+\begin{equation}\label{eq:T1}
+T_1(\theta) = \begin{pmatrix}
+\cos(\theta) & -\sin(\theta) \\ 
+\sin(\theta) & \cos(\theta)
+\end{pmatrix}
 \end{equation}
-\revised{The energy is also invariant under the translation group $[\tau(s)]u(\cdot) = u(\cdot - s)$ and the reversor operator $[\rho(u)](x) = u(-x)$.} We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1987}.
+and the unitary translation group $T_2(s)$, given by $[T_2(s)]u(\cdot) = u(\cdot - s)$. These symmetries commute with $J$ and have infinitesimal generators
+\begin{equation}\label{eq:Tgens}
+T_1'(0) = \begin{pmatrix}
+0 & -1 \\ 
+1 & 0
+\end{pmatrix} = -J, \qquad T_2'(0) = \partial_x.
+\end{equation}
+The corresponding conserved quantities are
+\begin{equation}
+Q_1 = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx,
+\qquad Q_2 = \frac{1}{2} \int_{\infty}^\infty
+\left( v_x w - w_x v \right) dx,
+\end{equation}
+which are the charge and momentum, respectively. We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1990}.
 
 \begin{hypothesis}\label{hyp:wp}
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
 \end{hypothesis}
 
-Standing waves are solutions of the form $T(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the standing wave equation $\calE'(u) - w \calQ'(u) = 0$ \cite[2.15]{Grillakis1987}. Since $\calQ'(u) = -u$, this equation has the form $\calE'(u) + w u = 0$. \revised{For real-valued solutions, this can be written in rescaled form as \cref{eq:NLS4rescaled}}. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
+Standing waves are solutions of the form $T_1(\omega t) u$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. \revised{For real-valued solutions, this can be written in rescaled form as \cref{eq:NLS4rescaled}}. The following theorem gives a criterion for the existence of real-valued solitary wave solutions.
 
 \begin{theorem}\label{theorem:solitonexist}
 For $\sigma < 1$, there exists a real-valued, symmetric, exponentially localized solution $\phi(x; \sigma) \in H^2(\R) \cap C^5(\R)$ of the rescaled standing wave equation \cref{eq:NLS4rescaled}.
@@ -218,20 +240,20 @@ This divides the set of $(\omega, \beta_2)$ for which solutions exist into two d
 The map $\omega \mapsto \phi(x; \omega)$ from $\calI$ to $H^2(\R)$ is $C^1$, where $\calI$ is the interval for which the primary pulse solution $\phi(x; \omega)$ exists.
 \end{hypothesis}
 
-Define the scalar
-\begin{equation}
-d(\omega) = \calE(\phi(\omega)) - \omega\calQ(\phi(\omega)).
-\end{equation}
-By \cite[(2.21)]{Grillakis1987},
-\begin{align}\label{ddoubleprime}
-d''(\omega) = \langle \calQ'(\phi(x; \omega)), \partial_\omega \phi(x; \omega) \rangle
-= \int_{-\infty}^\infty \phi(x; \omega) \partial_\omega \phi(x; \omega) dx,
-\end{align}
-where $\partial_\omega \phi(x; \omega)$ is well-defined by \cref{hyp:smoothmap}. By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $\phi(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity can be computed numerically, and we take this stability criterion as a hypothesis.
+% Define the scalar
+% \begin{equation}
+% d(\omega) = \calE(\phi(\omega)) - \omega\calQ(\phi(\omega)).
+% \end{equation}
+% By \cite[(2.21)]{Grillakis1987},
+% \begin{align}\label{ddoubleprime}
+% d''(\omega) = \langle \calQ'(\phi(x; \omega)), \partial_\omega \phi(x; \omega) \rangle
+% = \int_{-\infty}^\infty \phi(x; \omega) \partial_\omega \phi(x; \omega) dx,
+% \end{align}
+% where $\partial_\omega \phi(x; \omega)$ is well-defined by \cref{hyp:smoothmap}. By \cite[Theorem 3.5]{Grillakis1987}, the standing wave $\phi(x; \omega)$ is orbitally stable if $d''(\omega) > 0$. This quantity can be computed numerically, and we take this stability criterion as a hypothesis.
 
-\begin{hypothesis}\label{hyp:dccpos}
-For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists, $d''(\omega) > 0$.
-\end{hypothesis}
+% \begin{hypothesis}\label{hyp:dccpos}
+% For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists, $d''(\omega) > 0$.
+% \end{hypothesis}
 
 Let $\beta_4 < 0$ and $\beta_2 \in \R$, and choose $\omega > 0$ such that the primary pulse solution $\phi(x) = \phi(x; \omega)$ exists by \cref{theorem:solitonexist}. From this point forward, we will suppress the dependence on $\omega$ for simplicity of notation. The linearization of the PDE \cref{NLS4} about $\phi$ is the linear operator $\calL(\phi): H^4(\R) \subset L^2(\R) \mapsto L^2(\R)$, given by
 \begin{align}\label{defLphi}
