@@ -186,7 +186,7 @@ where $k \geq 6$ is a positive, even integer, and the pulse profile satisfies th
 
 \section{Mathematical setup}\label{sec:setup}
 
-Our analysis follows \cite{Grillakis1990} and \cite[Section 5.2]{Kapitula2013}. Separating real and imaginary parts, equation \cref{NLS4} can be written in standard Hamiltonian form as 
+\revised{Our analysis follows \cite{Grillakis1990} and \cite[Section 5.2]{Kapitula2013}. Separating real and imaginary parts, equation \cref{NLS4} can be written in standard Hamiltonian form as 
 \begin{equation}\label{NLSHam}
 \frac{\partial u}{\partial t} = J \calE'(u(t)),
 \end{equation}
@@ -220,13 +220,13 @@ Q_1 = -\frac{1}{2} \int_{\infty}^\infty |u|^2 dx,
 \qquad Q_2 = \frac{1}{2} \int_{\infty}^\infty
 \left( v_x w - w_x v \right) dx,
 \end{equation}
-which are the charge and momentum, respectively. We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1990}.
+which are the charge and momentum, respectively.} We make the following hypothesis regarding the well-posedness of \cref{NLSHam}, which is the same as \cite[Assumption 1]{Grillakis1990}.
 
 \begin{hypothesis}\label{hyp:wp}
 For each initial condition $u_0$, there exists $T > 0$ depending only on $K$, where $\|u_0\| \leq K$, such that the PDE \cref{NLSHam} has a solution $u(t)$ on $[0, T]$ with $u(0) = u_0$.
 \end{hypothesis}
 
-Standing waves are solutions of the form $T_1(\omega t) u(x)$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. For real-valued standing waves, this is equivalent to equation \cref{standingwavereal}. For the remainder of this paper, we will be concerned with solitary waves, which in this context are localized standing waves. The following theorem gives a criterion for the existence of real-valued, solitary wave solutions.
+\revised{Standing waves are solutions of the form $T_1(\omega t) u(x)$, where $u$ is independent of $t$. A standing wave solution satisfies the equation $\calE'(u) - w \calQ_1'(u) = 0$, which has the form $\calE'(u) + w u = 0$ since $\calQ_1'(u) = -u$. For real-valued standing waves, this is equivalent to equation \cref{standingwavereal}. For the remainder of this paper, we will be concerned with solitary waves, which in this context are localized standing waves.} The following theorem gives a criterion for the existence of real-valued, solitary wave solutions.
 
 \begin{theorem}\label{theorem:solitonexist}
 There exists a real-valued, symmetric, exponentially localized solitary wave solution $\phi(x; \omega) \in H^2(\R) \cap C^5(\R)$ to \cref{standingwavereal} if either (i) $\beta_2 \leq 0$ and $\omega > 0$, or (ii) $\beta_2 > 0$ and $\omega > \omega_c$, where 
@@ -265,13 +265,11 @@ and
 \calL^+(\phi) &= -\frac{\beta_4}{24} \partial_{xxxx} + \frac{\beta_2}{2} \partial_{xx} + \omega - 3 \gamma \phi^2.
 \end{align*}
 
-Both $\calL^-(\phi)$ and $\calL^+(\phi)$ are self-adjoint, thus their spectrum is real. Since $\calL^+(\phi)$ is the same as the linear operator $\calH$ from \cref{theorem:solitonexist}, $\calL^+(\phi)$ has a single negative eigenvalue and a simple kernel with eigenfunction $\partial_x \phi$. It is also straightforward to verify that $\calL^-(\phi) \phi = 0$. We make the following hypothesis concerning the spectrum of $\calL^-(\phi)$.
-
+\revised{Both $\calL^-(\phi)$ and $\calL^+(\phi)$ are self-adjoint, thus their spectrum is real. Since $\calL^+(\phi)$ is the same as the linear operator $\calH$ from \cref{theorem:solitonexist}, $\calL^+(\phi)$ has a single negative eigenvalue and a simple kernel with eigenfunction $\partial_x \phi$. It is also straightforward to verify that $\calL^-(\phi) \phi = 0$. We make the following hypothesis concerning the spectrum of $\calL^-(\phi)$.
 \begin{hypothesis}\label{hyp:Lminusspec}
 The operator $\calL^-(\phi)$ has no negative eigenvalue and has a simple kernel with eigenfunction $\phi$.
 \end{hypothesis}
-
-This hypothesis is proved in \cite{Natali2015} for the specific case of one of the Karlsson-H{\"o}{\"o}k solitons \cite{KarllsonHook}. It follows from \cref{theorem:solitonexist} and \cref{hyp:Lminusspec} that the kernel of $J \calL(\phi)$ has geometric multiplicity 2. We can additionally verify that $\calL^+(\phi)(-\partial_\omega \phi) = \phi$. Since $\calL^-(\phi)$ is self-adjoint and $\phi \perp \ker \calL^-(\phi)$ by \cref{hyp:Lminusspec}, there exists a function $z$ such that $\calL^-(\phi) z = \partial_x \phi$ by the Fredholm alternative. For the classical NLS equation ($\beta_4 = 0, \beta_2 \neq 0$), $z = \frac{1}{2 \beta_2} x \phi$. We then have
+This hypothesis is proved in \cite{Natali2015} for the specific case of one of the Karlsson-H{\"o}{\"o}k solitons \cite{KarllsonHook}. It follows from \cref{theorem:solitonexist} and \cref{hyp:Lminusspec} that the kernel of $J \calL(\phi)$ has geometric multiplicity 2. We can additionally verify that $\calL^+(\phi)(-\partial_\omega \phi) = \phi$.} Since $\calL^-(\phi)$ is self-adjoint and $\phi \perp \ker \calL^-(\phi)$ by \cref{hyp:Lminusspec}, there exists a function $z$ such that $\calL^-(\phi) z = \partial_x \phi$ by the Fredholm alternative. For the classical NLS equation, $z = \frac{1}{2 \beta_2} x \phi$. We then have
 \begin{equation}\label{Lphikernel}
 \begin{aligned}
 J \calL(\phi)\begin{pmatrix}0 \\ \phi \end{pmatrix} &= 0, \quad
@@ -280,8 +278,7 @@ J \calL(\phi)\begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix} &= 0, \quad
 J \calL(\phi)\begin{pmatrix} 0 \\ z \end{pmatrix} = \begin{pmatrix}\partial_x\phi \\ 0 \end{pmatrix},
 \end{aligned}
 \end{equation}
-thus the kernel of $J \calL(\phi)$ has algebraic multiplicity at least 4. To show that there are no more generalized eigenfunctions in the kernel of $J \calL(\phi)$, we will need one additional hypothesis. 
-
+\revised{thus the kernel of $J \calL(\phi)$ has algebraic multiplicity at least 4. To show that there are no more generalized eigenfunctions in the kernel of $J \calL(\phi)$, we will need one additional hypothesis. 
 \begin{hypothesis}\label{hyp:Mcond}
 For each $\omega$ such that a primary pulse solution $\phi(x; \omega)$ exists
 \begin{align}
@@ -290,9 +287,7 @@ M &:= \partial_\omega \frac{1}{2} \| \phi \|_{L^2(\R)}^2
 \tilde{M} &:= \langle \partial_x \phi, z \rangle_{L^2(\R)} = \int_{-\infty}^\infty z(x) \partial_x \phi(x) dx > 0 \label{eq:tildeM}
 \end{align}
 \end{hypothesis}
-
 The condition \cref{eq:M} is the Vakhitov–Kolokolov stability criterion \cite{Vakhitov1973}. The two conditions in \cref{hyp:Mcond}, together with \cref{hyp:Lminusspec}, are sufficient to prove orbital stability of the solitary wave solution $\phi$, as shown in the following lemma.
-
 \begin{lemma}\label{lemma:stability}
 Assume \cref{hyp:smoothmap}, \cref{hyp:Lminusspec}, and \cref{hyp:Mcond}. Then the primary solitary wave solution $\phi(x; \omega)$ is orbitally stable.
 \begin{proof}
@@ -300,18 +295,16 @@ This follows from \cite[Section 5.2.2]{Kapitula2013}, which is an extension of t
 $D_{ij} = \langle \calL(\phi)^{-1} s_i, s_j \rangle$, where $s_j = J^{-1} T_j'(0) \phi$ for $j = 1, 2$. Using \cref{eq:Tgens}, $s_1 = (-\phi, 0)^T$ and $s_2 = (0, \partial_x \phi)$, thus $\calL(\phi)^{-1} s_1 = (\partial_\omega \phi, 0)^T$ and $\calL(\phi)^{-1} s_2 = (0, z)^T$. It follows that $D = \text{diag}(-M, \tilde{M})$. If \cref{hyp:Mcond} holds, $D$ has a single negative eigenvalue. Since $n(\calL(\phi)) = n(D)$, i.e. $\calL(\phi)$ and $D$ have the same number of negative eigenvalues, the primary solitary wave solution $\phi$ is orbitally stable by \cite[Theorem 5.2.11]{Kapitula2013}.
 \end{proof}
 \end{lemma}
-
 \begin{remark}We can equivalently assume \cref{hyp:Lminusspec}, the Vakhitov–Kolokolov stability criterion $M > 0$, $\tilde{M} \neq 0$, and the orbital stability of the primary solitary wave. If $\tilde{M} < 0$, then it then follows from the Jones–Grillakis instability index \cite{Grillakis1988}, an extension of Hamiltionian-Krein index theory \cite[Section 7.1]{Kapitula2013}, that there is an eigenvalue with positive real part \cite[Theorem 7.1.16]{Kapitula2013}, which contradicts orbital stability.
 \end{remark}
-
 It follows from \cref{hyp:Mcond} that the algebraic multiplicity of the kernel of $J \calL(\phi)$ is exactly 4.
-
 \begin{lemma}\label{lemma:kernelL}
 Assume \cref{hyp:Lminusspec} and \cref{hyp:Mcond}. Then the kernel of $J \calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity 4.
 \begin{proof}
 We showed above that $\ker J \calL(\phi)$ has geometric multiplicity 2 and algebraic multiplicity at least 4. All that remains is to show that there can be no other generalized eigenfunctions. If $J \calL(\phi) u = (\partial_\omega \phi, 0)^T$ has a solution, then $\calL^- w = \partial_\omega \phi$ has a solution, which implies $\partial_\omega \phi \perp \ker(\calL^-(\phi)) = \spn\{\phi\}$ by the Fredholm alternative and \cref{hyp:Lminusspec}, contradicting \cref{eq:M}. If $J \calL(\phi) u = (0, z)^T$ has a solution, then $\calL^+ v = -z$ has a solution, which implies $z \perp \ker(\calL^+(\phi)) = \spn\{\partial_x \phi\}$ by the Fredholm alternative and \cref{theorem:solitonexist}, contradicting \cref{eq:tildeM}. 
 \end{proof}
 \end{lemma}
+}
 
 We now discuss the spectrum of $J \calL(\phi)$. The spectrum of $J \calL(\phi)$ can be divided into two disjoint sets: the essential spectrum is the set of $\lambda \in \C$ for which $J \calL(\phi) - \lambda \calI$ is not Fredholm, and the point spectrum is the set of $\lambda \in \C$ for which $\ker( J \calL(\phi) - \lambda \calI)$ is nontrivial. To find the essential spectrum, which depends only on the background state and is independent of the solution $\phi$ we are linearizing about, $J \calL(\phi)$ is exponentially asymptotic to the linear operator $J \calL(0)$, given by
 \begin{align}\label{defL0}
@@ -438,7 +431,7 @@ has two linearly independent, exponentially decaying solutions $\tilde{Q}^*(x) =
 - \frac{\beta_4}{24} \partial_x \phi(x), \phi(x) \right).
 \end{equation}
 
-The following theorem, \revised{which is analogous to the results in \cite[Section 3.4]{Manukian} and involves the same tridiagonal matrix as in \cite[Theorem 2]{Sandstede1998}}, reduces the problem of locating the eigenvalues of $J \calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
+The following theorem, \revised{which is analogous to the results in \cite[Section 3.4]{Manukian} and involves the same tri-diagonal matrix as in \cite[Theorem 2]{Sandstede1998}}, reduces the problem of locating the eigenvalues of $J \calL(\phi_n)$ in a ball around the origin in the complex plane to finding the determinant of a $2n\times 2n$ matrix which is, to leading order, block diagonal. The proof is given in \cref{sec:blockmatrixproof}.
 
 \begin{theorem}\label{th:blockmatrix}
 Assume \cref{hyp:wp}, \cref{hyp:smoothmap}, \cref{hyp:Lminusspec}, and \cref{hyp:Mcond}. Let $U(x)$ be the primary homoclinic orbit from \cref{theorem:solitonexist}, and let $U_n(x)$ be an $n$-pulse solution constructed according to \cref{theorem:multiexist} with phase parameters $\{ \theta_1, \dots, \theta_n \}$ and pulse distances $X_1, \dots, X_{n-1}$. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then there exists $\delta > 0$ with the following property. There exists a bounded, nonzero solution $V(x)$ of \cref{multieig} for $|\lambda| < \delta$ if and only if
@@ -484,7 +477,7 @@ Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_n(x)$ be a n-puls
 \tilde{\lambda}_i &= \sqrt{-(a^2 + b^2) \frac{\mu_i}{\tilde{M}}} + \mathcal{O}\left( e^{-(2 \alpha + \gamma)X_{\min} } \right) && i = 1, \dots, n-1,
 \end{aligned}
 \end{equation}
-where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. One of each pair $\{\lambda_i, \tilde{\lambda}_i\}$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues.
+where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. One of each pair $\{\lambda_i, \tilde{\lambda}_i\}$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues. \revised{There is also an eigenvalue with algebraic multiplicity 4 and geometric multiplicity 2 at the origin.}
 \end{corollary}
 
 Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$ explicitly.
@@ -497,7 +490,7 @@ Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_2(x)$ be a 2-puls
 \tilde{\lambda} = \pm \sqrt{ \frac{-2 (a^2 + b^2) a_1}{\tilde{M}} },
 \end{aligned}
 \end{equation}
-where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. One pair is real and one pair is purely imaginary.
+where $a_1 = \theta_1 \theta_2 \langle \Psi(X_1), U(-X_1) \rangle$. One pair is real and one pair is purely imaginary. \revised{There is also an eigenvalue with algebraic multiplicity 4 and geometric multiplicity 2 at the origin.}
 \end{corollary}
 
 \begin{remark}In addition, the internal mode eigenvalues of the primary pulse will duplicate as pulses are added to the multi-pulse structure. For example, for the pure quartic solitary wave, the 2-pulse will have two pairs of internal mode eigenvalues. Since the 2-pulse is unstable, these internal mode eigenvalues have no additional effect on stability.
@@ -644,7 +637,7 @@ where $h$ is the time step size, $k$ is the frequency in Fourier space, and the 
 
 \section{Conclusions and future directions}
 
-In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We first gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification for hypotheses leading to orbital stability of the primary pulse. \revised{Our theoretical results compare well with experimental pulses reported in \cite{BlancoPQS} in two key aspects. From \cite[Figure 2b]{BlancoPQS} (for power 0.7W), the flat phase across the pulse is consistent with the theoretical ansatz leading to equation \cref{standingwavereal}, and oscillations observed in the experimental frequency domain are consistent with the theoretical proof of oscillatory tails. To extend the model to more accurately capture experimental results would require adding linear and nonlinear loss terms. More recent experimental work in the setting of laser optics \cite{Blanco_laser} overcomes these losses. Here, the authors demonstrate that the energy of these pulses is proportional to the third power of the inverse pulse duration, which is consistent to the scaling we use leading to equation \cref{eq:NLS4rescaled}}.   
+In this paper, we studied single and multi-pulse solitary wave solutions to a general nonlinear Schr{\"o}dinger equation with both second and fourth order dispersion terms. We first gave criteria for the existence of a primary soliton solution in terms of the parameters of the system, and provided numerical verification for hypotheses leading to orbital stability of the primary pulse. \revised{For the classical NLS equation, \cref{hyp:Lminusspec} follows from Sturm-Liouville theory. It may be possible to use a tool such as the Maslov index to prove this result for the fourth-order equation (see, for example, \cite{Chardard2009,Chardard2011,Jones1988}). The Maslov index could also be used as an alternative technique for characterizing the spectra of multi-pulses \cite{Chardard2009a}}. \revised{Our theoretical results compare well with experimental pulses reported in \cite{BlancoPQS} in two key aspects. From \cite[Figure 2b]{BlancoPQS} (for power 0.7W), the flat phase across the pulse is consistent with the theoretical ansatz leading to equation \cref{standingwavereal}, and oscillations observed in the experimental frequency domain are consistent with the theoretical proof of oscillatory tails. To extend the model to more accurately capture experimental results would require adding linear and nonlinear loss terms. More recent experimental work in the setting of laser optics \cite{Blanco_laser} overcomes these losses. Here, the authors demonstrate that the energy of these pulses is proportional to the third power of the inverse pulse duration, which is consistent to the scaling we use leading to equation \cref{eq:NLS4rescaled}}.   
 
 We then constructed $n$-pulse solutions by splicing together multiple copies of the primary pulse, and reduced the problem of finding the small eigenvalues resulting from interaction between neighboring pulses to that of computing the determinant of a $2n\times2n$ block matrix. \revised{Under the same assumptions which lead to orbital stability of the primary pulse, we showed that all multi-pulse solutions are unstable.} \revised{To our knowledge, there are no experimental results on $n$-solitons. It would be interesting to see if future work on lasers \cite{Blanco_laser} could produce $n$-solitons with cavity round-trip separation that would allow our instability predictions to be verified. It would also be interesting to see experimental results on the propagation of pulse trains where the distance between subsequent pulses is small}. Furthermore, in future research we could investigate solitons and multi-pulses in higher order NLS equations, as discussed in \cite{Runge2020}. We expect that these results would hold for these higher order variants, and that all multi-pulse solutions would similarly be unstable. We could also study generalizations to other nonlinearities. Finally, this equation represents an idealization of the experimental situation since energy is always conserved. A more realistic model might incorporate gains and losses of energy in the laser cavity, and it is possible that stable multi-pulses could exist in such a scenario.
 
@@ -738,7 +731,7 @@ which we write in matrix form as in the statement of the theorem.
 
 \subsection{Proof of Corollary \ref{corr:multiunstable} and Corollary \ref{corr:2pstab}}
 
-For \cref{corr:multiunstable}, let $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ be the eigenvalues of $A$, which are real and distinct as in the proof of \cite[Theorem 5]{Parker2020}. Following the steps in that proof and using the rescaling in \cite[Theorem 3]{Sandstede1998}, there are $2(n-1)$ pairs of interaction eigenvalues, given by \cref{inteigs}, which are either real or purely imaginary by Hamiltonian symmetry. Since $M > 0$ and $\tilde{M} > 0$ by \cref{hyp:Mcond}, one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary. \cref{corr:2pstab} is the specific case $n = 2$, where the nonzero eigenvalue of $A$ can be computed directly.
+For \cref{corr:multiunstable}, let $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ be the eigenvalues of $A$, which are real and distinct as in the proof of \cite[Theorem 5]{Parker2020}. Following the steps in that proof and using the rescaling in \cite[Theorem 3]{Sandstede1998}, there are $2(n-1)$ pairs of interaction eigenvalues, given by \cref{inteigs}, which are either real or purely imaginary by Hamiltonian symmetry. There is also an eigenvalue with algebraic multiplicity 4 at the origin. Since $M > 0$ and $\tilde{M} > 0$ by \cref{hyp:Mcond}, one of each pair $\lambda_i, \tilde{\lambda}_i$ is real and the other is purely imaginary. \cref{corr:2pstab} is the specific case $n = 2$, where the nonzero eigenvalue of $A$ can be computed directly.
 
 \paragraph{Acknowledgments}
 

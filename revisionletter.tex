@@ -21,18 +21,23 @@ Dallas, TX 75275 \\
 
 On behalf of my co-author Alejandro Aceves, I would like to submit our revision of the article ``Multi-pulse solitary waves in a fourth-order nonlinear {S}chr{\"o}dinger equation'' for consideration of publication in Physica D. 
 
-We are grateful to the referees for their careful reading of the original manuscript, and their comments and suggestions regarding how we could improve it. All the suggestions for improvement from the two reviewers have been systematically taken into careful consideration, as noted below. In addition, the revised portions of the manuscript are indicated using red text.
+We are grateful to the referees for their careful reading of the original manuscript, and their comments and suggestions regarding how we could improve it. All the suggestions for improvement from the two reviewers have been systematically taken into careful consideration and incorporated into the revision, as noted below. The portions of the manuscript which have been revised or added are indicated using red text. The major changes to the manuscripts include the following:
+\begin{enumerate}
+	\item The introduction has been greatly expanded, incorporating many relevant references about multi-pulses and their spectra, including all of those suggested by the editor. Additional references concerning 4th order NLS models have been added to Section 2. The possibility of using the Maslov index is mentioned in the conclusion.
+	\item Section 3 has now been rewritten to follow Grillakis et al. (1990) and section 5.2 of Promislow and Kapitula (2013). Hypotheses and lemmas have been added to fully characterize the kernel of the linearization about the primary solitary wave. A notable notational change is that the linearization of the PDE about a standing wave is now denoted by $J \mathcal{L}$ rather than $\mathcal{L}$ to be consistent with that theory.  
+	\item The results of timestepping experiments have been added as Section 6.3.
+\end{enumerate}
 
 Given the improvements made in accordance with the requests of the referees, we hope that you will now find the manuscript to be suitable for publication in Physica D. We will be sincerely looking forward to your editorial decision.
 
-Reviewer 1: \emph{My only concern is the indefiniteness of the number of zero eigenvalues of the single-pulse solution and multi-pulse solutions. The number of zero eigenvalues of the single-pulse dictate how many interaction eigenvalues are near the origin for the multi-pulse solution. This is a crucial information and needs to be addressed explicitly in the theory and also numerically, not implicitly.}
+Reviewer 1: \emph{My only concern is the indefiniteness of the number of zero eigenvalues of the single-pulse solution and multi-pulse solutions. The number of zero eigenvalues of the single-pulse dictate how many interaction eigenvalues are near the origin for the multi-pulse solution. This is a crucial information and needs to be addressed explicitly in the theory and also numerically, not implicitly.} This is now addressed both in the theory (see Lemma 2 and preceding hypotheses) as well as the numerics (figures 3 and 6).
 
 \begin{enumerate}
-\item \emph{There is a need for a definite statement about the number of zero eigenvalues of these multi-pulse solutions in Corollary 1 and Corollary 2 which needs to be supported in the theory.}
+\item \emph{There is a need for a definite statement about the number of zero eigenvalues of these multi-pulse solutions in Corollary 1 and Corollary 2 which needs to be supported in the theory.} This is now stated explicitly in these corollaries. 
 \vspace{4mm}
 
 \item \emph{I suggest that the authors establish numerically the number of zero eigenvalues in figure 2 and figures 4 and 5 and update the paper and update the paper accordingly.}
-\vspace{4mm} This is now shown clearly in figures 3 and 5. (Figures have been renumbered in the revision). Figure 6 is a zoom around $\lambda = 1$ and does not show the origin. In addition, internal mode eigenvalues are shown on all figures, and markers have been updated for improved readability.
+\vspace{4mm} This is now shown clearly in figures 3 and 6. (Figures have been renumbered in the revision). Figure 7 is a zoom around $\lambda = 1$ and does not show the origin. In addition, internal mode eigenvalues are shown on all figures, and markers have been updated for improved readability.
 
 \item \emph{Is it possible for this PDE to support other multi-pulse solutions that the components of these multi-pulse solutions are not almost equidistant?} Yes. This is illustrated for triple pulses in Figure 4.
 \vspace{4mm}
@@ -44,19 +49,19 @@ Reviewer 2
 \vspace{4mm}
 
 \item \emph{Regarding the statement of Theorem 1: where did $\omega_c$ come from? Please explain.
-for $\omega > \omega_c$, can $\beta_2$ be of either sign?} The statement and proof of the the theorem have been rewritten using a rescaling to make the result simpler. The proof now explains how the result is derived from Groves (1997). The quantity $\omega_c$ is now introduced in a remark following the proof, and we explain its physical significance there, along with a reference to a figure illustrating this result in Tam (2020).
+for $\omega > \omega_c$, can $\beta_2$ be of either sign?} The statement of the theorem has been rewritten for clarity. The proof has been expanded, and use a rescaling for simplicity and to show how the result is derived from Groves (1997). The quantity $\omega_c$ follows from undoing the rescaling. We explain its physical significance in a remark following the proof, along with a reference to a figure illustrating this result in Tam (2020).
 \vspace{4mm}
 
-\item \emph{The multiplicity of the null eigenvalue follows from symmetries and the fact the system is Hamiltonian. What calculation(s) need to be presented to ensure there are no more eigenfunctions and/or generalized eigenfunctions? Does it follow from the already given assumptions? Or, is an additional one needed?}
+\item \emph{The multiplicity of the null eigenvalue follows from symmetries and the fact the system is Hamiltonian. What calculation(s) need to be presented to ensure there are no more eigenfunctions and/or generalized eigenfunctions? Does it follow from the already given assumptions? Or, is an additional one needed?} It now follows from Theorem 1 (second part) and Hypothesis 3 that there are no more eigenfunctions other than the two which arise from the continuous symmetries (translation invariance and gauge symmetry). (The second part of Theorem 1 follows from Pelinovsky and Chugunova (2007)). It follows from Hypothesis 4 and Lemma 2 that the kernel has algebraic multiplicity 4, i.e. there are more generalized eigenfuctions. See below under (h) for more concerning Hypothesis 4.
 \vspace{4mm}
 
 \item \emph{Section 3.1 should simply be a remark at the end of Section 2.} Done.
 \vspace{4mm}
 
-\item \emph{Above equation (25) we are told we should ``expect...4(n-1) additional eigenvalues  near 0''. Why is this so? An explanation and reference are needed.} This statement has been removed. The result is now presented in the introduction, along with results from other systems which put this in context.
+\item \emph{Above equation (25) we are told we should ``expect...4(n-1) additional eigenvalues  near 0''. Why is this so? An explanation and reference are needed.} This statement has been removed. This is now presented in the introduction, along with results from many other systems which put this in context.
 \vspace{4mm}
 
-\item \emph{Theorem 3 is said to be analogous to [11, Theorem 2]. This is undoubtedly true. But, is it not the case that [8] is also relevant here; especially, since in [8] systems with the same symmetries as NLS were discussed.} This is correct, and the text has been revised to state that this result is closest to Manukian (2009), section 3.4. References to other related results, such as Sandstede (1998), have been added to the introduction.
+\item \emph{Theorem 3 is said to be analogous to [11, Theorem 2]. This is undoubtedly true. But, is it not the case that [8] is also relevant here; especially, since in [8] systems with the same symmetries as NLS were discussed.} This is correct, and the text has been revised to state that this result is closest to Manukian (2009), section 3.4, with the tri-diagonal matrix $A$ being the same as in Sandstede (1998). References to other related results have been added to the introduction.
 \vspace{4mm}
 
 \item \emph{In equation (31) the upper left block has a ``+'', and the lower right block has a ``-''. This is the key to the instability result. Can some insight - beyond looking at the mathematical calculation - be provided as to why this is so?}
@@ -70,19 +75,19 @@ In general,
 \[
 \tilde{M} = \int_{-\infty}^{+\infty} \phi'(x)[\mathcal{L^-}]^{-1}(\phi'(x)) dx.
 \]
-I expect this quantity - as well as $d''(\omega)$ - to appear when using the Hamiltonian-Krein index theory (which is a different formulation, and extension of, the GSS theory) to determine the spectral stability of the base pulse. So, cannot the assumption $\tilde{M} > 0$ be proven given the assumption the base pulse is stable? I think it can. The authors should do so, or explain what further things are needed to make it happen. I expect Chapters 4 and 5 of [15] (as well as the references therein) will be helpful. }
+I expect this quantity - as well as $d''(\omega)$ - to appear when using the Hamiltonian-Krein index theory (which is a different formulation, and extension of, the GSS theory) to determine the spectral stability of the base pulse. So, cannot the assumption $\tilde{M} > 0$ be proven given the assumption the base pulse is stable? I think it can. The authors should do so, or explain what further things are needed to make it happen. I expect Chapters 4 and 5 of [15] (as well as the references therein) will be helpful.} This section of the paper has now been completely rewritten to follow the extension of Grillakis et al. (1990) in section 5.2 of Promislow and Kapitula (2013). Briefly, both $M>0$ (the Vakhitov–Kolokolov stability criterion) and $\tilde{M}>0$ are assumed in Hypothesis 4. It then follows the second part of Theorem 1, Hypothesis 3, and Theorem 5.2.11 in Promislow and Kapitula (2013) that the primary pulse is orbitally stable. This is presented as Lemma 1. This hypothesis also allows us to prove that there are no more generalized eigenfunctions in the kernel (Lemma 2). In Remark 3, we note that if we assume $M>0$ and orbital stability of the primary pulse, then it follows that we must also have $\tilde{M}>0$, which is exactly what is pointed out by the reviewer.
 \vspace{4mm}
 
 \item \emph{On the bottom of page 10 we are told the essential spectrum is discrete because of the spatial discretization. Is it not really because you are looking at a spatially periodic problem? After all, discrete systems still have curves of essential spectra.} This is correct. The essential spectrum is discrete due to eigenvalue problem being posed on a periodic domain. The essential spectrum is a finite set of points due to the spatial discretization. This has now been clarified.
 \vspace{4mm}
 
-\item \emph{On page 11 there is the phrase, ``suggests that primary pulse solution is orbitally stable.'' Given the assumption $d''(\omega) > 0$, prove it!} The text now cites Theorem 3.5 from GSS, 1987. The result from this theorem that $d''(\omega)$ implies orbital stability is also mentioned immediately before Hypothesis 3.
+\item \emph{On page 11 there is the phrase, ``suggests that primary pulse solution is orbitally stable.'' Given the assumption $d''(\omega) > 0$, prove it!} The text now states that this result follows from Lemma 1.
 \vspace{4mm}
 
-\item \emph{In the Section 7 I would like to see a discussion of the implications of the mathematical results for the experimental results. Do they agree? If not, what then is missing from the mathematical model?} 
+\item \emph{In the Section 7 I would like to see a discussion of the implications of the mathematical results for the experimental results. Do they agree? If not, what then is missing from the mathematical model?} Although there are not many relevant experimental results that we know about concerning multi-pulses in optical fibers, some discussion regarding connections with experimental results has been added to the conclusion.
 \vspace{4mm}
 
-\item \emph{We should see some numerical results concerning the evolution of these unstable multi-pulses. Do they collapse back into a single pulse? Or, something more interesting?}
+\item \emph{We should see some numerical results concerning the evolution of these unstable multi-pulses. Do they collapse back into a single pulse? Or, something more interesting?} Numerical timestepping results have been added as Section 6.4. Numerical results of the eigenfunctions associated with the interaction eigenvalues have been added to Section 6.3 to assist with the interpretation of these results.
 \vspace{4mm}
 
 \end{enumerate}
