@@ -124,22 +124,22 @@ It has been nearly 50 years since the discovery by Zakharov and Shabat \cite{Zak
 
 \revised{For semilinear parabolic equations with a single eigenvalue at 0 from translation symmetry, these eigenvalues are computed in \cite{Sandstede1998} using Lin's method \cite{Lin1990}, an implementation of the Lyapunov-Schmidt technique, to reduce the eigenvalue problem for an $N$-pulse to an $N\times N$ matrix equation. Solving this matrix equation yields $N$ eigenvalues near the origin, one of which remains at 0 due to translation invariance. This method is extended in \cite{Manukian} to systems with two continuous symmetries, translation and phase invariance, for which the cubic-quintic complex Ginzburg–Landau equation is a prototypical example. For this system, Lin's method reduces the eigenvalue problem to a $2N\times 2N$ matrix equation. It follows that an $N$ pulse has $2N$ eigenvalues near the origin, two of which remain at 0. In certain Hamiltonian systems with a single continuous symmetry, such as the discrete nonlinear Schr{\"o}dinger equation \cite{Parker2020} and a fourth-order beam equation \cite{Kapitula2020}, it has been shown that each additional pulse in a multi-pulse structure gives rise to a pair of interaction eigenvalues. In these cases, an $N$-pulse has $2N$ eigenvalues near the origin; in addition to an eigenvalue at 0 with algebraic multiplicity 2 from the symmetry, there are $N-1$ pairs of nearby interaction eigenvalues which are either real or purely imaginary. A similar result has been shown for double pulse solutions in the fifth-order KdV equation \cite{Pelinovsky2007}. The fourth order nonlinear Schr{\"o}dinger model we consider in this paper is Hamiltonian and has the same two continuous symmetries as in \cite{Manukian}. The analysis combines the approaches in \cite{Manukian} and \cite{Parker2020} to show that an $N$-pulse has $4N$ eigenvalues near the origin; in addition to an eigenvalue at 0 with algebraic multiplicity 4 from the two symmetries, there are $2(N-1)$ pairs of interaction eigenvalues near the origin, which are either real or purely imaginary. Under additional assumptions, which are also used to prove orbital stability of the primary solitary wave, we show that there are $N-1$ pairs of real interaction eigenvalues and $N-1$ pairs of imaginary interaction eigenvalues. Since all multi-pulses have an eigenvalue with positive real part, they are all unstable.}
 
-This paper is organized as follows. After a background section on the equation of interest, we present results on the existence and stability of the primary soliton solution in the general case where both second and fourth order dispersion are accounted for. This includes the particular case of PQS. The second part of the paper concerns multi-pulses. We first prove their existence, and then study their spectral stability. We then present numerical examples, both spectral computations and timestepping simulations, and this is followed by a brief discussion of conclusions and directions for future work. The final section contains the proofs for the spectral stability results.
+This paper is organized as follows. After a background section on the equation of interest, we present results on the existence and stability of the primary soliton solution in the general case where both second and fourth order dispersion are included. This includes the particular case of PQS. The second part of the paper concerns multi-pulses. We first prove their existence, and then study their spectral stability. We then present numerical examples, both spectral computations and timestepping simulations, and this is followed by a brief discussion of conclusions and directions for future work. The final section contains the proofs for the spectral stability results.
 
 \section{Background}
 
-A fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS) with cubic nonlinearity
-\begin{equation}\label{NLS4}
-i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u = 0
-\end{equation}
-was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$, which is used in \cite{BlancoPQS,Tam2019,Tam2020} and is common in the optics literature). \revised{Equations of this type were introduced by Karpman and Shagalov \cite{Karpman1997,Karpman2000} to account for the role of small fourth-order dispersion terms in the propagation of intense laser beams in a bulk medium with Kerr nonlinearity. They showed that the equation
+\revised{The fourth-order nonlinear Schr{\"o}dinger equation (NLS)
 \[
 i u_t + \epsilon u_{xxxx} + u_{xx} + |u|^{2 \sigma}u = 0
 \]
-has standing wave solutions \revised{(known as waveguide solutions in the nonlinear optics literature)} which are stable when $\sigma \leq 2$ and $\epsilon < 0$ and unstable when $\sigma \geq 4$. Further results concerning existence of standing wave solutions are presented in \cite{Bonheure2014,Bonheure2018}, and global existence results can be found in \cite{Ilan-2002,Shangbi-2007}. Exact solutions for specific parameters are given in \cite{AbdulMaji2006,KarllsonHook}, and orbital stability of one of these solution is proved in \cite{Natali2015}.
+was introduced by Karpman and Shagalov \cite{Karpman1997,Karpman2000} to account for the role of small fourth-order dispersion terms in the propagation of intense laser beams in a bulk medium with Kerr nonlinearity. It has standing wave solutions (known as waveguide solutions in the nonlinear optics literature) which are stable when $\sigma \leq 2$ and $\epsilon < 0$ and unstable when $\sigma \geq 4$. Further results concerning existence of standing wave solutions are presented in \cite{Bonheure2014,Bonheure2018}, and some global existence results can be found in \cite{Ilan-2002,Shangbi-2007,Pausader2009}. Exact solutions for specific parameters are given in \cite{AbdulMaji2006,KarllsonHook}, and orbital stability of one of these solutions is proved in \cite{Natali2015}.
 }
 
-Ordinary NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQS) occur when $\beta_2 = 0$ and $\beta_4 < 0$. In that case, $u(x,t)$ satisfies the equation
+The following fourth-order generalization of the nonlinear Schr{\"o}dinger equation (NLS) with cubic nonlinearity
+\begin{equation}\label{NLS4}
+i u_t + \frac{\beta_4}{24}u_{xxxx} - \frac{\beta_2}{2}u_{xx} + \gamma |u|^2 u = 0
+\end{equation}
+was recently investigated in \cite{Tam2020} in a study of the properties of solitary wave solutions under a combination of second and fourth-order dispersion. (We use the independent variables $(t, x)$ in place of $(z, \tau)$, which is used in \cite{BlancoPQS,Tam2019,Tam2020} and is common in the optics literature). Classical NLS solitons are solutions when $\beta_2 < 0$ and $\beta_4 = 0$. Pure quartic solitons (PQS) occur when $\beta_2 = 0$ and $\beta_4 < 0$. In that case, $u(x,t)$ satisfies the equation
 \begin{equation}\label{PQSeq}
 i u_t + \frac{\beta_4}{24}u_{xxxx} + \gamma |u|^2 u = 0,
 \end{equation}
@@ -354,7 +354,7 @@ p(t) = t^4 - 12\frac{\beta_2}{\beta_4} t^2 - \frac{24}{\beta_4}\omega,
 which has a quartet of complex eigenvalues $\pm a \pm b i$ when $\omega > \omega_c$, \revised{where $\omega_c$ is defined in \cref{theorem:solitonexist}}. For $\omega > \omega_c$, $U = 0$ is a hyperbolic saddle equilibrium of \cref{Fsystem} with two-dimensional stable and unstable manifolds which intersect to form a homoclinic orbit. The exponentially localized primary pulse solution corresponding to this homoclinic orbit will have oscillatory tails, with the frequency of oscillations approximately equal to $b$. We have the following result concerning the existence of multi-pulse solutions, which follows immediately from \cite[Theorem~3.6]{SandstedeStrut}. 
 
 \begin{theorem}\label{theorem:multiexist}
-Assume \cref{hyp:wp} and \cref{hyp:smoothmap}, and fix $\beta_4 < 0$ and $\omega > \omega_c$. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
+Assume \cref{hyp:wp} and \cref{hyp:smoothmap}, and fix $\beta_4 < 0$ and $\omega > \omega_c$, \revised{where $\omega_c$ is defined in \cref{theorem:solitonexist}}. Let $\phi(x)$ be the real-valued, symmetric, exponentially localized primary pulse solution to \cref{standingwavereal} from \cref{theorem:solitonexist}, and let $U(x) = (\phi(x), \partial_x \phi(x), \partial_x^2 \phi(x), \partial_x^3 \phi(x))$ be the corresponding homoclinic orbit solution to \cref{Fsystem}. Let $\pm a \pm bi$ be the eigenvalues of $DF(0)$, with $a > 0$ and $b > 0$. Then for any 
 \begin{compactenum}[(i)]
 \item $n \geq 2$
 \item Sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$, with at least one of the $k_j \in \{0, 1 \}$
@@ -467,7 +467,7 @@ $\Psi(x)$ is defined by \cref{defPsi}, and the constants $M$ and $\tilde{M}$ are
 where $\gamma > 0$.
 \end{theorem}
 
-The interaction eigenvalues can be computed using the eigenvalues of the matrix $A$ from \cref{th:blockmatrix}. It follows that all multi-pulse solutions are unstable.
+The interaction eigenvalues can be computed using the eigenvalues of the matrix $A$ from \cref{th:blockmatrix}. It follows that all multi-pulse solutions have a positive, real eigenvalue and thus are unstable. 
 
 \begin{corollary}\label{corr:multiunstable}
 Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_n(x)$ be a n-pulse constructed using \cref{theorem:multiexist}. Then there are $2(n-1)$ pairs of interaction eigenvalues $\lambda_1, \dots \lambda_{n-1}$ and $\tilde{\lambda}_1, \dots \tilde{\lambda}_{n-1}$, given by
@@ -480,7 +480,7 @@ Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_n(x)$ be a n-puls
 where $\{ \mu_1,\dots,\mu_{n-1}, 0\}$ are the real, distinct eigenvalues of $A$. One of each pair $\{\lambda_i, \tilde{\lambda}_i\}$ is real and the other is purely imaginary, thus there are $n-1$ positive real eigenvalues. \revised{There is also an eigenvalue with algebraic multiplicity 4 and geometric multiplicity 2 at the origin.}
 \end{corollary}
 
-Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$ explicitly.
+\revised{Intuitively, the instability result follows is a consequence of the opposite signs of $\lambda^2$ terms on the diagonal in \cref{blockeq}. This follows from the Hamiltonian structure of the problem, in particular the structure of the symplectic matrix $J$.} Finally, we compute the interaction eigenvalues of a 2-pulse solution $U_2(x)$ explicitly.
 
 \begin{corollary}\label{corr:2pstab}
 Assume the same hypotheses as in \cref{th:blockmatrix}. Let $U_2(x)$ be a 2-pulse constructed using \cref{theorem:multiexist} with pulse distance $X_1$ and phase parameters $\theta_1, \theta_2$. Then there are four interaction eigenvalues associated with $U_2(x)$, which are, to leading order, given by
